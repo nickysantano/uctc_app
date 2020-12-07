@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/splashFragment3">
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.uctc_app.ui.login.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_login_to_home_user"
+            app:destination="@+id/nav_homeUser" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_homeUser"
+        android:name="com.example.uctc_app.ui.pages.user.home.HomeUserFragment"
+        android:label="fragment_home_user"
+        tools:layout="@layout/fragment_home_user" />
+    <fragment
+        android:id="@+id/nav_programUser"
+        android:name="com.example.uctc_app.ui.pages.user.program_list.ProgramUserFragment"
+        android:label="fragment_program_user"
+        tools:layout="@layout/fragment_program_user" />
+    <fragment
+        android:id="@+id/nav_myProgramUser"
+        android:name="com.example.uctc_app.ui.pages.user.my_program.MyProgramUserFragment"
+        android:label="fragment_my_program_user"
+        tools:layout="@layout/fragment_my_program_user" />
+    <fragment
+        android:id="@+id/nav_profile"
+        android:name="com.example.uctc_app.ui.pages.user.profile.ProfileUserFragment"
+        android:label="fragment_profile_user"
+        tools:layout="@layout/fragment_profile_user" />
+    <fragment
+        android:id="@+id/splashFragment3"
+        android:name="com.example.uctc_app.ui.splash.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splash_to_login"
+            app:destination="@id/loginFragment" />
+    </fragment>
+</navigation>
