@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">uctc_app</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="txtLogin" />
+    <string name="txt_login">Login Account</string>
+    <string name="btnLogin" />
+    <string name="txtBtnLogin">Login</string>
 </resources>
