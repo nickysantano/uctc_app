@@ -2,17 +2,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.uctc_app">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-
     <application
         android:allowBackup="true"
-        android:usesCleartextTraffic="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:icon="@drawable/send"
+        android:label="UCTC"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Uctc_app">
-        <activity android:name=".ui.pages.user.UserMainActivity"></activity>
+        <activity android:name=".ui.pages.user.adapter.RecentEventAdapter"></activity>
+        <activity android:name=".ui.pages.user.adapter.picAdapter" />
+        <activity android:name=".ui.pages.user.adapter.EventAdapter" />
+        <activity android:name=".ui.pages.user.UserMainActivity" />
         <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
