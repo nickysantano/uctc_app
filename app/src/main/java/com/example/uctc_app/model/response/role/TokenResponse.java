@@ -33,7 +33,7 @@ public class TokenResponse {
     }
 
     public String getAuthorization() {
-        return this.tokenType+ " " + this.accessToken;
+        return this.tokenType + " " + this.accessToken;
     }
 
 }
