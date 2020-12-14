@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Uctc_app">
-        <activity android:name=".ui.pages.user.adapter.RecentEventAdapter"></activity>
+        <activity android:name=".ui.pages.user.adapter.DocumentationAdapter"></activity>
+        <activity android:name=".ui.pages.user.adapter.RecentEventAdapter" />
         <activity android:name=".ui.pages.user.adapter.picAdapter" />
         <activity android:name=".ui.pages.user.adapter.EventAdapter" />
         <activity android:name=".ui.pages.user.UserMainActivity" />
@@ -20,6 +21,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
