@@ -35,12 +35,16 @@ public class AuthRepository {
         apiService.login(email,password).enqueue(new Callback<TokenResponse>() {
             @Override
             public void onResponse(Call<TokenResponse> call, Response<TokenResponse> response) {
-                Log.d(TAG, "onResponse: " + response.code());
                 if (response.isSuccessful()){
-                    if (response.body() != null){
-                        Log.d(TAG, "onResponse: " + response.body().getAccessToken());
-                        tokenResponse.postValue(response.body());
-                    }
+                    Log.d(TAG, "onResponse: " + response.code());
+                        if (response.code() == 200){
+                            if (response.body() != null){
+                                Log.d(TAG, "onResponse: " + response.body().getAccessToken());
+                                tokenResponse.postValue(response.body());
+                            }
+                        }
+                }else{
+                    Log.d(TAG, "OnResponse: " + response.code());
                 }
             }
 

@@ -17,17 +17,15 @@ import java.util.Objects;
 
 import butterknife.ButterKnife;
 
-public class ProgramUserFragment extends Fragment {
-
-    public ProgramUserFragment() {
+public class DetailProgramUserFragment extends Fragment {
+    public DetailProgramUserFragment() {
         // Required empty public constructor
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_program_user, container, false);
+        return inflater.inflate(R.layout.fragment_detail_program_user, container, false);
     }
 
     @Override
