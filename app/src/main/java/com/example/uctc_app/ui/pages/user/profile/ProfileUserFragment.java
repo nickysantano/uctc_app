@@ -16,8 +16,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.uctc_app.MainActivity;
 import com.example.uctc_app.R;
-import com.example.uctc_app.ui.MainActivity;
 import com.example.uctc_app.utils.SharedPreferenceHelper;
 
 import java.util.Objects;
@@ -49,7 +49,8 @@ public class ProfileUserFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
-        Objects.requireNonNull(((MainActivity) requireActivity()).getSupportActionBar()).setDisplayHomeAsUpEnabled(false);
+
+//        Objects.requireNonNull(((MainActivity) requireActivity()).getSupportActionBar()).hide();
 
         helper = SharedPreferenceHelper.getInstance(requireActivity());
         viewModel = ViewModelProviders.of(requireActivity()).get(ProfileUserViewModel.class);
