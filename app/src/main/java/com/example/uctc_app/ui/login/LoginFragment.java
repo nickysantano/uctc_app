@@ -66,7 +66,6 @@ public class LoginFragment extends Fragment {
                     String email = email_text.getText().toString().trim();
                     String password = password_text.getText().toString().trim();
                     viewModel.login(email, password).observe(requireActivity(), tokenResponse -> {
-                        Toast.makeText(requireActivity(), "fail 235", Toast.LENGTH_SHORT).show();
                         if (tokenResponse != null) {
                             helper.saveAccessToken(tokenResponse.getAuthorization());
                             NavDirections action = LoginFragmentDirections.actionLoginToHomeUser();

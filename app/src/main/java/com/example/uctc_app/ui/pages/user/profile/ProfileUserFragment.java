@@ -62,12 +62,15 @@ public class ProfileUserFragment extends Fragment {
     @OnClick(R.id.btn_logout)
     public void logout(View view) {
         if (view.getId() == R.id.btn_logout) {
-            viewModel.logout().observe(requireActivity(), message -> {
-                if (!message.isEmpty()) {
-                    helper.clearPref();
-                    NavDirections action = ProfileUserFragmentDirections.actionNavProfileToLoginFragment();
-                    Navigation.findNavController(view).navigate(action);
-                    Toast.makeText(ProfileUserFragment.this.getActivity(), message, Toast.LENGTH_SHORT).show();
+            viewModel.logout().observe(requireActivity(), new Observer<String>() {
+                @Override
+                public void onChanged(String message) {
+                    if (!message.isEmpty()) {
+                        helper.clearPref();
+                        NavDirections action = ProfileUserFragmentDirections.actionNavProfileToLoginFragment();
+                        Navigation.findNavController(view).navigate(action);
+                        Toast.makeText(ProfileUserFragment.this.getActivity(), message, Toast.LENGTH_SHORT).show();
+                    }
                 }
             });
         }

@@ -55,6 +55,7 @@ public class ProfileRepository {
                             JSONObject object = new JSONObject(new Gson().toJson(response.body()));
                             String msg = object.getString("message");
                             Log.d(TAG, "onResponse: " + msg);
+                            message.postValue(msg);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
