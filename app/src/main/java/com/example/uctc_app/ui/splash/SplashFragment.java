@@ -14,6 +14,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.uctc_app.R;
+import com.example.uctc_app.ui.MainActivity;
+
+import java.util.Objects;
 
 import butterknife.ButterKnife;
 
@@ -34,6 +37,8 @@ public class SplashFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
+
+        Objects.requireNonNull((MainActivity) requireActivity()).getSupportActionBar().hide();
 
         new Handler().postDelayed(() -> {
             NavDirections action = SplashFragmentDirections.actionSplashToLogin();

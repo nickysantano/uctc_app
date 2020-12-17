@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="516dp"
+        android:layout_height="569dp"
         android:layout_marginEnd="172dp"
         android:src="@drawable/circle_yellow"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:text="Welcome"
         android:textColor="#0E2F56"
-        android:textSize="30sp"
+        android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:text="to UCTC"
         android:textColor="#0E2F56"
-        android:textSize="30sp"
+        android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
