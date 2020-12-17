@@ -1,8 +1,11 @@
 package com.example.uctc_app.network;
 
+import android.util.Log;
+
 import com.example.uctc_app.model.response.role.TokenResponse;
 import com.example.uctc_app.model.response.role.UserResponse;
 import com.example.uctc_app.utils.Constants;
+import com.google.gson.JsonObject;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -17,6 +20,7 @@ public class RetrofitService {
     private static final String TAG = "RetrofitService";
 
     private RetrofitService (String token) {
+        Log.d(TAG, "RetrofitService: " + token);
 
         OkHttpClient.Builder client = new OkHttpClient.Builder();
 
@@ -29,7 +33,9 @@ public class RetrofitService {
         }else {
             client.addInterceptor(chain -> {
                 Request request = chain.request().newBuilder()
-                        .addHeader("Accept", "application/json").build();
+                        .addHeader("Accept", "application/json")
+                        .addHeader("Authorization", token)
+                        .build();
                 return chain.proceed(request);
             });
         }
@@ -58,6 +64,10 @@ public class RetrofitService {
 
     public Call<UserResponse> getUsers() {
         return api.getUsers();
+    }
+
+    public Call<JsonObject> logout() {
+        return api.logout();
     }
 
 }

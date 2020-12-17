@@ -32,7 +32,11 @@
         android:id="@+id/nav_profile"
         android:name="com.example.uctc_app.ui.pages.user.profile.ProfileUserFragment"
         android:label="fragment_profile_user"
-        tools:layout="@layout/fragment_profile_user" />
+        tools:layout="@layout/fragment_profile_user" >
+        <action
+            android:id="@+id/action_nav_profile_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
     <fragment
         android:id="@+id/splashFragment3"
         android:name="com.example.uctc_app.ui.splash.SplashFragment"
