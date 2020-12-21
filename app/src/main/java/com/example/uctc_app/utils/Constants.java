@@ -1,10 +1,14 @@
 package com.example.uctc_app.utils;
 
 public class Constants {
+<<<<<<< Updated upstream
     //Nicky
 //    public final static String BASE_URL = "http://192.168.43.246/uctcweb/public/api/";
     //Ray
     public final static String BASE_URL = "http://192.168.1.81/uctcweb/public/api/";
 
 
+=======
+    public final static String BASE_URL = "http://192.168.43.246/uctcweb/public/api/";
+>>>>>>> Stashed changes
 }
