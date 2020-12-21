@@ -9,6 +9,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.example.uctc_app.R;
@@ -22,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        Log.d("Hello","in Main Menu");
         BottomNavigationView navigationView = findViewById(R.id.bottom_nav_user);
 
         AppBarConfiguration configuration = new AppBarConfiguration

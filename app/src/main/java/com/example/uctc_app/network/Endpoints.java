@@ -1,5 +1,7 @@
 package com.example.uctc_app.network;
 
+import com.example.uctc_app.model.local.role.Program;
+import com.example.uctc_app.model.response.role.ProgramResponse;
 import com.example.uctc_app.model.response.role.TokenResponse;
 import com.example.uctc_app.model.response.role.UserResponse;
 import com.google.gson.JsonObject;
@@ -18,6 +20,9 @@ public interface Endpoints {
 
     @GET("users")
     Call<UserResponse> getUsers();
+
+    @GET("programs")
+    Call<ProgramResponse> getPrograms();
 
     @POST("logout")
     Call<JsonObject> logout();

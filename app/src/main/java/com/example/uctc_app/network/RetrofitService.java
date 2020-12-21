@@ -2,6 +2,7 @@ package com.example.uctc_app.network;
 
 import android.util.Log;
 
+import com.example.uctc_app.model.response.role.ProgramResponse;
 import com.example.uctc_app.model.response.role.TokenResponse;
 import com.example.uctc_app.model.response.role.UserResponse;
 import com.example.uctc_app.utils.Constants;
@@ -64,6 +65,10 @@ public class RetrofitService {
 
     public Call<UserResponse> getUsers() {
         return api.getUsers();
+    }
+
+    public Call<ProgramResponse> getPrograms() {
+        return api.getPrograms();
     }
 
     public Call<JsonObject> logout() {
