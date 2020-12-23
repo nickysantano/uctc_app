@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/lbl_imgProfile_user"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="129dp"
+        android:layout_height="133dp"
         android:layout_marginTop="112dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -35,7 +35,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
-        android:text="Address"
+        android:text="Department"
         android:textColor="#0E2F56"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -129,7 +129,7 @@
         app:layout_constraintTop_toBottomOf="@+id/lbl_imgProfile_user" />
 
     <TextView
-        android:id="@+id/lbl_address_profile"
+        android:id="@+id/lbl_department_profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
@@ -146,7 +146,7 @@
         android:layout_marginEnd="16dp"
         android:text="@string/txtPhoneProfile"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lbl_address_profile" />
+        app:layout_constraintTop_toBottomOf="@+id/lbl_department_profile" />
 
     <Button
         android:id="@+id/btn_logout"
