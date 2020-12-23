@@ -4,31 +4,29 @@ import com.google.gson.annotations.SerializedName;
 
 public class User {
 
-    @SerializedName("dosen_id")
-    String user_id;
-
-    @SerializedName("nama_user")
+    @SerializedName("name")
     String name;
 
-    @SerializedName("peran")
-    String peran;
+    @SerializedName("role_id")
+    String role_id;
 
-    @SerializedName("jabatan")
-    String jabatan;
+    @SerializedName("department_id")
+    String department_id;
+
+    @SerializedName("phone_number")
+    String phone_number;
+
+    @SerializedName("created_by")
+    String created_by;
+
+    @SerializedName("status")
+    String status;
 
     @SerializedName("email")
     String email;
 
     @SerializedName("password")
     String password;
-
-    public String getUser_id() {
-        return user_id;
-    }
-
-    public void setUser_id(String user_id) {
-        this.user_id = user_id;
-    }
 
     public String getName() {
         return name;
@@ -38,20 +36,44 @@ public class User {
         this.name = name;
     }
 
-    public String getPeran() {
-        return peran;
+    public String getRole_id() {
+        return role_id;
     }
 
-    public void setPeran(String peran) {
-        this.peran = peran;
+    public void setRole_id(String role_id) {
+        this.role_id = role_id;
     }
 
-    public String getJabatan() {
-        return jabatan;
+    public String getDepartment_id() {
+        return department_id;
     }
 
-    public void setJabatan(String jabatan) {
-        this.jabatan = jabatan;
+    public void setDepartment_id(String department_id) {
+        this.department_id = department_id;
+    }
+
+    public String getPhone_number() {
+        return phone_number;
+    }
+
+    public void setPhone_number(String phone_number) {
+        this.phone_number = phone_number;
+    }
+
+    public String getCreated_by() {
+        return created_by;
+    }
+
+    public void setCreated_by(String created_by) {
+        this.created_by = created_by;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getEmail() {
