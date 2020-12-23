@@ -12,8 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Uctc_app"
         android:usesCleartextTraffic="true">
-
-        <activity android:name=".ui.pages.user.adapter.CommiteeAdapter"></activity>
+        <activity android:name=".ui.pages.staff.StaffMainActivity"></activity>
+        <activity android:name=".ui.pages.admin.AdminMainActivity" />
+        <activity android:name=".ui.pages.user.adapter.CommiteeAdapter" />
         <activity android:name=".ui.pages.user.adapter.DocumentationAdapter" />
         <activity android:name=".ui.pages.user.adapter.RecentEventAdapter" />
         <activity android:name=".ui.pages.user.adapter.EventAdapter" />
