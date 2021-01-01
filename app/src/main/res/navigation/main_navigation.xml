@@ -51,5 +51,8 @@
             app:exitAnim="@anim/fragment_fade_exit"
             app:popEnterAnim="@anim/fragment_fade_enter"
             app:popExitAnim="@anim/fragment_fade_exit" />
+        <action
+            android:id="@+id/action_splash_to_home_user"
+            app:destination="@id/nav_homeUser" />
     </fragment>
 </navigation>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_home_staff"
+        android:title="Home"
+        android:icon="@drawable/home"
+        />
+
+    <item
+        android:id="@+id/nav_program_staff"
+        android:title="Program List"
+        android:icon="@drawable/clipboard"
+        />
+
+    <item
+        android:id="@+id/nav_action_plan_staff"
+        android:title="Action Plan"
+        android:icon="@drawable/note"
+        />
+
+
+</menu>
