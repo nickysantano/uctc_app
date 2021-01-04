@@ -1,4 +1,4 @@
-package com.example.uctc_app.ui.pages.user.my_program;
+package com.example.uctc_app.ui.pages.user.program_list;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -61,9 +61,9 @@ public class ProgramAdapter extends RecyclerView.Adapter<ProgramAdapter.ViewHold
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            name = itemView.findViewById(R.id.lbl_name_user);
-            description = itemView.findViewById(R.id.lbl_program_category);
-            status = itemView.findViewById(R.id.lbl_program_category_list);
+            name = itemView.findViewById(R.id.lbl_name_user_list_admin);
+            description = itemView.findViewById(R.id.lbl_email_user_list_admin);
+            status = itemView.findViewById(R.id.lbl_txt_see_all_contribution);
             creator = itemView.findViewById(R.id.lbl_user_name);
         }
     }

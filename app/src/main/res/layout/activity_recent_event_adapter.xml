@@ -31,7 +31,7 @@
                 app:layout_constraintGuide_begin="46dp" />
 
             <TextView
-                android:id="@+id/lbl_program_category"
+                android:id="@+id/lbl_email_user_list_admin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
@@ -76,7 +76,7 @@
                 android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
-                app:layout_constraintTop_toBottomOf="@+id/lbl_program_category" />
+                app:layout_constraintTop_toBottomOf="@+id/lbl_email_user_list_admin" />
 
             <TextView
                 android:id="@+id/lbl_program_category4"
@@ -89,7 +89,7 @@
                 android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
-                app:layout_constraintTop_toBottomOf="@+id/lbl_program_category" />
+                app:layout_constraintTop_toBottomOf="@+id/lbl_email_user_list_admin" />
 
             <TextView
                 android:id="@+id/lbl_by"
