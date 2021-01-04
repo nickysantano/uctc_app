@@ -6,4 +6,19 @@
     <string name="txt_login">Login Account</string>
     <string name="btnLogin" />
     <string name="txtBtnLogin">Login</string>
+    <string name="txtCategoryProgram" />
+    <string name="txtProgramCategory">Program Category</string>
+    <string name="txtProgramTitle">Title</string>
+    <string name="txtProgramDate">prog-date</string>
+    <string name="txtStaffPIC">staff-name</string>
+    <string name="txtNameUserProfile">Name Ples</string>
+    <string name="txtRolesProfile">Roles</string>
+    <string name="txtEmailProfile">email@example.com</string>
+    <string name="txtAddress">jl. apa aja</string>
+    <string name="txtPhoneProfile">+62 69696969</string>
+    <string name="txtEditAcc">Edit Account</string>
+    <string name="txtGoalProgram">programs goal here brudda</string>
+    <string name="txtStatusProgram">status here</string>
+    <string name="txtClientProgram">clients name here</string>
+    <string name="txtDateProgram">DD MM YYYY</string>
 </resources>

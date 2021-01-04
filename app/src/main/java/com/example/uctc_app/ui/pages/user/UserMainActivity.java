@@ -26,7 +26,7 @@ public class UserMainActivity extends AppCompatActivity {
                 .Builder(R.id.nav_homeUser, R.id.nav_programUser, R.id.nav_myProgramUser, R.id.nav_profile)
                 .build();
 
-        navController = Navigation.findNavController(this, R.id.fragment);
+        navController = Navigation.findNavController(this, R.id.fragmentcontainer);
 
 
 

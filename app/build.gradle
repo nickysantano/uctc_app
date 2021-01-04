@@ -73,4 +73,12 @@ dependencies {
     def preferencesVersion = '1.1.1'
     implementation "androidx.preference:preference:$preferencesVersion"
 
+    //chip navbar
+    implementation 'com.ismaeldivita.chipnavigation:chip-navigation-bar:1.2.0'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.4.10'
+
+    //lottie animation
+    def lottieVersion = "3.5.0"
+    implementation "com.airbnb.android:lottie:$lottieVersion"
+
 }

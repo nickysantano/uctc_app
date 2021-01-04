@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Disable -->
+    <item android:state_enabled="false" android:drawable="@drawable/status_pending" />
+
+    <!-- Enable -->
+    <item android:state_enabled="true" android:drawable="@drawable/status_completed" />
+
+    <!-- Default -->
+    <item android:drawable="@drawable/status_ongoing" />
+</selector>
