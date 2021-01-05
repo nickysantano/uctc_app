@@ -1,6 +1,7 @@
-package com.example.uctc_app.ui.pages.user.my_program;
+package com.example.uctc_app.ui.pages.user.program_list;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
@@ -41,12 +42,17 @@ public class ProgramAdapter extends RecyclerView.Adapter<ProgramAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Program program = programList.get(position);
-        Log.d("Hello", ""+program.getName());
+        Log.d("Hello", "" + program.getName());
 
         holder.name.setText(program.getName());
         holder.description.setText(program.getDescription());
         holder.status.setText(program.getStatus());
         holder.creator.setText(program.getCreated_by());
+
+        holder.itemView.setOnClickListener(view -> {
+            ProgramUserFragmentDirections.ActionProgramToDetailProgramUser actionProgramToDetailProgramUser = ProgramUserFragmentDirections.actionProgramToDetailProgramUser(program);
+            Navigation.findNavController(view).navigate(actionProgramToDetailProgramUser);
+        });
     }
 
     @Override
@@ -61,9 +67,9 @@ public class ProgramAdapter extends RecyclerView.Adapter<ProgramAdapter.ViewHold
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            name = itemView.findViewById(R.id.lbl_name_user);
-            description = itemView.findViewById(R.id.lbl_program_category);
-            status = itemView.findViewById(R.id.lbl_program_category_list);
+            name = itemView.findViewById(R.id.lbl_name_user_list_admin);
+            description = itemView.findViewById(R.id.lbl_email_user_list_admin);
+            status = itemView.findViewById(R.id.lbl_txt_see_all_contribution);
             creator = itemView.findViewById(R.id.lbl_user_name);
         }
     }

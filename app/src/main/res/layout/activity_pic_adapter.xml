@@ -31,7 +31,7 @@
                 app:layout_constraintGuide_begin="46dp" />
 
             <TextView
-                android:id="@+id/lbl_name_user"
+                android:id="@+id/lbl_name_user_list_admin"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -47,7 +47,7 @@
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
-                android:id="@+id/lbl_program_category"
+                android:id="@+id/lbl_email_user_list_admin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -55,7 +55,7 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
-                app:layout_constraintTop_toBottomOf="@+id/lbl_name_user"
+                app:layout_constraintTop_toBottomOf="@+id/lbl_name_user_list_admin"
                 app:layout_constraintVertical_bias="0.0" />
 
             <ImageView

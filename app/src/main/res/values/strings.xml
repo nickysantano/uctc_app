@@ -21,4 +21,5 @@
     <string name="txtStatusProgram">status here</string>
     <string name="txtClientProgram">clients name here</string>
     <string name="txtDateProgram">DD MM YYYY</string>
+    <string name="txtDescProgramUser">hello, desc here</string>
 </resources>

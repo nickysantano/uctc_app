@@ -1,4 +1,4 @@
-package com.example.uctc_app.ui.pages.user.my_program;
+package com.example.uctc_app.ui.pages.user.program_list;
 
 import android.util.Log;
 
@@ -29,9 +29,6 @@ public class ProgramViewModel extends ViewModel {
         return repository.getPrograms();
     }
 
-    public LiveData<String> logout() {
-        return repository.logout();
-    }
 
     @Override
     protected void onCleared() {

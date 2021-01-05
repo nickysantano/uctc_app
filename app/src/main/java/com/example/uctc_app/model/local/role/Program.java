@@ -1,8 +1,11 @@
 package com.example.uctc_app.model.local.role;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
-public class Program {
+public class Program implements Parcelable {
     @SerializedName("program_title")
     String name;
     @SerializedName("description")
@@ -24,23 +27,77 @@ public class Program {
         this.date = date;
     }
 
+    protected Program(Parcel in) {
+        name = in.readString();
+        description = in.readString();
+        created_by = in.readString();
+        status = in.readString();
+        date = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(name);
+        dest.writeString(description);
+        dest.writeString(created_by);
+        dest.writeString(status);
+        dest.writeString(date);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Program> CREATOR = new Creator<Program>() {
+        @Override
+        public Program createFromParcel(Parcel in) {
+            return new Program(in);
+        }
+
+        @Override
+        public Program[] newArray(int size) {
+            return new Program[size];
+        }
+    };
+
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {
         return description;
     }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public String getCreated_by() {
         return created_by;
+    }
+
+    public void setCreated_by(String created_by) {
+        this.created_by = created_by;
     }
 
     public String getStatus() {
         return status;
     }
 
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     public String getDate() {
         return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }
