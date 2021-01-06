@@ -18,7 +18,7 @@ public interface Endpoints {
     @FormUrlEncoded
     Call<TokenResponse> login(@Field("email") String email, @Field("password") String password);
 
-    @GET("users")
+    @GET("profile")
     Call<UserResponse> getUsers();
 
     @GET("programs")

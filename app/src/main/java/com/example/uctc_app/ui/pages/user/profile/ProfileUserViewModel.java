@@ -3,9 +3,13 @@ package com.example.uctc_app.ui.pages.user.profile;
 import android.util.Log;
 
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.uctc_app.model.local.role.User;
 import com.example.uctc_app.repository.login.ProfileRepository;
+
+import java.util.List;
 
 public class ProfileUserViewModel extends ViewModel {
 
@@ -21,7 +25,10 @@ public class ProfileUserViewModel extends ViewModel {
         repository = ProfileRepository.getInstance(token);
     }
 
-    //should getprofile livedata but not already yet
+    public MutableLiveData<List<User>> getUser() {
+        Log.d("Hello","VIewModel");
+        return repository.getUser();
+    }
 
     public LiveData<String> logout() {
         return repository.logout();

@@ -24,7 +24,11 @@
         android:id="@+id/nav_programUser"
         android:name="com.example.uctc_app.ui.pages.user.program_list.ProgramUserFragment"
         android:label="fragment_program_user"
-        tools:layout="@layout/fragment_program_user" />
+        tools:layout="@layout/fragment_program_user" >
+        <action
+            android:id="@+id/action_program_to_detail_program_user"
+            app:destination="@id/detailProgramUserFragment" />
+    </fragment>
     <fragment
         android:id="@+id/nav_myProgramUser"
         android:name="com.example.uctc_app.ui.pages.user.my_program.MyProgramUserFragment"
@@ -51,5 +55,16 @@
             app:exitAnim="@anim/fragment_fade_exit"
             app:popEnterAnim="@anim/fragment_fade_enter"
             app:popExitAnim="@anim/fragment_fade_exit" />
+        <action
+            android:id="@+id/action_splash_to_home_user"
+            app:destination="@id/nav_homeUser" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailProgramUserFragment"
+        android:name="com.example.uctc_app.ui.pages.user.program_list.DetailProgramUserFragment"
+        android:label="fragment_detail_program_user"
+        tools:layout="@layout/fragment_detail_program_user" >
+        <argument android:name="DetailProgramUser"
+            app:argType="com.example.uctc_app.model.local.role.Program" />
     </fragment>
 </navigation>
