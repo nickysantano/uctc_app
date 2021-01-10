@@ -16,9 +16,6 @@ public class User {
     @SerializedName("phone_number")
     String phone_number;
 
-    @SerializedName("created_by")
-    String created_by;
-
     @SerializedName("status")
     String status;
 
@@ -60,13 +57,6 @@ public class User {
         this.phone_number = phone_number;
     }
 
-    public String getCreated_by() {
-        return created_by;
-    }
-
-    public void setCreated_by(String created_by) {
-        this.created_by = created_by;
-    }
 
     public String getStatus() {
         return status;
