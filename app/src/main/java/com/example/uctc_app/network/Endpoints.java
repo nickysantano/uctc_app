@@ -19,7 +19,7 @@ public interface Endpoints {
     Call<TokenResponse> login(@Field("email") String email, @Field("password") String password);
 
     @GET("profile")
-    Call<UserResponse> getUsers();
+    Call<UserResponse> getUser();
 
     @GET("programs")
     Call<ProgramResponse> getPrograms();

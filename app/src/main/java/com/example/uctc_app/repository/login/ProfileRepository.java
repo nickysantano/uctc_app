@@ -44,16 +44,17 @@ public class ProfileRepository {
         }
     }
 
-    public MutableLiveData<List<User>> getUser() {
-        MutableLiveData<List<User>> listUser = new MutableLiveData<>();
+    public MutableLiveData<User> getUser() {
+        MutableLiveData<User> listUser = new MutableLiveData<>();
+        Log.d(TAG, "InMutable: " + "HAIIII");
 
-        apiService.getUsers().enqueue(new Callback<UserResponse>() {
+        apiService.getUser().enqueue(new Callback<UserResponse>() {
             @Override
             public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
                 Log.d(TAG, "onResponse: " + response.code());
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
-                        Log.d(TAG, "onResponse: Program " + response.body().getResults().size());
+                        Log.d(TAG, "onResponse: Program " + response.body().getResults());
                         listUser.postValue(response.body().getResults());
                     }
                 }

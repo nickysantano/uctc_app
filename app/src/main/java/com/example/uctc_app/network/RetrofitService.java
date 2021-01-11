@@ -63,8 +63,8 @@ public class RetrofitService {
         return api.login(email, password);
     }
 
-    public Call<UserResponse> getUsers() {
-        return api.getUsers();
+    public Call<UserResponse> getUser() {
+        return api.getUser();
     }
 
     public Call<ProgramResponse> getPrograms() {

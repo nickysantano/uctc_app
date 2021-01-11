@@ -107,18 +107,27 @@ public class ProfileUserFragment extends Fragment {
     @BindView(R.id.lbl_phone_profile)
     TextView phone;
 
-    private Observer<List<User>> observer = new Observer<List<User>>() {
+    private Observer<User> observer = new Observer<User>() {
         @Override
-        public void onChanged(List<User> users) {
-            if (users != null){
-                User user = users.get(0);
-                name.setText(user.getName());
-                role.setText(user.getRole_id());
-                email.setText(user.getEmail());
-                department.setText(user.getDepartment_id());
-                phone.setText(user.getPhone_number());
-            }
+        public void onChanged(User user) {
+            name.setText(user.getName());
+            role.setText(user.getRole_id());
+            email.setText(user.getEmail());
+            department.setText(user.getDepartment_id());
+            phone.setText(user.getPhone_number());
         }
+
+//        @Override
+//        public void onChanged(List<User> users) {
+//            if (users != null){
+//                User user = users.get(0);
+//                name.setText(user.getName());
+//                role.setText(user.getRole_id());
+//                email.setText(user.getEmail());
+//                department.setText(user.getDepartment_id());
+//                phone.setText(user.getPhone_number());
+//            }
+//        }
     };
 
 }
