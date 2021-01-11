@@ -2,17 +2,21 @@ package com.example.uctc_app.network;
 
 import android.util.Log;
 
+import com.example.uctc_app.model.local.role.Program;
 import com.example.uctc_app.model.response.role.ProgramResponse;
 import com.example.uctc_app.model.response.role.TokenResponse;
 import com.example.uctc_app.model.response.role.UserResponse;
 import com.example.uctc_app.utils.Constants;
 import com.google.gson.JsonObject;
 
+import kotlin.text.UStringsKt;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.Body;
+import retrofit2.http.POST;
 
 public class RetrofitService {
 
@@ -70,6 +74,8 @@ public class RetrofitService {
     public Call<ProgramResponse> getPrograms() {
         return api.getPrograms();
     }
+
+    public Call<POST> addProgams(String name, String description, String goal, String date, String creator_id){return  api.addProgram((POST) new Program(name,description,goal,creator_id,"0",date));}
 
     public Call<JsonObject> logout() {
         return api.logout();

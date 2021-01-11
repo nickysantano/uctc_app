@@ -10,6 +10,8 @@ public class Program implements Parcelable {
     String name;
     @SerializedName("description")
     String description;
+    @SerializedName("goal")
+    String goal;
     @SerializedName("created_by")
     String created_by;
     @SerializedName("status")
@@ -19,9 +21,10 @@ public class Program implements Parcelable {
 
     public Program (){}
 
-    public Program(String name, String description, String created_by, String status, String date) {
+    public Program(String name, String description, String goal, String created_by, String status, String date) {
         this.name = name;
         this.description = description;
+        this.goal = goal;
         this.created_by = created_by;
         this.status = status;
         this.date = date;
@@ -30,6 +33,7 @@ public class Program implements Parcelable {
     protected Program(Parcel in) {
         name = in.readString();
         description = in.readString();
+        goal = in.readString();
         created_by = in.readString();
         status = in.readString();
         date = in.readString();
@@ -100,4 +104,13 @@ public class Program implements Parcelable {
     public void setDate(String date) {
         this.date = date;
     }
+
+    public String getGoal() {
+        return goal;
+    }
+
+    public void setGoal(String goal) {
+        this.goal = goal;
+    }
+
 }

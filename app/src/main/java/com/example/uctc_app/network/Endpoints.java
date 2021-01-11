@@ -7,6 +7,7 @@ import com.example.uctc_app.model.response.role.UserResponse;
 import com.google.gson.JsonObject;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -23,6 +24,9 @@ public interface Endpoints {
 
     @GET("programs")
     Call<ProgramResponse> getPrograms();
+
+    @POST("programs")
+    Call<POST> addProgram(@Body Program newProgram);
 
     @POST("logout")
     Call<JsonObject> logout();
