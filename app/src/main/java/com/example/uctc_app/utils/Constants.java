@@ -1,6 +1,11 @@
 package com.example.uctc_app.utils;
 
+import androidx.lifecycle.ViewModelProviders;
+
+import com.example.uctc_app.ui.pages.user.profile.ProfileUserViewModel;
+
 public class Constants {
+
     //Nicky//
     public final static String BASE_URL = "http://192.168.43.246/api/";
 
