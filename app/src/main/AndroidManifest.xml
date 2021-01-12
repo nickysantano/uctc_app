@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Uctc_app"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.pages.admin.user_list.UserListAdminAdapterActivity"></activity>
+        <activity android:name=".ui.pages.staff.action_plan.ActionPlanAdapter"></activity>
+        <activity android:name=".ui.pages.admin.user_list.UserListAdminAdapterActivity" />
         <activity android:name=".ui.pages.admin.proposal.ProposalAdapter" />
         <activity android:name=".ui.pages.staff.StaffMainActivity" />
         <activity android:name=".ui.pages.admin.AdminMainActivity" />
