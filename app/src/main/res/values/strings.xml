@@ -31,4 +31,5 @@
     <string name="txtAddToDoListDescription">Description Here</string>
     <string name="txtAddToDoListDescriptionStaff">Description Here</string>
     <string name="btnAddToDoList">CREATE TASK</string>
+    <string name="txtDescProgramStaff">Description Here</string>
 </resources>
