@@ -28,6 +28,9 @@
         <action
             android:id="@+id/action_program_to_detail_program_user"
             app:destination="@id/detailProgramUserFragment" />
+        <action
+            android:id="@+id/action_nav_programUser_to_addProgramStaffFragment"
+            app:destination="@id/addProgramStaffFragment" />
     </fragment>
     <fragment
         android:id="@+id/nav_myProgramUser"
@@ -67,4 +70,9 @@
         <argument android:name="DetailProgramUser"
             app:argType="com.example.uctc_app.model.local.role.Program" />
     </fragment>
+    <fragment
+        android:id="@+id/addProgramStaffFragment"
+        android:name="com.example.uctc_app.ui.pages.user.program_list.AddProgramStaffFragment"
+        android:label="fragment_add_program_staff"
+        tools:layout="@layout/fragment_add_program_staff" />
 </navigation>

@@ -26,7 +26,7 @@ public interface Endpoints {
     Call<ProgramResponse> getPrograms();
 
     @POST("programs")
-    Call<POST> addProgram(@Body Program newProgram);
+    Call<POST> addProgram(@Body POST newProgram);
 
     @POST("logout")
     Call<JsonObject> logout();

@@ -75,7 +75,9 @@ public class RetrofitService {
         return api.getPrograms();
     }
 
-    public Call<POST> addProgams(String name, String description, String goal, String date, String creator_id){return  api.addProgram((POST) new Program(name,description,goal,creator_id,"0",date));}
+    public Call<POST> addProgams(String name, String description, String goal, String date, String creator_id){
+        return  api.addProgram((POST) new Program(name, description, goal, creator_id,"0", date));
+    }
 
     public Call<JsonObject> logout() {
         return api.logout();
