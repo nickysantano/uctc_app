@@ -22,4 +22,6 @@
     <string name="txtClientProgram">clients name here</string>
     <string name="txtDateProgram">DD MM YYYY</string>
     <string name="txtDescProgramUser">hello, desc here</string>
+    <string name="txtActionPlanName" />
+    <string name="btnCreateTask">CREATE TASK</string>
 </resources>

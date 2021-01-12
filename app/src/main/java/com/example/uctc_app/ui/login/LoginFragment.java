@@ -94,13 +94,14 @@ public class LoginFragment extends Fragment {
     private Observer<User> observer = new Observer<User>() {
         @Override
         public void onChanged(User user) {
+                Log.d("USER ROLE", "hai rayyyyyyyyyyyyyyyyyyyyy");
             NavDirections action;
             if (user.getRole_id().equalsIgnoreCase("1")) {
                 Log.d("USER ROLE", "ADMIIIN");
-                action = LoginFragmentDirections.actionLoginToHomeUser();
+                action = LoginFragmentDirections.actionLoginToHomeAdmin();
             } else if (user.getRole_id().equalsIgnoreCase("2")) {
                 Log.d("USER ROLE", "STAFF");
-                action = LoginFragmentDirections.actionLoginToHomeUser();
+                action = LoginFragmentDirections.actionLoginToHomeStaffNavigation();
             } else {
                 Log.d("USER ROLE", "USER");
                 action = LoginFragmentDirections.actionLoginToHomeUser();

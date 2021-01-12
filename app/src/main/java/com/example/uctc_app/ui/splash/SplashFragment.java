@@ -74,11 +74,11 @@ public class SplashFragment extends Fragment {
             NavDirections action;
             if (user.getRole_id().equalsIgnoreCase("1")){
                 Log.d("USER ROLE", "ADMIIIN");
-                action = SplashFragmentDirections.actionSplashToHomeUser();
+                action = SplashFragmentDirections.actionSplashToAdmin();
             }
             else if (user.getRole_id().equalsIgnoreCase("2")){
                 Log.d("USER ROLE", "STAFF");
-                action = SplashFragmentDirections.actionSplashToHomeUser();
+                action = SplashFragmentDirections.actionSplashToStaff();
             }
             else{
                 Log.d("USER ROLE", "USER");
