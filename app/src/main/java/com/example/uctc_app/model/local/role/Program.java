@@ -8,16 +8,22 @@ import com.google.gson.annotations.SerializedName;
 public class Program implements Parcelable {
     @SerializedName("program_id")
     String program_id;
+
     @SerializedName("program_title")
     String name;
+
     @SerializedName("description")
     String description;
+
     @SerializedName("goal")
     String goal;
+
     @SerializedName("created_by")
     String created_by;
+
     @SerializedName("status")
     String status;
+
     @SerializedName("program_date")
     String date;
 

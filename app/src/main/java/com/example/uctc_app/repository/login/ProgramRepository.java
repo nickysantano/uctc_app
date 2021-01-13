@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.uctc_app.model.local.role.Program;
 import com.example.uctc_app.model.response.role.ProgramResponse;
+import com.example.uctc_app.model.response.role.TokenResponse;
 import com.example.uctc_app.network.RetrofitService;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -60,14 +61,41 @@ public class ProgramRepository {
         });
     }
 
-    public void addProgram(String name, String description, String goal, String date, String creator_id){
-        apiService.addProgram(name, description, goal, creator_id, date).enqueue(new Callback<Void>() {
+    public MutableLiveData<TokenResponse> login(String email, String password) {
+        MutableLiveData<TokenResponse> tokenResponse = new MutableLiveData<>();
+
+        apiService.login(email,password).enqueue(new Callback<TokenResponse>() {
+            @Override
+            public void onResponse(Call<TokenResponse> call, Response<TokenResponse> response) {
+                if (response.isSuccessful()){
+                    Log.d(TAG, "onResponse: " + response.code());
+                    if (response.code() == 200){
+                        if (response.body().getAccessToken() != null){
+                            Log.d(TAG, "onResponse: " + response.body().getAccessToken());
+                            tokenResponse.postValue(response.body());
+                        }
+                    }
+                }else{
+                    Log.d(TAG, "OnResponse: " + response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<TokenResponse> call, Throwable t) {
+                Log.d(TAG, "onFailure: " + t.getMessage());
+            }
+        });
+
+        return tokenResponse;
+    }
+    public void addProgram(Program program){
+        apiService.addProgram(program).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 Log.d(TAG, "onResponse:" + response.code());
-
+                Log.d(TAG, "onResponse:" + response.message());
+                Log.d("WIFI SUCCESS", "ADDING PROGRAM");
             }
-
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
                 Log.d(TAG, "onFailure: " + t.getMessage());
