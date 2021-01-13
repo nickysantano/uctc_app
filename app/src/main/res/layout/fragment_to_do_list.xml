@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.pages.user.my_program.ToDoListFragment">
+    tools:context=".ui.pages.user.my_program.TaskFragment">
 
     <Button
         android:id="@+id/button3"
@@ -31,6 +31,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_task_list"
         android:layout_width="410dp"
         android:layout_height="650dp"
         app:layout_constraintBottom_toTopOf="@+id/button3"
