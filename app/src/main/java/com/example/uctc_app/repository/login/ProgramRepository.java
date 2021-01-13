@@ -103,8 +103,8 @@ public class ProgramRepository {
         });
     }
 
-    public void updateProgram(String name, String description, String goal, String date,String status, int creator_id){
-        apiService.updateProgram(name, description, goal, date ,status, creator_id).enqueue(new Callback<Void>() {
+    public void updateProgram(String name, String description, String goal, String date,String status){
+        apiService.updateProgram(name, description, goal, date ,status).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 Log.d(TAG, "onResponse:" + response.code());
