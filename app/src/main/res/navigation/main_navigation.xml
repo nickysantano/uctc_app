@@ -16,10 +16,10 @@
             app:exitAnim="@anim/fragment_fade_exit" />
         <action
             android:id="@+id/action_login_to_home_staff_navigation"
-            app:destination="@id/homeStaffFragment2" />
+            app:destination="@id/nav_home_staff" />
         <action
             android:id="@+id/action_login_to_home_admin"
-            app:destination="@id/homeAdminFragment" />
+            app:destination="@id/nav_home_admin" />
     </fragment>
     <fragment
         android:id="@+id/nav_homeUser"
@@ -69,10 +69,10 @@
             app:destination="@id/nav_homeUser" />
         <action
             android:id="@+id/action_splash_to_staff"
-            app:destination="@id/homeStaffFragment2" />
+            app:destination="@id/nav_home_staff" />
         <action
             android:id="@+id/action_splash_to_admin"
-            app:destination="@id/homeAdminFragment" />
+            app:destination="@id/nav_home_admin" />
     </fragment>
     <fragment
         android:id="@+id/detailProgramUserFragment"
@@ -88,17 +88,17 @@
         android:label="fragment_add_program_staff"
         tools:layout="@layout/fragment_add_program_staff" />
     <fragment
-        android:id="@+id/homeStaffFragment2"
+        android:id="@+id/nav_home_staff"
         android:name="com.example.uctc_app.ui.pages.staff.home.HomeStaffFragment"
         android:label="fragment_home_staff"
         tools:layout="@layout/fragment_home_staff" />
     <fragment
-        android:id="@+id/programStaffFragment2"
+        android:id="@+id/nav_program_staff"
         android:name="com.example.uctc_app.ui.pages.staff.program_list.ProgramStaffFragment"
         android:label="fragment_program_staff"
         tools:layout="@layout/fragment_program_staff" />
     <fragment
-        android:id="@+id/actionPlanStaffFragment2"
+        android:id="@+id/nav_action_plan_staff"
         android:name="com.example.uctc_app.ui.pages.staff.action_plan.ActionPlanStaffFragment"
         android:label="fragment_action_plan_staff"
         tools:layout="@layout/fragment_action_plan_staff" >
@@ -113,27 +113,27 @@
             app:destination="@id/commiteeListStaffFragment" />
     </fragment>
     <fragment
-        android:id="@+id/homeAdminFragment"
+        android:id="@+id/nav_home_admin"
         android:name="com.example.uctc_app.ui.pages.admin.home.HomeAdminFragment"
         android:label="fragment_home_admin"
         tools:layout="@layout/fragment_home_admin" />
     <fragment
-        android:id="@+id/programAdminFragment"
+        android:id="@+id/nav_program_list_admin"
         android:name="com.example.uctc_app.ui.pages.admin.program_list.ProgramAdminFragment"
         android:label="fragment_program_admin"
         tools:layout="@layout/fragment_program_admin" />
     <fragment
-        android:id="@+id/proposalAdminFragment"
+        android:id="@+id/nav_proposal_admin"
         android:name="com.example.uctc_app.ui.pages.admin.proposal.ProposalAdminFragment"
         android:label="fragment_proposal_admin"
         tools:layout="@layout/fragment_proposal_admin" />
     <fragment
-        android:id="@+id/financeReportAdminFragment"
+        android:id="@+id/nav_finance_report_admin"
         android:name="com.example.uctc_app.ui.pages.admin.finance_report.FinanceReportAdminFragment"
         android:label="fragment_finance_report_admin"
         tools:layout="@layout/fragment_finance_report_admin" />
     <fragment
-        android:id="@+id/userListAdminFragment"
+        android:id="@+id/nav_user_list_admin"
         android:name="com.example.uctc_app.ui.pages.admin.user_list.UserListAdminFragment"
         android:label="fragment_user_list_admin"
         tools:layout="@layout/fragment_user_list_admin" />

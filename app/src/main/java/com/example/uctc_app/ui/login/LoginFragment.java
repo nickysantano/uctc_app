@@ -1,5 +1,6 @@
 package com.example.uctc_app.ui.login;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,8 +21,10 @@ import com.example.uctc_app.model.local.role.User;
 import com.example.uctc_app.repository.login.ProfileRepository;
 import com.example.uctc_app.ui.MainActivity;
 import com.example.uctc_app.R;
+import com.example.uctc_app.ui.pages.staff.StaffMainActivity;
 import com.example.uctc_app.ui.splash.SplashFragmentDirections;
 import com.example.uctc_app.utils.SharedPreferenceHelper;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.Objects;
