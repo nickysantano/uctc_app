@@ -76,10 +76,13 @@ public class RetrofitService {
         return api.getPrograms();
     }
 
-//    public Call<POST> addProgams(String name, String description, String goal, String date, String creator_id){
-//        return  api.addProgram((POST) new Program(name, description, goal, creator_id,"0", date));
-//    }
-    public Call<Void> deletePrograms(String id){
+    public Call<Void> addProgram(String name, String description, String goal, String date, String creator_id){
+        return  api.addProgram( new Program(name, description, goal, creator_id,"0", date));
+    }
+    public Call<Void> updateProgram(String name, String description, String goal, String date,String status, String creator_id){
+        return  api.updateProgram( new Program(name, description, goal, creator_id,status, date));
+    }
+    public Call<Void> deleteProgram(String id){
         return api.deleteProgram(id);
     }
 

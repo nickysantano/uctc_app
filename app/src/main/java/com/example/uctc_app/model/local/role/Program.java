@@ -23,8 +23,7 @@ public class Program implements Parcelable {
 
     public Program (){}
 
-    public Program(String program_id, String name, String description, String goal, String created_by, String status, String date) {
-        this.program_id = program_id;
+    public Program( String name, String description, String goal, String created_by, String status, String date) {
         this.name = name;
         this.description = description;
         this.goal = goal;

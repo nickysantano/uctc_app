@@ -14,6 +14,7 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface Endpoints {
@@ -29,7 +30,10 @@ public interface Endpoints {
     Call<ProgramResponse> getPrograms();
 
     @POST("programs")
-    Call<POST> addProgram(@Body POST newProgram);
+    Call<Void> addProgram(@Body Program newProgram);
+
+    @PUT("programs")
+    Call<Void> updateProgram(@Body Program newProgram);
 
     @DELETE("programs/{id}")
     Call<Void> deleteProgram(@Path("id") String id);

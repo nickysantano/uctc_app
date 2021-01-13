@@ -45,7 +45,38 @@ public class ProgramRepository {
     }
 
     public  void deleteProgam(String id){
-        apiService.deletePrograms(id).enqueue(new Callback<Void>() {
+        apiService.deleteProgram(id).enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                Log.d(TAG, "onResponse:" + response.code());
+
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Log.d(TAG, "onFailure: " + t.getMessage());
+
+            }
+        });
+    }
+
+    public void addProgram(String name, String description, String goal, String date, String creator_id){
+        apiService.addProgram(name, description, goal, creator_id, date).enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                Log.d(TAG, "onResponse:" + response.code());
+
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Log.d(TAG, "onFailure: " + t.getMessage());
+            }
+        });
+    }
+
+    public void updateProgram(String name, String description, String goal, String date,String status, String creator_id){
+        apiService.updateProgram(name, description, goal, creator_id,status, date).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 Log.d(TAG, "onResponse:" + response.code());
