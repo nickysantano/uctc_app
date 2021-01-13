@@ -28,8 +28,8 @@ public interface Endpoints {
     @GET("programs")
     Call<ProgramResponse> getPrograms();
 
-    @POST("programs")
-    Call<POST> addProgram(@Body POST newProgram);
+    @POST("programs/")
+    Call<ProgramResponse> addProgram(@Body Program newProgram);
 
     @DELETE("programs/{id}")
     Call<Void> deleteProgram(@Path("id") String id);

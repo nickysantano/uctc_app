@@ -45,8 +45,8 @@ public class AddProgramStaffFragment extends Fragment {
     @BindView(R.id.lbl_add_client_staff)
     TextInputEditText lbl_add_client_staff;
 
-    @BindView(R.id.editTextDate)
-    TextInputEditText editTextDate;
+//    @BindView(R.id.editTextDate)
+//    TextInputEditText editTextDate;
 
     @BindView(R.id.btn_add_program_staff)
     Button btn_add_program_staff;
