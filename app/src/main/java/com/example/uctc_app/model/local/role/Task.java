@@ -6,16 +6,16 @@ import android.os.Parcelable;
 import com.google.gson.annotations.SerializedName;
 
 public class Task implements Parcelable {
-    @SerializedName("id")
+    @SerializedName("task_id")
     int id;
 
-    @SerializedName("name")
+    @SerializedName("task_name")
     String name;
 
-    @SerializedName("status")
+    @SerializedName("task_status")
     String status;
 
-    @SerializedName("description")
+    @SerializedName("task_description")
     String description;
 
     @SerializedName("due_date")
