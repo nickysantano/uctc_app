@@ -60,7 +60,7 @@ public class ProgramAdapter extends RecyclerView.Adapter<ProgramAdapter.ViewHold
             @Override
             public void onClick(View v) {
                 ProgramRepository repository = ProgramRepository.getInstance(SharedPreferenceHelper.getInstance(context).getAccessToken());
-                repository.deleteProgram(program.getProgram_id());
+                repository.deleteProgam(program.getProgram_id());
                 //NEED TO RELOAD PAGE!
             }
         });
