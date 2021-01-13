@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:paddingTop="4dp"
     tools:context=".ui.pages.user.adapter.EventAdapter">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_lect_adap"
-        android:layout_width="390dp"
-        android:layout_height="75dp"
+        android:layout_width="395dp"
+        android:layout_height="91dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -20,8 +21,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cons_layout_enroll"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/card_white">
+            android:layout_height="87dp"
+            android:background="@drawable/text_input_bg">
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline"
@@ -50,19 +51,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
                 android:text="TextView"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/button"
-                app:layout_constraintTop_toBottomOf="@+id/lbl_name_user_list_admin" />
+                app:layout_constraintStart_toEndOf="@+id/button" />
 
             <TextView
-                android:id="@+id/lbl_txt_see_all_contribution"
+                android:id="@+id/lbl_txt_status_event"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="8dp"
                 android:text="TextView"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/lbl_name_user_list_admin"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
@@ -81,19 +85,35 @@
                 android:id="@+id/lbl_user_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginBottom="8dp"
                 android:text="TextView"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintStart_toEndOf="@+id/textView24" />
 
-            <Button
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/lbl_program_del"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/design_default_color_error"
-                android:text="DELETE"
+                android:layout_marginEnd="16dp"
+                android:clickable="true"
+                app:backgroundTint="#E35E5E"
+                app:fabSize="mini"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/lbl_user_name"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_baseline_delete_24" />
+
+            <TextView
+                android:id="@+id/textView24"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginBottom="8dp"
+                android:text="|"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/lbl_email_user_list_admin" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
