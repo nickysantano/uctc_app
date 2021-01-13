@@ -76,8 +76,8 @@ public class RetrofitService {
         return api.getPrograms();
     }
 
-    public Call<Void> addProgram(String name, String description, String goal, String date, String creator_id){
-        return  api.addProgram( new Program(name, description, goal, creator_id,"0", date));
+    public Call<Void> addProgram(Program program){
+        return  api.addProgram( program.getName(),program.getDescription(),program.getGoal(),program.getDate(), program.getCreated_by());
     }
     public Call<Void> updateProgram(String name, String description, String goal, String date,String status, String creator_id){
         return  api.updateProgram( new Program(name, description, goal, creator_id,status, date));

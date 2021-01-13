@@ -15,6 +15,7 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
 
 public interface Endpoints {
@@ -30,9 +31,12 @@ public interface Endpoints {
     Call<ProgramResponse> getPrograms();
 
     @POST("programs")
-    Call<Void> addProgram(@Body Program newProgram);
+    @FormUrlEncoded
+    Call<Void> addProgram(@Field("name") String name, @Field("description")  String description,@Field("goal") String goal,
+                          @Field("program_date") String program_date, @Field("created_by") String created_by);
 
     @PUT("programs")
+    @FormUrlEncoded
     Call<Void> updateProgram(@Body Program newProgram);
 
 
