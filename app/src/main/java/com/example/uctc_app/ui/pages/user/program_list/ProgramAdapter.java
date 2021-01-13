@@ -9,13 +9,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.uctc_app.R;
 import com.example.uctc_app.model.local.role.Program;
 import com.example.uctc_app.repository.login.ProgramRepository;
 import com.example.uctc_app.utils.SharedPreferenceHelper;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
@@ -75,13 +75,13 @@ public class ProgramAdapter extends RecyclerView.Adapter<ProgramAdapter.ViewHold
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         private TextView name, description, status,creator;
-        private Button delete;
+        private FloatingActionButton delete;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.lbl_name_user_list_admin);
             description = itemView.findViewById(R.id.lbl_email_user_list_admin);
-            status = itemView.findViewById(R.id.lbl_txt_see_all_contribution);
+            status = itemView.findViewById(R.id.lbl_txt_status_event);
             creator = itemView.findViewById(R.id.lbl_user_name);
             delete = itemView.findViewById(R.id.lbl_program_del);
         }

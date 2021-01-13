@@ -22,6 +22,7 @@
             android:id="@+id/cons_layout_enroll"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/text_input_bg"
             android:paddingBottom="8dp">
 
             <androidx.constraintlayout.widget.Guideline
