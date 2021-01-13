@@ -25,7 +25,11 @@
         android:id="@+id/nav_homeUser"
         android:name="com.example.uctc_app.ui.pages.user.home.HomeUserFragment"
         android:label="fragment_home_user"
-        tools:layout="@layout/fragment_home_user" />
+        tools:layout="@layout/fragment_home_user" >
+        <action
+            android:id="@+id/action_home_user_to_detail_program_user"
+            app:destination="@id/detailProgramUserFragment" />
+    </fragment>
     <fragment
         android:id="@+id/nav_programUser"
         android:name="com.example.uctc_app.ui.pages.user.program_list.ProgramUserFragment"
@@ -115,6 +119,9 @@
         <action
             android:id="@+id/action_action_plan_to_commitee_list_staff"
             app:destination="@id/commiteeListStaffFragment" />
+        <argument
+            android:name="program_id"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/nav_home_admin"
@@ -178,5 +185,8 @@
         android:id="@+id/actionPlanFragment"
         android:name="com.example.uctc_app.ui.pages.user.my_program.ActionPlanFragment"
         android:label="fragment_action_plan"
-        tools:layout="@layout/fragment_action_plan" />
+        tools:layout="@layout/fragment_action_plan" >
+        <argument android:name="program_id"
+            app:argType="string" />
+    </fragment>
 </navigation>

@@ -39,7 +39,6 @@ public class ActionPlanFragment extends Fragment {
     private SharedPreferenceHelper helper;
 
     public ActionPlanFragment() {
-        // Required empty public constructor
     }
 
     @Override

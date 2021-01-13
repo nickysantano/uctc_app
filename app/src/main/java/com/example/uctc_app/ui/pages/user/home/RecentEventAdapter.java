@@ -1,10 +1,12 @@
-package com.example.uctc_app.ui.pages.user.program_list;
+package com.example.uctc_app.ui.pages.user.home;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,19 +16,20 @@ import android.widget.TextView;
 import com.example.uctc_app.R;
 import com.example.uctc_app.model.local.role.Program;
 import com.example.uctc_app.repository.login.ProgramRepository;
+import com.example.uctc_app.ui.pages.user.program_list.ProgramAdapter;
+import com.example.uctc_app.ui.pages.user.program_list.ProgramUserFragmentDirections;
 import com.example.uctc_app.utils.SharedPreferenceHelper;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
-
-public class ProgramAdapter extends RecyclerView.Adapter<ProgramAdapter.ViewHolder> {
+public class RecentEventAdapter extends RecyclerView.Adapter<RecentEventAdapter.ViewHolder> {
 
 
     private Context context;
     private List<Program> programList;
 
-    public ProgramAdapter(Context context) {
+    public RecentEventAdapter(Context context) {
         this.context = context;
     }
 
@@ -37,32 +40,22 @@ public class ProgramAdapter extends RecyclerView.Adapter<ProgramAdapter.ViewHold
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.activity_event_adapter, parent, false);
-        return new ViewHolder(view);
+    public RecentEventAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.activity_recent_event_adapter, parent, false);
+        return new RecentEventAdapter.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecentEventAdapter.ViewHolder holder, int position) {
         Program program = programList.get(position);
         Log.d("Hello", "" + program.getName());
 
-        holder.name.setText(program.getName());
-        holder.description.setText(program.getDescription());
-        holder.status.setText(program.getStatus());
-        holder.creator.setText(program.getCreated_by());
+        holder.title.setText(program.getName());
+        holder.date.setText(program.getDate());
 
         holder.itemView.setOnClickListener(view -> {
             ProgramUserFragmentDirections.ActionProgramToDetailProgramUser actionProgramToDetailProgramUser = ProgramUserFragmentDirections.actionProgramToDetailProgramUser(program);
             Navigation.findNavController(view).navigate(actionProgramToDetailProgramUser);
-        });
-        holder.delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ProgramRepository repository = ProgramRepository.getInstance(SharedPreferenceHelper.getInstance(context).getAccessToken());
-                repository.deleteProgram(program.getProgram_id());
-
-            }
         });
     }
 
@@ -74,19 +67,14 @@ public class ProgramAdapter extends RecyclerView.Adapter<ProgramAdapter.ViewHold
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView name, description, status,creator;
-        private FloatingActionButton delete;
+        private TextView title, date;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            name = itemView.findViewById(R.id.lbl_name_user_list_admin);
-            description = itemView.findViewById(R.id.lbl_email_user_list_admin);
-            status = itemView.findViewById(R.id.lbl_txt_status_event);
-            creator = itemView.findViewById(R.id.lbl_user_name);
-            delete = itemView.findViewById(R.id.lbl_program_del);
+            title = itemView.findViewById(R.id.lbl_recent_program_title);
+            date = itemView.findViewById(R.id.lbl_recent_program_date);
         }
     }
 
+
 }
-
-

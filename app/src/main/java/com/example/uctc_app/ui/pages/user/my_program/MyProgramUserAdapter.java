@@ -60,10 +60,10 @@ public class MyProgramUserAdapter extends RecyclerView.Adapter<MyProgramUserAdap
         holder.date.setText(program.getDate());
 
         holder.itemView.setOnClickListener(view -> {
-            ProgramUserFragmentDirections.ActionProgramToDetailProgramUser actionProgramToDetailProgramUser = ProgramUserFragmentDirections.actionProgramToDetailProgramUser(program);
-            Navigation.findNavController(view).navigate(actionProgramToDetailProgramUser);
+            MyProgramUserFragmentDirections.ActionMyProgramUserToActionPlan actionMyProgramUserToActionPlan =
+                    MyProgramUserFragmentDirections.actionMyProgramUserToActionPlan(program.getProgram_id() + "");
+            Navigation.findNavController(view).navigate(actionMyProgramUserToActionPlan);
         });
-
     }
 
     @Override

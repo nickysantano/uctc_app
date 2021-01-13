@@ -24,8 +24,8 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_homeUser"
-                android:layout_width="400dp"
-                android:layout_height="331dp"
+                android:layout_width="413dp"
+                android:layout_height="367dp"
                 android:layout_marginTop="8dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -38,12 +38,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="28dp"
-                android:text="Events"
+                android:text="TASK"
                 android:textColor="#002C56"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+                app:layout_constraintTop_toBottomOf="@+id/rv_recent_program_user" />
 
             <TextView
                 android:id="@+id/textView14"
@@ -51,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="80dp"
-                android:text="Events"
+                android:text="RECENT"
                 android:textColor="#002C56"
                 android:textSize="24sp"
                 android:textStyle="bold"
@@ -59,19 +59,21 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
+                android:id="@+id/rv_recent_program_user"
                 android:layout_width="400dp"
                 android:layout_height="185dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.454"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView14" />
+                app:layout_constraintTop_toBottomOf="@+id/textView14"
+                app:layout_constraintHorizontal_bias="0.0"
+                />
 
             <ImageView
                 android:id="@+id/imageView11"
                 android:layout_width="511dp"
                 android:layout_height="512dp"
                 android:layout_marginEnd="100dp"
+                android:layout_marginBottom="8dp"
                 android:src="@drawable/circle_yellow"
                 app:layout_constraintBottom_toTopOf="@+id/textView14"
                 app:layout_constraintEnd_toEndOf="parent" />
