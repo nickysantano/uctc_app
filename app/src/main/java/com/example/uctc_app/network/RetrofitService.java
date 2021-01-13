@@ -81,10 +81,10 @@ public class RetrofitService {
     public Call<Void> addProgram(Program program){
         return  api.addProgram( program.getName(),program.getDescription(),program.getGoal(),program.getDate(), program.getCreated_by());
     }
-    public Call<Void> updateProgram(String name, String description, String goal, String date,String status, int creator_id){
-        return  api.updateProgram( new Program(name, description, goal, creator_id,status, date));
+    public Call<Void> updateProgram(String name, String description, String goal, String date,String status){
+        return  api.updateProgram( new Program(name, description, goal,status, date));
     }
-    public Call<Void> deleteProgram(String id){
+    public Call<Void> deleteProgram(int id){
         return api.deleteProgram(id);
     }
 
