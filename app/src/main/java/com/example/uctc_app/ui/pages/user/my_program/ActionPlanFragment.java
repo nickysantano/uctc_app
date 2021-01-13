@@ -57,7 +57,7 @@ public class ActionPlanFragment extends Fragment {
         helper = SharedPreferenceHelper.getInstance(requireActivity());
         viewModel = ViewModelProviders.of(requireActivity()).get(ActionPlanViewModel.class);
         viewModel.init(helper.getAccessToken());
-        viewModel.getActionPlans().observe(requireActivity(), observeViewModel);
+        viewModel.getActionPlans( Integer.parseInt(ActionPlanFragmentArgs.fromBundle(getArguments()).getProgramId())).observe(requireActivity(), observeViewModel);
 
         rvAction.setLayoutManager(new LinearLayoutManager(getActivity()));
         adapter = new ActionPlanAdapter(getActivity());
