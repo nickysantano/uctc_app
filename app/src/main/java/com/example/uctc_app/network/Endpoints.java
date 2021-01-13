@@ -53,7 +53,7 @@ public interface Endpoints {
 
 
     @DELETE("programs/{id}")
-    Call<Void> deleteProgram(@Path("id") String id);
+    Call<Void> deleteProgram(@Path("id") int id);
 
     @POST("logout")
     Call<JsonObject> logout();

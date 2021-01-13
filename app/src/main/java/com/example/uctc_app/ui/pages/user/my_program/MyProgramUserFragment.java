@@ -30,9 +30,14 @@ import butterknife.ButterKnife;
 
 public class MyProgramUserFragment extends Fragment {
 
+    @BindView(R.id.rv_my_program_user)
+    RecyclerView rvMyProgram;
+
+    private ProgramViewModel viewModel;
+    private ProgramAdapter adapter;
+    private SharedPreferenceHelper helper;
 
     public MyProgramUserFragment() {
-        // Required empty public constructor
     }
 
     @Override
@@ -46,8 +51,27 @@ public class MyProgramUserFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
+        Log.d("Hello","In the java");
+        Objects.requireNonNull(((MainActivity) requireActivity()).getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
-        Objects.requireNonNull(((MainActivity) requireActivity()).getSupportActionBar()).setDisplayHomeAsUpEnabled(false);
+        helper = SharedPreferenceHelper.getInstance(requireActivity());
+        viewModel = ViewModelProviders.of(requireActivity()).get(ProgramViewModel.class);
+        viewModel.init(helper.getAccessToken());
+        viewModel.getPrograms().observe(requireActivity(), observeViewModel);
+
+        rvProgram.setLayoutManager(new LinearLayoutManager(getActivity()));
+        adapter = new ProgramAdapter(getActivity());
 
     }
+
+    private Observer<List<Program>> observeViewModel = new Observer<List<Program>>() {
+        @Override
+        public void onChanged(List<Program> programs) {
+            if (programs != null) {
+                adapter.setEventList(programs);
+                adapter.notifyDataSetChanged();
+                rvMyProgram.setAdapter(adapter);
+            }
+        }
+    };
 }

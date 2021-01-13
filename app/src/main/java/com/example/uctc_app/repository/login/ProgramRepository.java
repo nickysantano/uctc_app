@@ -45,7 +45,7 @@ public class ProgramRepository {
         }
     }
 
-    public  void deleteProgram(String id){
+    public  void deleteProgram(int id){
         apiService.deleteProgram(id).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
