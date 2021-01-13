@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class Program implements Parcelable {
     @SerializedName("program_id")
-    String program_id;
+    int program_id;
 
     @SerializedName("program_title")
     String name;
@@ -19,7 +19,7 @@ public class Program implements Parcelable {
     String goal;
 
     @SerializedName("created_by")
-    String created_by;
+    int created_by;
 
     @SerializedName("status")
     String status;
@@ -29,7 +29,7 @@ public class Program implements Parcelable {
 
     public Program (){}
 
-    public Program( String name, String description, String goal, String created_by, String status, String date) {
+    public Program( String name, String description, String goal, int created_by, String status, String date) {
         this.name = name;
         this.description = description;
         this.goal = goal;
@@ -39,11 +39,11 @@ public class Program implements Parcelable {
     }
 
     protected Program(Parcel in) {
-        program_id = in.readString();
+        program_id = in.readInt();
         name = in.readString();
         description = in.readString();
         goal = in.readString();
-        created_by = in.readString();
+        created_by = in.readInt();
         status = in.readString();
         date = in.readString();
     }
@@ -52,7 +52,7 @@ public class Program implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(name);
         dest.writeString(description);
-        dest.writeString(created_by);
+        dest.writeInt(created_by);
         dest.writeString(status);
         dest.writeString(date);
     }
@@ -90,11 +90,11 @@ public class Program implements Parcelable {
         this.description = description;
     }
 
-    public String getCreated_by() {
+    public int getCreated_by() {
         return created_by;
     }
 
-    public void setCreated_by(String created_by) {
+    public void setCreated_by(int created_by) {
         this.created_by = created_by;
     }
 
@@ -122,11 +122,11 @@ public class Program implements Parcelable {
         this.goal = goal;
     }
 
-    public String getProgram_id() {
+    public int getProgram_id() {
         return program_id;
     }
 
-    public void setProgram_id(String program_id) {
+    public void setProgram_id(int program_id) {
         this.program_id = program_id;
     }
 }

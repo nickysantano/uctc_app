@@ -3,7 +3,9 @@ package com.example.uctc_app.network;
 import android.util.Log;
 
 import com.example.uctc_app.model.local.role.Program;
+import com.example.uctc_app.model.response.role.ActionPlanResponse;
 import com.example.uctc_app.model.response.role.ProgramResponse;
+import com.example.uctc_app.model.response.role.TaskResponse;
 import com.example.uctc_app.model.response.role.TokenResponse;
 import com.example.uctc_app.model.response.role.UserResponse;
 import com.example.uctc_app.utils.Constants;
@@ -79,7 +81,7 @@ public class RetrofitService {
     public Call<Void> addProgram(Program program){
         return  api.addProgram( program.getName(),program.getDescription(),program.getGoal(),program.getDate(), program.getCreated_by());
     }
-    public Call<Void> updateProgram(String name, String description, String goal, String date,String status, String creator_id){
+    public Call<Void> updateProgram(String name, String description, String goal, String date,String status, int creator_id){
         return  api.updateProgram( new Program(name, description, goal, creator_id,status, date));
     }
     public Call<Void> deleteProgram(String id){
@@ -88,6 +90,17 @@ public class RetrofitService {
 
     public Call<JsonObject> logout() {
         return api.logout();
+    }
+
+    public Call<ActionPlanResponse> getActionPlans(int program_id){
+        return api.getActionPlans(program_id);
+    }
+    public Call<TaskResponse> getTasks(int action_id){
+        return api.getTasks(action_id);
+    }
+
+    public  Call<ProgramResponse> myPrograms(String user_id){
+        return api.myPrograms(user_id);
     }
 
 }
