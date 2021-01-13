@@ -1,7 +1,9 @@
 package com.example.uctc_app.network;
 
 import com.example.uctc_app.model.local.role.Program;
+import com.example.uctc_app.model.response.role.ActionPlanResponse;
 import com.example.uctc_app.model.response.role.ProgramResponse;
+import com.example.uctc_app.model.response.role.TaskResponse;
 import com.example.uctc_app.model.response.role.TokenResponse;
 import com.example.uctc_app.model.response.role.UserResponse;
 import com.google.gson.JsonObject;
@@ -27,13 +29,23 @@ public interface Endpoints {
     @GET("profile")
     Call<UserResponse> getUser();
 
+    @GET("action_plan/{id}")
+    Call<ActionPlanResponse> getActionPlans(@Path("id") int program_id);
+
+    @GET("tasks/{id}")
+    Call<TaskResponse> getTasks(@Path("id") int action_id);
+
+    @GET("programs/{id}")
+    Call<ProgramResponse> myPrograms(@Path("id") String user_id);
+
+
     @GET("programs")
     Call<ProgramResponse> getPrograms();
 
     @POST("programs")
     @FormUrlEncoded
     Call<Void> addProgram(@Field("name") String name, @Field("description")  String description,@Field("goal") String goal,
-                          @Field("program_date") String program_date, @Field("created_by") String created_by);
+                          @Field("program_date") String program_date, @Field("created_by") int created_by);
 
     @PUT("programs")
     @FormUrlEncoded

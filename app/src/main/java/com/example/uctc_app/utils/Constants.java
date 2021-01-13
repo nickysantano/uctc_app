@@ -14,6 +14,6 @@ public class Constants {
 
 
     //Alfredo//
-//    public final static String BASE_URL = "http://192.168.0.21/api/";
+    public final static String BASE_URL = "http://192.168.0.21/UAS/uctc/uctcweb/public/api/";
 
 }

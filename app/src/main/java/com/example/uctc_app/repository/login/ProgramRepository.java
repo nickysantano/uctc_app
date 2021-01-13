@@ -118,7 +118,29 @@ public class ProgramRepository {
             }
         });
     }
+    public MutableLiveData<List<Program>> myPrograms(String user_id) {
+        MutableLiveData<List<Program>> listProgram = new MutableLiveData<>();
 
+        apiService.getPrograms().enqueue(new Callback<ProgramResponse>() {
+            @Override
+            public void onResponse(Call<ProgramResponse> call, Response<ProgramResponse> response) {
+                Log.d(TAG, "onResponse: " + response.code());
+                if (response.isSuccessful()) {
+                    if (response.body() != null) {
+                        Log.d(TAG, "onResponse: Program " + response.body().getResults().size());
+                        listProgram.postValue(response.body().getResults());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ProgramResponse> call, Throwable t) {
+                Log.d(TAG, "onFailure: " + t.getMessage());
+            }
+        });
+
+        return listProgram;
+    }
     public MutableLiveData<List<Program>> getPrograms() {
         MutableLiveData<List<Program>> listProgram = new MutableLiveData<>();
 
