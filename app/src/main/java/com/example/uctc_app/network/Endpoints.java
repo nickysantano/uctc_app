@@ -39,7 +39,7 @@ public interface Endpoints {
 //    Call<Void> deleteProgram(@Path("id") String id);
 
     @GET("programs/{id}")
-    Call<ProgramResponse> myPrograms(@Path("id") String user_id);
+    Call<ProgramResponse> myPrograms(@Path("id") int user_id);
 
 
     @GET("programs")

@@ -17,7 +17,9 @@ import android.view.ViewGroup;
 
 import com.example.uctc_app.R;
 import com.example.uctc_app.model.local.role.Program;
+import com.example.uctc_app.model.local.role.User;
 import com.example.uctc_app.ui.MainActivity;
+import com.example.uctc_app.ui.pages.user.profile.ProfileUserViewModel;
 import com.example.uctc_app.ui.pages.user.program_list.ProgramAdapter;
 import com.example.uctc_app.ui.pages.user.program_list.ProgramViewModel;
 import com.example.uctc_app.utils.SharedPreferenceHelper;
@@ -33,8 +35,11 @@ public class MyProgramUserFragment extends Fragment {
     @BindView(R.id.rv_my_program_user)
     RecyclerView rvMyProgram;
 
-    private ProgramViewModel viewModel;
-    private ProgramAdapter adapter;
+    public String getId;
+
+    private MyProgramViewModel viewModel;
+    private ProfileUserViewModel profileViewModel;
+    private MyProgramUserAdapter adapter;
     private SharedPreferenceHelper helper;
 
     public MyProgramUserFragment() {
@@ -43,7 +48,6 @@ public class MyProgramUserFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_my_program_user, container, false);
     }
 
@@ -55,14 +59,32 @@ public class MyProgramUserFragment extends Fragment {
         Objects.requireNonNull(((MainActivity) requireActivity()).getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         helper = SharedPreferenceHelper.getInstance(requireActivity());
-        viewModel = ViewModelProviders.of(requireActivity()).get(ProgramViewModel.class);
-        viewModel.init(helper.getAccessToken());
-        viewModel.getPrograms().observe(requireActivity(), observeViewModel);
 
-        rvProgram.setLayoutManager(new LinearLayoutManager(getActivity()));
-        adapter = new ProgramAdapter(getActivity());
+        profileViewModel = ViewModelProviders.of(requireActivity()).get(ProfileUserViewModel.class);
+        profileViewModel.init(helper.getAccessToken());
+        profileViewModel.getUser().observe(requireActivity(), observeProfileViewModel);
+
+
+        rvMyProgram.setLayoutManager(new LinearLayoutManager(getActivity()));
+        adapter = new MyProgramUserAdapter(getActivity());
 
     }
+
+    private Observer<User> observeProfileViewModel = new Observer<User>() {
+
+        @Override
+            public void onChanged(User user) {
+                Log.d("haiiiiiiiiiiiiii", "wowowowowowowow");
+                getId = "" + user.getUser_id();
+                if (getId != null){
+                    Log.d("haiiiiiiiiiiiiii", "wowowowowowowow : " + getId);
+                    viewModel = ViewModelProviders.of(requireActivity()).get(MyProgramViewModel.class);
+                    viewModel.init(helper.getAccessToken());
+                    viewModel.myPrograms(getId).observe(requireActivity(), observeViewModel);
+                }
+            }
+
+    };
 
     private Observer<List<Program>> observeViewModel = new Observer<List<Program>>() {
         @Override

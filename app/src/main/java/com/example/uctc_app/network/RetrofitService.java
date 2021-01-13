@@ -100,7 +100,7 @@ public class RetrofitService {
     }
 
     public  Call<ProgramResponse> myPrograms(String user_id){
-        return api.myPrograms(user_id);
+        return api.myPrograms(Integer.parseInt(user_id));
     }
 
 }

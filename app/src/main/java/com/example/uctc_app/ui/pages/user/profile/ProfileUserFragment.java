@@ -64,7 +64,7 @@ public class ProfileUserFragment extends Fragment {
 
 //        if (getArguments() != null) {
 //            initUser(user);
-//        }else{
+//        }else
 //            Log.d("HAI ERROR = ", "Profile ini null");
 //        }
     }

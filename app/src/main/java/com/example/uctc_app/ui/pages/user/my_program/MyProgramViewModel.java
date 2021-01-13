@@ -24,9 +24,9 @@ public class MyProgramViewModel extends ViewModel {
         repository = ProgramRepository.getInstance(token);
     }
 
-    public LiveData<List<Program>> getPrograms() {
+    public LiveData<List<Program>> myPrograms(String id) {
         Log.d("Hello","ViewModel");
-        return repository.getPrograms();
+        return repository.myPrograms(id);
     }
 
 
