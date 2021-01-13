@@ -9,10 +9,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.uctc_app.R;
 import com.example.uctc_app.model.local.role.Program;
+import com.example.uctc_app.repository.login.ProgramRepository;
+import com.example.uctc_app.utils.SharedPreferenceHelper;
 
 import java.util.List;
 
@@ -53,6 +56,14 @@ public class ProgramAdapter extends RecyclerView.Adapter<ProgramAdapter.ViewHold
             ProgramUserFragmentDirections.ActionProgramToDetailProgramUser actionProgramToDetailProgramUser = ProgramUserFragmentDirections.actionProgramToDetailProgramUser(program);
             Navigation.findNavController(view).navigate(actionProgramToDetailProgramUser);
         });
+        holder.delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ProgramRepository repository = ProgramRepository.getInstance(SharedPreferenceHelper.getInstance(context).getAccessToken());
+                repository.deleteProgam(program.getProgram_id());
+                //NEED TO RELOAD PAGE!
+            }
+        });
     }
 
     @Override
@@ -64,6 +75,7 @@ public class ProgramAdapter extends RecyclerView.Adapter<ProgramAdapter.ViewHold
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         private TextView name, description, status,creator;
+        private Button delete;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -71,6 +83,7 @@ public class ProgramAdapter extends RecyclerView.Adapter<ProgramAdapter.ViewHold
             description = itemView.findViewById(R.id.lbl_email_user_list_admin);
             status = itemView.findViewById(R.id.lbl_txt_see_all_contribution);
             creator = itemView.findViewById(R.id.lbl_user_name);
+            delete = itemView.findViewById(R.id.lbl_program_del);
         }
     }
 

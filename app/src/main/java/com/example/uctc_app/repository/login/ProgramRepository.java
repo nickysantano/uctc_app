@@ -44,6 +44,22 @@ public class ProgramRepository {
         }
     }
 
+    public  void deleteProgam(String id){
+        apiService.deletePrograms(id).enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                Log.d(TAG, "onResponse:" + response.code());
+
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Log.d(TAG, "onFailure: " + t.getMessage());
+
+            }
+        });
+    }
+
     public MutableLiveData<List<Program>> getPrograms() {
         MutableLiveData<List<Program>> listProgram = new MutableLiveData<>();
 

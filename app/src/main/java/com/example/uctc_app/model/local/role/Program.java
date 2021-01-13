@@ -6,6 +6,8 @@ import android.os.Parcelable;
 import com.google.gson.annotations.SerializedName;
 
 public class Program implements Parcelable {
+    @SerializedName("program_id")
+    String program_id;
     @SerializedName("program_title")
     String name;
     @SerializedName("description")
@@ -21,7 +23,8 @@ public class Program implements Parcelable {
 
     public Program (){}
 
-    public Program(String name, String description, String goal, String created_by, String status, String date) {
+    public Program(String program_id, String name, String description, String goal, String created_by, String status, String date) {
+        this.program_id = program_id;
         this.name = name;
         this.description = description;
         this.goal = goal;
@@ -31,6 +34,7 @@ public class Program implements Parcelable {
     }
 
     protected Program(Parcel in) {
+        program_id = in.readString();
         name = in.readString();
         description = in.readString();
         goal = in.readString();
@@ -113,4 +117,11 @@ public class Program implements Parcelable {
         this.goal = goal;
     }
 
+    public String getProgram_id() {
+        return program_id;
+    }
+
+    public void setProgram_id(String program_id) {
+        this.program_id = program_id;
+    }
 }

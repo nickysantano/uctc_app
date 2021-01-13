@@ -13,6 +13,7 @@ import kotlin.text.UStringsKt;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import retrofit2.Call;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
@@ -75,8 +76,11 @@ public class RetrofitService {
         return api.getPrograms();
     }
 
-    public Call<POST> addProgams(String name, String description, String goal, String date, String creator_id){
-        return  api.addProgram((POST) new Program(name, description, goal, creator_id,"0", date));
+//    public Call<POST> addProgams(String name, String description, String goal, String date, String creator_id){
+//        return  api.addProgram((POST) new Program(name, description, goal, creator_id,"0", date));
+//    }
+    public Call<Void> deletePrograms(String id){
+        return api.deleteProgram(id);
     }
 
     public Call<JsonObject> logout() {
