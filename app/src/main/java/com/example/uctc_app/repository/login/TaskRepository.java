@@ -62,4 +62,28 @@ public class TaskRepository {
 
         return listTasks;
     }
+
+    public MutableLiveData<List<Task>> getMyTasks(int id) {
+        MutableLiveData<List<Task>> listTasks = new MutableLiveData<>();
+
+        apiService.getMyTasks(id).enqueue(new Callback<TaskResponse>() {
+            @Override
+            public void onResponse(Call<TaskResponse> call, Response<TaskResponse> response) {
+                Log.d(TAG, "onResponse: " + response.code());
+                if (response.isSuccessful()) {
+                    if (response.body() != null) {
+                        Log.d(TAG, "onResponse: Program " + response.body().getResults().size());
+                        listTasks.postValue(response.body().getResults());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<TaskResponse> call, Throwable t) {
+                Log.d(TAG, "onFailure: " + t.getMessage());
+            }
+        });
+
+        return listTasks;
+    }
 }

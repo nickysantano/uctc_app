@@ -103,6 +103,9 @@ public class RetrofitService {
     public Call<TaskResponse> getTasks(int action_id){
         return api.getTasks(action_id);
     }
+    public Call<TaskResponse> getMyTasks(int user_id){
+        return api.getMyTasks(user_id);
+    }
 
     public  Call<ProgramResponse> myPrograms(String user_id){
         return api.myPrograms(Integer.parseInt(user_id));
