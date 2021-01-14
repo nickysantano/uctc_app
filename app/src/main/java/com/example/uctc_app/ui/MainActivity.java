@@ -26,6 +26,8 @@ public class MainActivity extends AppCompatActivity { //ini dipake
     private ProfileRepository repository;
     private BottomNavigationView navigationViewAdmin, navigationViewStaff, navigationViewUser;
 
+    private long backPressedTime;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +51,17 @@ public class MainActivity extends AppCompatActivity { //ini dipake
         navigationViewUser.setVisibility(View.GONE);
     }
 
+//    @Override
+//    public void onBackPressed(){
+//        if(backPressedTime + 2000 > System.currentTimeMillis()){
+//            super.onBackPressed();
+//            return;
+//        }else{
+//            Toast.makeText(getBaseContext(), "Press back again to exit", Toast.LENGTH_SHORT).show();
+//        }
+//
+//        backPressedTime = System.currentTimeMillis();
+//    }
 
 
     @Override
@@ -88,7 +101,7 @@ public class MainActivity extends AppCompatActivity { //ini dipake
                 Log.d("USER ROLE", "STAFF");
 
                 AppBarConfiguration configuration = new AppBarConfiguration
-                        .Builder(R.id.nav_home_staff,  R.id.nav_program_staff, R.id.nav_action_plan_staff)
+                        .Builder(R.id.nav_home_staff,  R.id.nav_program_staff, R.id.profileStaffFragment)
                         .build();
 
                 NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.fragmentcontainer);
@@ -100,7 +113,7 @@ public class MainActivity extends AppCompatActivity { //ini dipake
                 navigationViewUser.setVisibility(View.GONE);
 
                 navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
-                    if (destination.getId() == R.id.nav_home_staff || destination.getId() == R.id.nav_program_staff || destination.getId() == R.id.nav_action_plan_staff){
+                    if (destination.getId() == R.id.nav_home_staff || destination.getId() == R.id.nav_program_staff || destination.getId() == R.id.profileStaffFragment){
                         navigationViewStaff.setVisibility(View.VISIBLE);
                     }else{
                         navigationViewStaff.setVisibility(View.GONE);
@@ -130,6 +143,7 @@ public class MainActivity extends AppCompatActivity { //ini dipake
                     }
                 });
             }
+
 
         }
     };

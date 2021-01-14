@@ -41,6 +41,13 @@
         <action
             android:id="@+id/action_nav_programUser_to_addProgramStaffFragment"
             app:destination="@id/addProgramStaffFragment" />
+        <action
+            android:id="@+id/action_program_user_self"
+            app:destination="@id/nav_programUser" />
+        <argument android:name="program"
+            app:argType="com.example.uctc_app.model.local.role.Program"
+            app:nullable="true"
+            android:defaultValue="@null" />
     </fragment>
     <fragment
         android:id="@+id/nav_myProgramUser"
@@ -108,7 +115,19 @@
         android:id="@+id/nav_program_staff"
         android:name="com.example.uctc_app.ui.pages.staff.program_list.ProgramStaffFragment"
         android:label="fragment_program_staff"
-        tools:layout="@layout/fragment_program_staff" />
+        tools:layout="@layout/fragment_program_staff" >
+        <action
+            android:id="@+id/action_program_staff_to_detail_program"
+            app:destination="@id/detailProgramStaffFragment" />
+        <action
+            android:id="@+id/action_nav_program_staff_self"
+            app:destination="@id/nav_program_staff" />
+        <argument
+            android:name="program"
+            app:argType="com.example.uctc_app.model.local.role.Program"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
     <fragment
         android:id="@+id/nav_action_plan_staff"
         android:name="com.example.uctc_app.ui.pages.staff.action_plan.ActionPlanStaffFragment"
@@ -204,5 +223,19 @@
         <argument
             android:name="actionPlan_id"
             app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileStaffFragment"
+        android:name="com.example.uctc_app.ui.pages.staff.profile.ProfileStaffFragment"
+        android:label="fragment_profile_staff"
+        tools:layout="@layout/fragment_profile_staff" />
+    <fragment
+        android:id="@+id/detailProgramStaffFragment"
+        android:name="com.example.uctc_app.ui.pages.staff.program_list.DetailProgramStaffFragment"
+        android:label="fragment_detail_program_staff"
+        tools:layout="@layout/fragment_detail_program_staff" >
+        <argument
+            android:name="DetailProgramStaff"
+            app:argType="com.example.uctc_app.model.local.role.Program" />
     </fragment>
 </navigation>

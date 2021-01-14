@@ -88,6 +88,9 @@ public class AddProgramStaffFragment extends Fragment {
             public void onClick(View v) {
                 repositoryProfile = ProfileRepository.getInstance(helper.getAccessToken());
                 repositoryProfile.getUser().observe(requireActivity(), observer );
+
+                AddProgramStaffFragmentDirections.ActionAddProgramToProgramUser actionAddProgramToProgramUser = AddProgramStaffFragmentDirections.actionAddProgramToProgramUser();
+                Navigation.findNavController(v).navigate(actionAddProgramToProgramUser);
             }
         });
     }

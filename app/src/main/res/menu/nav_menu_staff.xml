@@ -14,10 +14,9 @@
         />
 
     <item
-        android:id="@+id/nav_action_plan_staff"
-        android:title="Action Plan"
-        android:icon="@drawable/note"
-        />
+        android:id="@+id/profileStaffFragment"
+        android:icon="@drawable/user"
+        android:title="Profile" />
 
 
 </menu>
