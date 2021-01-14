@@ -120,5 +120,20 @@ public class TaskRepository {
         });
     }
 
+    public void updateTask(int id, Task task){
+        apiService.updateTask(id,task).enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                Log.d(TAG, "onResponse:" + response.code());
+                Log.d(TAG, "onResponse:" + response.message());
+                Log.d("WIFI SUCCESS", "ADDING Task");
+            }
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Log.d(TAG, "onFailure: " + t.getMessage());
+            }
+        });
+    }
+
 
 }

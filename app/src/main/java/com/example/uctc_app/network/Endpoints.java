@@ -1,6 +1,7 @@
 package com.example.uctc_app.network;
 
 import com.example.uctc_app.model.local.role.Program;
+import com.example.uctc_app.model.local.role.Task;
 import com.example.uctc_app.model.response.role.ActionPlanResponse;
 import com.example.uctc_app.model.response.role.ProgramResponse;
 import com.example.uctc_app.model.response.role.TaskResponse;
@@ -44,9 +45,9 @@ public interface Endpoints {
     Call<Void> addTask(@Field("name") String name, @Field("status") int status,@Field("description") String description,
                        @Field("due_date") String due_date,@Field("action_plan") int action_plan, @Field("PIC") int pic );
 
-//    @PUT("tasks/{id}")
-//    @FormUrlEncoded
-//    Call<Void> updateTasks(@Path("id") int id);
+    @PUT("tasks/{id}")
+    @FormUrlEncoded
+    Call<Void> updateTasks(@Path("id") int id, @Body Task task);
 
     @DELETE("tasks/{id}")
     Call<Void> deleteTask(@Path("id") int id);

@@ -113,6 +113,9 @@ public class RetrofitService {
     public Call<Void> deleteTask(int id){
         return api.deleteTask(id);
     }
+    public Call<Void> updateTask(int id,Task task){
+        return api.updateTasks(id, task);
+    }
 
 
 
