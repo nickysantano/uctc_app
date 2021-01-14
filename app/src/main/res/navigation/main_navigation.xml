@@ -49,7 +49,7 @@
         tools:layout="@layout/fragment_my_program_user" >
         <action
             android:id="@+id/action_my_program_user_to_action_plan"
-            app:destination="@id/actionPlanFragment" />
+            app:destination="@id/action_plan_fragment" />
     </fragment>
     <fragment
         android:id="@+id/nav_profile"
@@ -182,11 +182,19 @@
         android:label="fragment_add_to_do_list_staff"
         tools:layout="@layout/fragment_add_to_do_list_staff" />
     <fragment
-        android:id="@+id/actionPlanFragment"
+        android:id="@+id/action_plan_fragment"
         android:name="com.example.uctc_app.ui.pages.user.my_program.ActionPlanFragment"
         android:label="fragment_action_plan"
         tools:layout="@layout/fragment_action_plan" >
         <argument android:name="program_id"
             app:argType="string" />
+        <action
+            android:id="@+id/action_action_plan_to_task_user"
+            app:destination="@id/taskFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/taskFragment"
+        android:name="com.example.uctc_app.ui.pages.user.my_program.TaskFragment"
+        android:label="fragment_to_do_list"
+        tools:layout="@layout/fragment_to_do_list" />
 </navigation>

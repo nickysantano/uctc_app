@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.uctc_app.R;
+import com.example.uctc_app.model.local.role.ActionPlan;
 import com.example.uctc_app.model.local.role.Program;
 import com.example.uctc_app.repository.login.ProgramRepository;
 import com.example.uctc_app.ui.pages.user.program_list.ProgramAdapter;
@@ -54,8 +55,8 @@ public class RecentEventAdapter extends RecyclerView.Adapter<RecentEventAdapter.
         holder.date.setText(program.getDate());
 
         holder.itemView.setOnClickListener(view -> {
-            ProgramUserFragmentDirections.ActionProgramToDetailProgramUser actionProgramToDetailProgramUser = ProgramUserFragmentDirections.actionProgramToDetailProgramUser(program);
-            Navigation.findNavController(view).navigate(actionProgramToDetailProgramUser);
+            HomeUserFragmentDirections.ActionHomeUserToDetailProgramUser actionHomeUserToDetailProgramUser = HomeUserFragmentDirections.actionHomeUserToDetailProgramUser(program);
+            Navigation.findNavController(view).navigate(actionHomeUserToDetailProgramUser);
         });
     }
 
