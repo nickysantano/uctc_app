@@ -19,7 +19,7 @@ import retrofit2.Response;
 public class TaskRepository {
     private static TaskRepository taskRepository;
     private RetrofitService apiService;
-    private static final String TAG = "ProgramRepository";
+    private static final String TAG = "TaskRepository";
 
     private TaskRepository(String token) {
         Log.d(TAG, "taskRepository: " + token);
