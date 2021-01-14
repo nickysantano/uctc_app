@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.example.uctc_app.R;
 import com.example.uctc_app.model.local.role.Program;
@@ -62,6 +63,8 @@ public class HomeUserFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
+
+//        showLoading(true);
         Log.d("Hello","In the java");
         Objects.requireNonNull(((MainActivity) requireActivity()).getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
@@ -93,6 +96,7 @@ public class HomeUserFragment extends Fragment {
                 adapter.setEventList(programs);
                 adapter.notifyDataSetChanged();
                 rvRecentProgram.setAdapter(adapter);
+//                showLoading(false);
             }
         }
     };
@@ -116,4 +120,16 @@ public class HomeUserFragment extends Fragment {
             }
         }
     };
+
+//    private void showLoading(Boolean state) {
+//        if (state) {
+//            rvRecentProgram.setVisibility(View.GONE);
+//            rvTask.setVisibility(View.GONE);
+//            loading.setVisibility(View.VISIBLE);
+//        } else {
+//            rvRecentProgram.setVisibility(View.VISIBLE);
+//            rvTask.setVisibility(View.VISIBLE);
+//            loading.setVisibility(View.GONE);
+//        }
+//    }
 }

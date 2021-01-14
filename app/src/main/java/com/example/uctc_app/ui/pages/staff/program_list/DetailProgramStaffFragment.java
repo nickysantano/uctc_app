@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 
 import com.example.uctc_app.R;
 import com.example.uctc_app.model.local.role.Program;
+import com.example.uctc_app.repository.login.ProgramRepository;
 import com.example.uctc_app.ui.MainActivity;
 import com.example.uctc_app.utils.SharedPreferenceHelper;
 
@@ -65,7 +67,10 @@ public class DetailProgramStaffFragment extends Fragment {
             program = DetailProgramStaffFragmentArgs.fromBundle(getArguments()).getDetailProgramStaff();
             initDetailProgram(program);
         }
+
+        
     }
+
 
     private void initDetailProgram(Program program) {
         Objects.requireNonNull((MainActivity) requireActivity()).getSupportActionBar().setTitle("Detail Program");

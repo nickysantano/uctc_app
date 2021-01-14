@@ -16,6 +16,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.uctc_app.R;
@@ -36,6 +37,9 @@ public class ProgramUserFragment extends Fragment {
     @BindView(R.id.rv_program_list)
     RecyclerView rvProgram;
 
+    @BindView(R.id.progressBar)
+    ProgressBar loading;
+
     private ProgramViewModel viewModel;
     private ProgramAdapter adapter;
     private SharedPreferenceHelper helper;
@@ -53,6 +57,7 @@ public class ProgramUserFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
+        showLoading(true);
         Log.d("Hello","In the java");
         Objects.requireNonNull(((MainActivity) requireActivity()).getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
@@ -78,7 +83,19 @@ public class ProgramUserFragment extends Fragment {
                 adapter.setEventList(programs);
                 adapter.notifyDataSetChanged();
                 rvProgram.setAdapter(adapter);
+                showLoading(false);
             }
         }
+
+
     };
+    private void showLoading(Boolean state) {
+        if (state) {
+            rvProgram.setVisibility(View.GONE);
+            loading.setVisibility(View.VISIBLE);
+        } else {
+            rvProgram.setVisibility(View.VISIBLE);
+            loading.setVisibility(View.GONE);
+        }
+    }
 }

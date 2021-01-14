@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.example.uctc_app.R;
 import com.example.uctc_app.model.local.role.Program;
@@ -31,6 +32,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MyProgramUserFragment extends Fragment {
+    @BindView(R.id.progressBar)
+    ProgressBar loading;
 
     @BindView(R.id.rv_my_program_user)
     RecyclerView rvMyProgram;
@@ -55,6 +58,8 @@ public class MyProgramUserFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
+
+        showLoading(true);
         Log.d("Hello","In the java");
         Objects.requireNonNull(((MainActivity) requireActivity()).getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
@@ -93,7 +98,18 @@ public class MyProgramUserFragment extends Fragment {
                 adapter.setEventList(programs);
                 adapter.notifyDataSetChanged();
                 rvMyProgram.setAdapter(adapter);
+                showLoading(false);
             }
         }
     };
+
+    private void showLoading(Boolean state) {
+        if (state) {
+            rvMyProgram.setVisibility(View.GONE);
+            loading.setVisibility(View.VISIBLE);
+        } else {
+            rvMyProgram.setVisibility(View.VISIBLE);
+            loading.setVisibility(View.GONE);
+        }
+    }
 }
