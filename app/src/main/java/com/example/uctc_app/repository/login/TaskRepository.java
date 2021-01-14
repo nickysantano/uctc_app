@@ -5,6 +5,7 @@ import android.util.Log;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.uctc_app.model.local.role.ActionPlan;
+import com.example.uctc_app.model.local.role.Program;
 import com.example.uctc_app.model.local.role.Task;
 import com.example.uctc_app.model.response.role.ActionPlanResponse;
 import com.example.uctc_app.model.response.role.TaskResponse;
@@ -86,4 +87,38 @@ public class TaskRepository {
 
         return listTasks;
     }
+
+    public void addTask(Task task){
+        apiService.addTask(task).enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                Log.d(TAG, "onResponse:" + response.code());
+                Log.d(TAG, "onResponse:" + response.message());
+                Log.d("WIFI SUCCESS", "ADDING Task");
+            }
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Log.d(TAG, "onFailure: " + t.getMessage());
+            }
+        });
+    }
+
+
+    public  void deleteTask(int id){
+        apiService.deleteTask(id).enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                Log.d(TAG, "onResponse:" + response.code());
+
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Log.d(TAG, "onFailure: " + t.getMessage());
+
+            }
+        });
+    }
+
+
 }

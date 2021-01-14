@@ -3,6 +3,7 @@ package com.example.uctc_app.network;
 import android.util.Log;
 
 import com.example.uctc_app.model.local.role.Program;
+import com.example.uctc_app.model.local.role.Task;
 import com.example.uctc_app.model.response.role.ActionPlanResponse;
 import com.example.uctc_app.model.response.role.ProgramResponse;
 import com.example.uctc_app.model.response.role.TaskResponse;
@@ -106,6 +107,14 @@ public class RetrofitService {
     public Call<TaskResponse> getMyTasks(int user_id){
         return api.getMyTasks(user_id);
     }
+    public Call<Void> addTask(Task task){
+        return api.addTask(task.getName(),Integer.parseInt(task.getStatus()),task.getDescription(),task.getDate(),task.getAction_plan(),task.getPic());
+    }
+    public Call<Void> deleteTask(int id){
+        return api.deleteTask(id);
+    }
+
+
 
     public  Call<ProgramResponse> myPrograms(String user_id){
         return api.myPrograms(Integer.parseInt(user_id));

@@ -39,6 +39,18 @@ public interface Endpoints {
     @GET("user/{id}/tasks")
     Call<TaskResponse> getMyTasks(@Path("id") int user_id);
 
+    @POST("tasks")
+    @FormUrlEncoded
+    Call<Void> addTask(@Field("name") String name, @Field("status") int status,@Field("description") String description,
+                       @Field("due_date") String due_date,@Field("action_plan") int action_plan, @Field("PIC") int pic );
+
+//    @PUT("tasks/{id}")
+//    @FormUrlEncoded
+//    Call<Void> updateTasks(@Path("id") int id);
+
+    @DELETE("tasks/{id}")
+    Call<Void> deleteTask(@Path("id") int id);
+
     @GET("programs/{id}")
     Call<ProgramResponse> myPrograms(@Path("id") int user_id);
 
