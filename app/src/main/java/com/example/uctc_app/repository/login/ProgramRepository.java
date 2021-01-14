@@ -6,8 +6,11 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.uctc_app.model.local.role.Program;
+import com.example.uctc_app.model.local.role.User;
 import com.example.uctc_app.model.response.role.ProgramResponse;
 import com.example.uctc_app.model.response.role.TokenResponse;
+import com.example.uctc_app.model.response.role.UserResponse;
+import com.example.uctc_app.model.response.role.UsersResponse;
 import com.example.uctc_app.network.RetrofitService;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -141,6 +144,7 @@ public class ProgramRepository {
 
         return listProgram;
     }
+
     public MutableLiveData<List<Program>> getPrograms() {
         MutableLiveData<List<Program>> listProgram = new MutableLiveData<>();
 
@@ -163,5 +167,29 @@ public class ProgramRepository {
         });
 
         return listProgram;
+    }
+
+    public MutableLiveData<List<User>> getCommittees(int id) {
+        MutableLiveData<List<User>> listCommittee = new MutableLiveData<>();
+
+        apiService.getCommittees(id).enqueue(new Callback<UsersResponse>() {
+            @Override
+            public void onResponse(Call<UsersResponse> call, Response<UsersResponse> response) {
+                Log.d(TAG, "onResponse: " + response.code());
+                if (response.isSuccessful()) {
+                    if (response.body() != null) {
+                        Log.d(TAG, "onResponse: Program " + response.body().getResults().size());
+                        listCommittee.postValue(response.body().getResults());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UsersResponse> call, Throwable t) {
+                Log.d(TAG, "onFailure: " + t.getMessage());
+            }
+        });
+
+        return listCommittee;
     }
 }

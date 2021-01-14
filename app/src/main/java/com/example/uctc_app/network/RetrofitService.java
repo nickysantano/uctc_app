@@ -8,6 +8,7 @@ import com.example.uctc_app.model.response.role.ProgramResponse;
 import com.example.uctc_app.model.response.role.TaskResponse;
 import com.example.uctc_app.model.response.role.TokenResponse;
 import com.example.uctc_app.model.response.role.UserResponse;
+import com.example.uctc_app.model.response.role.UsersResponse;
 import com.example.uctc_app.utils.Constants;
 import com.google.gson.JsonObject;
 
@@ -72,6 +73,10 @@ public class RetrofitService {
 
     public Call<UserResponse> getUser() {
         return api.getUser();
+    }
+
+    public Call<UsersResponse> getCommittees(int id) {
+        return api.getCommittees(id);
     }
 
     public Call<ProgramResponse> getPrograms() {

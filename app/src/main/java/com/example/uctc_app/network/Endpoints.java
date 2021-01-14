@@ -6,6 +6,7 @@ import com.example.uctc_app.model.response.role.ProgramResponse;
 import com.example.uctc_app.model.response.role.TaskResponse;
 import com.example.uctc_app.model.response.role.TokenResponse;
 import com.example.uctc_app.model.response.role.UserResponse;
+import com.example.uctc_app.model.response.role.UsersResponse;
 import com.google.gson.JsonObject;
 
 import retrofit2.Call;
@@ -35,8 +36,6 @@ public interface Endpoints {
     @GET("tasks/{id}")
     Call<TaskResponse> getTasks(@Path("id") int action_id);
 
-//    @DELETE("programs/{id}")
-//    Call<Void> deleteProgram(@Path("id") String id);
 
     @GET("programs/{id}")
     Call<ProgramResponse> myPrograms(@Path("id") int user_id);
@@ -57,6 +56,9 @@ public interface Endpoints {
 
     @DELETE("programs/{id}")
     Call<Void> deleteProgram(@Path("id") int id);
+
+    @GET("programs/{id}/committees")
+    Call<UsersResponse> getCommittees(@Path("id") int program_id);
 
     @POST("logout")
     Call<JsonObject> logout();
