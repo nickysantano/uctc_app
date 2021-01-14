@@ -33,4 +33,5 @@
     <string name="btnAddToDoList">CREATE TASK</string>
     <string name="txtDescProgramStaff">Description Here</string>
     <string name="txtTaskToDoListUser">[TASK NAME]</string>
+    <string name="txtDate">YYYY-MM-DD</string>
 </resources>

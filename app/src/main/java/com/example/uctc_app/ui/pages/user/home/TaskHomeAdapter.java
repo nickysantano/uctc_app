@@ -49,6 +49,7 @@ public class TaskHomeAdapter extends RecyclerView.Adapter<TaskHomeAdapter.ViewHo
         Log.d(TAG, "onBindViewHolder: " + task.getName());
 
         holder.taskTtl.setText(task.getName());
+        holder.taskDate.setText(task.getDate());
         holder.itemView.setOnClickListener(v -> {
 
         });
@@ -61,11 +62,12 @@ public class TaskHomeAdapter extends RecyclerView.Adapter<TaskHomeAdapter.ViewHo
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView taskTtl;
+        private TextView taskTtl, taskDate;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             taskTtl = itemView.findViewById(R.id.task_title);
+            taskDate = itemView.findViewById(R.id.lbl_date_task_user);
         }
     }
 }

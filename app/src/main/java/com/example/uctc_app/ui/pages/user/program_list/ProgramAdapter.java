@@ -1,6 +1,7 @@
 package com.example.uctc_app.ui.pages.user.program_list;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -62,6 +63,13 @@ public class ProgramAdapter extends RecyclerView.Adapter<ProgramAdapter.ViewHold
                 ProgramRepository repository = ProgramRepository.getInstance(SharedPreferenceHelper.getInstance(context).getAccessToken());
                 repository.deleteProgram(program.getProgram_id());
 
+                notifyItemRemoved(position);
+//                ProgramUserFragment frg = null;
+//                frg = getSupportFragmentManager().findFragmentByTag("Your_Fragment_TAG");
+//                final FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+//                ft.detach(frg);
+//                ft.attach(frg);
+//                ft.commit();
             }
         });
     }
