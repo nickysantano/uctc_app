@@ -31,7 +31,7 @@ import butterknife.ButterKnife;
 
 public class ActionPlanFragment extends Fragment {
 
-    @BindView(R.id.cv_lect_adap)
+    @BindView(R.id.rv_action_plan_user)
     RecyclerView rvAction;
 
     private ActionPlanViewModel viewModel;

@@ -103,21 +103,21 @@ public class ProgramRepository {
         });
     }
 
-    public void updateProgram(String name, String description, String goal, String date,String status){
-        apiService.updateProgram(name, description, goal, date ,status).enqueue(new Callback<Void>() {
-            @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
-                Log.d(TAG, "onResponse:" + response.code());
-
-            }
-
-            @Override
-            public void onFailure(Call<Void> call, Throwable t) {
-                Log.d(TAG, "onFailure: " + t.getMessage());
-
-            }
-        });
-    }
+//    public void updateProgram(String name, String description, String goal, String date,String status){
+//        apiService.updateProgram(name, description, goal, date ,status).enqueue(new Callback<Void>() {
+//            @Override
+//            public void onResponse(Call<Void> call, Response<Void> response) {
+//                Log.d(TAG, "onResponse:" + response.code());
+//
+//            }
+//
+//            @Override
+//            public void onFailure(Call<Void> call, Throwable t) {
+//                Log.d(TAG, "onFailure: " + t.getMessage());
+//
+//            }
+//        });
+//    }
     public MutableLiveData<List<Program>> myPrograms(String user_id) {
         MutableLiveData<List<Program>> listProgram = new MutableLiveData<>();
 

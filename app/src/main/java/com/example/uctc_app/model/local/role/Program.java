@@ -29,10 +29,11 @@ public class Program implements Parcelable {
 
     public Program (){}
 
-    public Program( String name, String description, String goal, String status, String date) {
+    public Program( String name, String description, String goal, String created_by, String status, String date) {
         this.name = name;
         this.description = description;
         this.goal = goal;
+        this.created_by = created_by;
         this.status = status;
         this.date = date;
     }

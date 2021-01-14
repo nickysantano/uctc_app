@@ -47,7 +47,7 @@ public interface Endpoints {
 
     @POST("programs")
     @FormUrlEncoded
-    Call<Void> addProgram(@Field("name") String name, @Field("description")  String description,@Field("goal") String goal,
+    Call<Void> addProgram(@Field("name") String name, @Field("description")  String description, @Field("goal") String goal, @Field("status") String status,
                           @Field("program_date") String program_date, @Field("created_by") String created_by);
 
     @PUT("programs")

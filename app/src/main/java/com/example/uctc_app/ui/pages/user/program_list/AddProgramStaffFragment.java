@@ -102,7 +102,8 @@ public class AddProgramStaffFragment extends Fragment {
         if (user != null){
             Log.d("CHECK", "ADDING PROGRAM");
             repositoryProgram= ProgramRepository.getInstance(helper.getAccessToken());
-            repositoryProgram.addProgram(new Program(lbl_add_program_name_staff.getEditText().getText().toString(), lbl_add_description_program_staff.getEditText().getText().toString(),lbl_add_goal_program_staff.getEditText().getText().toString(), "0", "2000-10-10"));
+            repositoryProgram.addProgram(new Program(lbl_add_program_name_staff.getEditText().getText().toString(),
+                    lbl_add_description_program_staff.getEditText().getText().toString(),lbl_add_goal_program_staff.getEditText().getText().toString(), user.getUser_id() + "","Started", "2000-10-10"));
 
         }
              }
