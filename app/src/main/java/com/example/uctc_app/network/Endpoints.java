@@ -36,6 +36,8 @@ public interface Endpoints {
     @GET("tasks/{id}")
     Call<TaskResponse> getTasks(@Path("id") int action_id);
 
+    @GET("user/{id}/tasks")
+    Call<TaskResponse> getMyTasks(@Path("id") int user_id);
 
     @GET("programs/{id}")
     Call<ProgramResponse> myPrograms(@Path("id") int user_id);
