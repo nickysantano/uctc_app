@@ -52,7 +52,7 @@ public class ActionPlanAdapter extends RecyclerView.Adapter<ActionPlanAdapter.Vi
         holder.name.setText(actionPlan.getName());
 
         holder.itemView.setOnClickListener(view -> {
-//            ActionPlanFragmentDirections. = ActionPlanFragmentDirections.actionActionPlanToTaskUser(actionPlan);
+//            ActionPlanFragmentDirections.ActionActionPlanToTaskUser actionActionPlanToTaskUser = ActionPlanFragmentDirections.actionActionPlanToTaskUser(actionPlan);
 //            Navigation.findNavController(view).navigate(actionActionPlanToTaskUser);
         });
     }

@@ -29,7 +29,7 @@ public interface Endpoints {
     @GET("profile")
     Call<UserResponse> getUser();
 
-    @GET("action_plan/{id}")
+    @GET("actions/{id}")
     Call<ActionPlanResponse> getActionPlans(@Path("id") int program_id);
 
     @GET("tasks/{id}")

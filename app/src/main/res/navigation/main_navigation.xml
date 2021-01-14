@@ -94,7 +94,11 @@
         android:id="@+id/addProgramStaffFragment"
         android:name="com.example.uctc_app.ui.pages.user.program_list.AddProgramStaffFragment"
         android:label="fragment_add_program_staff"
-        tools:layout="@layout/fragment_add_program_staff" />
+        tools:layout="@layout/fragment_add_program_staff" >
+        <action
+            android:id="@+id/action_add_program_to_program_user"
+            app:destination="@id/nav_programUser" />
+    </fragment>
     <fragment
         android:id="@+id/nav_home_staff"
         android:name="com.example.uctc_app.ui.pages.staff.home.HomeStaffFragment"
@@ -196,5 +200,9 @@
         android:id="@+id/taskFragment"
         android:name="com.example.uctc_app.ui.pages.user.my_program.TaskFragment"
         android:label="fragment_to_do_list"
-        tools:layout="@layout/fragment_to_do_list" />
+        tools:layout="@layout/fragment_to_do_list" >
+        <argument
+            android:name="actionPlan_id"
+            app:argType="integer" />
+    </fragment>
 </navigation>

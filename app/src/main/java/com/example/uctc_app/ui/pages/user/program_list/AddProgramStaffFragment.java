@@ -27,6 +27,8 @@ import com.example.uctc_app.repository.login.ProgramRepository;
 import com.example.uctc_app.ui.MainActivity;
 import com.example.uctc_app.ui.login.LoginFragmentDirections;
 import com.example.uctc_app.ui.login.LoginViewModel;
+import com.example.uctc_app.ui.pages.user.home.HomeUserFragmentDirections;
+import com.example.uctc_app.ui.pages.user.home.RecentEventAdapter;
 import com.example.uctc_app.ui.splash.SplashFragmentDirections;
 import com.example.uctc_app.utils.SharedPreferenceHelper;
 import com.google.android.material.textfield.TextInputEditText;
@@ -89,6 +91,14 @@ public class AddProgramStaffFragment extends Fragment {
             }
         });
     }
+
+//    @Override
+//    public void onBindViewHolder(@NonNull RecentEventAdapter.ViewHolder holder, int position) {
+//        holder.itemView.setOnClickListener(view -> {
+//            HomeUserFragmentDirections.ActionHomeUserToDetailProgramUser actionHomeUserToDetailProgramUser = HomeUserFragmentDirections.actionHomeUserToDetailProgramUser(program);
+//            Navigation.findNavController(view).navigate(actionHomeUserToDetailProgramUser);
+//        });
+//    }
 
     @OnClick({R.id.btn_add_program_staff})
     public void onClick(View view) {
