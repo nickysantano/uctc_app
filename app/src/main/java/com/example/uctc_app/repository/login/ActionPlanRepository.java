@@ -49,7 +49,7 @@ public class ActionPlanRepository {
                 Log.d(TAG, "onResponse: " + response.code());
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
-                        Log.d(TAG, "onResponse: Program " + response.body().getResults().size());
+                        Log.d(TAG, "onResponse: Action Plan " + response.body().getResults().size());
                         listAction.postValue(response.body().getResults());
                     }
                 }

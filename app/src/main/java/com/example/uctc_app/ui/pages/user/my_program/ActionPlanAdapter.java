@@ -35,6 +35,7 @@ public class ActionPlanAdapter extends RecyclerView.Adapter<ActionPlanAdapter.Vi
 
     public void setActionList(List<ActionPlan> actionList) {
         this.actionList = actionList;
+        Log.d("SETTING ActionList", getItemCount() + "actions");
         notifyDataSetChanged();
     }
 
@@ -51,15 +52,15 @@ public class ActionPlanAdapter extends RecyclerView.Adapter<ActionPlanAdapter.Vi
 
         holder.name.setText(actionPlan.getName());
 
-        holder.itemView.setOnClickListener(view -> {
+//        holder.itemView.setOnClickListener(view -> {
 //            ActionPlanFragmentDirections.ActionActionPlanToTaskUser actionActionPlanToTaskUser = ActionPlanFragmentDirections.actionActionPlanToTaskUser(actionPlan);
 //            Navigation.findNavController(view).navigate(actionActionPlanToTaskUser);
-        });
+//        });
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return actionList.size();
     }
     public class ViewHolder extends RecyclerView.ViewHolder {
 

@@ -27,7 +27,7 @@ public class ActionPlanViewModel extends ViewModel {
     }
 
     public LiveData<List<ActionPlan>> getActionPlans(int id) {
-        Log.d("Hello","VIewModel");
+        Log.d("Hello","ActionPlanVIewModel");
         return repository.getActionPlans(id);
     }
 
