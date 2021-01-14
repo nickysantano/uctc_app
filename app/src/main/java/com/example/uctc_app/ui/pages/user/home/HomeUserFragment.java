@@ -17,8 +17,10 @@ import android.view.ViewGroup;
 
 import com.example.uctc_app.R;
 import com.example.uctc_app.model.local.role.Program;
+import com.example.uctc_app.model.local.role.Task;
 import com.example.uctc_app.ui.MainActivity;
 import com.example.uctc_app.ui.login.LoginViewModel;
+import com.example.uctc_app.ui.pages.user.adapter.TaskAdapter;
 import com.example.uctc_app.ui.pages.user.program_list.ProgramAdapter;
 import com.example.uctc_app.ui.pages.user.program_list.ProgramViewModel;
 import com.example.uctc_app.utils.SharedPreferenceHelper;
@@ -34,8 +36,13 @@ public class HomeUserFragment extends Fragment {
     @BindView(R.id.rv_recent_program_user)
     RecyclerView rvRecentProgram;
 
+    @BindView(R.id.rv_task_home_user)
+    RecyclerView rvTask;
+
     private RecentEventAdapter adapter;
+    private TaskHomeAdapter adapterTask;
     private ProgramViewModel viewModel;
+    private TaskHomeViewModel viewModelTask;
     private SharedPreferenceHelper helper;
 
     public HomeUserFragment() {
@@ -59,8 +66,15 @@ public class HomeUserFragment extends Fragment {
         viewModel.init(helper.getAccessToken());
         viewModel.getPrograms().observe(requireActivity(), observeViewModel);
 
+//        viewModelTask = ViewModelProviders.of(requireActivity()).get(TaskHomeViewModel.class);
+//        viewModelTask.init(helper.getAccessToken());
+//        viewModelTask.getTask().observe(requireActivity(), observeViewModel);
+
         rvRecentProgram.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         adapter = new RecentEventAdapter(getActivity());
+
+        rvTask.setLayoutManager(new LinearLayoutManager(getActivity()));
+        adapterTask = new TaskHomeAdapter(getActivity());
     }
 
     private Observer<List<Program>> observeViewModel = new Observer<List<Program>>() {

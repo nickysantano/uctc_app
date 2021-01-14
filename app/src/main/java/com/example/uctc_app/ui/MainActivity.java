@@ -43,7 +43,13 @@ public class MainActivity extends AppCompatActivity { //ini dipake
 
 //            NavigationUI.setupWithNavController(navigationView, navController);
         }
+
+        navigationViewAdmin.setVisibility(View.GONE);
+        navigationViewStaff.setVisibility(View.GONE);
+        navigationViewUser.setVisibility(View.GONE);
     }
+
+
 
     @Override
     public boolean onSupportNavigateUp() {
@@ -69,6 +75,15 @@ public class MainActivity extends AppCompatActivity { //ini dipake
                 navigationViewStaff.setVisibility(View.GONE);
                 navigationViewUser.setVisibility(View.GONE);
 
+                navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
+                    if (destination.getId() == R.id.nav_home_admin || destination.getId() == R.id.nav_finance_report_admin || destination.getId() == R.id.nav_program_staff
+                        || destination.getId() == R.id.nav_proposal_admin || destination.getId() == R.id.nav_user_list_admin){
+                        navigationViewAdmin.setVisibility(View.VISIBLE);
+                    }else{
+                        navigationViewAdmin.setVisibility(View.GONE);
+                    }
+                });
+
             } else if (user.getRole_id().equalsIgnoreCase("2")) {
                 Log.d("USER ROLE", "STAFF");
 
@@ -84,6 +99,14 @@ public class MainActivity extends AppCompatActivity { //ini dipake
                 navigationViewAdmin.setVisibility(View.GONE);
                 navigationViewUser.setVisibility(View.GONE);
 
+                navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
+                    if (destination.getId() == R.id.nav_home_staff || destination.getId() == R.id.nav_program_staff || destination.getId() == R.id.nav_action_plan_staff){
+                        navigationViewStaff.setVisibility(View.VISIBLE);
+                    }else{
+                        navigationViewStaff.setVisibility(View.GONE);
+                    }
+                });
+
             } else if (user.getRole_id().equalsIgnoreCase("3")) {
 
                 AppBarConfiguration configuration = new AppBarConfiguration
@@ -98,7 +121,16 @@ public class MainActivity extends AppCompatActivity { //ini dipake
                 navigationViewAdmin.setVisibility(View.GONE);
                 navigationViewStaff.setVisibility(View.GONE);
 
+                navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
+                    if (destination.getId() == R.id.nav_homeUser || destination.getId() == R.id.nav_programUser
+                            || destination.getId() == R.id.nav_myProgramUser || destination.getId() == R.id.nav_profile){
+                        navigationViewUser.setVisibility(View.VISIBLE);
+                    }else{
+                        navigationViewUser.setVisibility(View.GONE);
+                    }
+                });
             }
+
         }
     };
 }

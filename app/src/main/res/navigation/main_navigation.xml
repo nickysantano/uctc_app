@@ -29,6 +29,9 @@
         <action
             android:id="@+id/action_home_user_to_detail_program_user"
             app:destination="@id/detailProgramUserFragment" />
+        <argument
+            android:name="action_id"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/nav_programUser"

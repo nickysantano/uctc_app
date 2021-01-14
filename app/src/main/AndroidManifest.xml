@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Uctc_app"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.pages.user.home.RecentEventAdapter"></activity>
+        <activity android:name=".ui.pages.user.home.TaskHomeAdapter"></activity>
+        <activity android:name=".ui.pages.user.home.RecentEventAdapter" />
         <activity android:name=".ui.pages.user.my_program.MyProgramUserAdapter" />
         <activity android:name=".ui.pages.staff.action_plan.ActionPlanAdapter" />
         <activity android:name=".ui.pages.admin.user_list.UserListAdminAdapterActivity" />

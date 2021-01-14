@@ -25,6 +25,7 @@ import com.example.uctc_app.repository.login.ProfileRepository;
 import com.example.uctc_app.ui.MainActivity;
 import com.example.uctc_app.ui.pages.staff.StaffMainActivity;
 import com.example.uctc_app.utils.SharedPreferenceHelper;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.Objects;
 
@@ -35,6 +36,8 @@ public class SplashFragment extends Fragment {
     private SharedPreferenceHelper helper;
     private ProfileRepository repository;
     public View currentView;
+    private BottomNavigationView navigationViewAdmin, navigationViewStaff, navigationViewUser;
+
     public SplashFragment() {
     }
 

@@ -110,7 +110,7 @@ public class LoginFragment extends Fragment {
                 action = LoginFragmentDirections.actionLoginToHomeUser();
             }
             Navigation.findNavController(currentView).navigate(action);
-            Toast.makeText(requireActivity(), "Login Successfuly", Toast.LENGTH_SHORT).show();
+            Toast.makeText(requireActivity(), "Login Successfully", Toast.LENGTH_SHORT).show();
 
 
         }
