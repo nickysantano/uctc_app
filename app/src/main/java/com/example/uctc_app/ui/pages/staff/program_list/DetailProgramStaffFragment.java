@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
@@ -17,12 +18,16 @@ import com.example.uctc_app.R;
 import com.example.uctc_app.model.local.role.Program;
 import com.example.uctc_app.repository.login.ProgramRepository;
 import com.example.uctc_app.ui.MainActivity;
+import com.example.uctc_app.ui.pages.user.my_program.MyProgramUserFragmentDirections;
+import com.example.uctc_app.ui.pages.user.program_list.ProgramUserFragmentDirections;
 import com.example.uctc_app.utils.SharedPreferenceHelper;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class DetailProgramStaffFragment extends Fragment {
     @BindView(R.id.lbl_title_program_user)
@@ -45,7 +50,6 @@ public class DetailProgramStaffFragment extends Fragment {
     Program program;
 
     public DetailProgramStaffFragment() {
-        // Required empty public constructor
     }
 
     @Override
@@ -68,8 +72,20 @@ public class DetailProgramStaffFragment extends Fragment {
             initDetailProgram(program);
         }
 
-        
     }
+
+    @OnClick({R.id.btn_detail_program_action_plan_program})
+    public void onClick(View view) {
+        DetailProgramStaffFragmentDirections.ActionDetailProgramStaffToActionPlan actionDetailProgramStaffToActionPlan =
+                DetailProgramStaffFragmentDirections.actionDetailProgramStaffToActionPlan(program.getProgram_id() + "");
+        Navigation.findNavController(view).navigate(actionDetailProgramStaffToActionPlan);
+    }
+
+//    holder.itemView.setOnClickListener(view -> {
+//        MyProgramUserFragmentDirections.ActionMyProgramUserToActionPlan actionMyProgramUserToActionPlan =
+//                MyProgramUserFragmentDirections.actionMyProgramUserToActionPlan(program.getProgram_id() + "");
+//        Navigation.findNavController(view).navigate(actionMyProgramUserToActionPlan);
+//    });
 
 
     private void initDetailProgram(Program program) {

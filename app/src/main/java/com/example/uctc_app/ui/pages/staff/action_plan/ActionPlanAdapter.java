@@ -1,16 +1,68 @@
 package com.example.uctc_app.ui.pages.staff.action_plan;
 
-import androidx.appcompat.app.AppCompatActivity;
+import android.content.Context;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
-import android.os.Bundle;
+import androidx.annotation.NonNull;
+import androidx.lifecycle.Observer;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.uctc_app.R;
+import com.example.uctc_app.model.local.role.ActionPlan;
+import com.example.uctc_app.model.local.role.Program;
+import com.example.uctc_app.model.local.role.User;
 
-public class ActionPlanAdapter extends AppCompatActivity {
+import java.util.List;
+
+public class ActionPlanAdapter extends RecyclerView.Adapter<ActionPlanAdapter.ViewHolder> {
+
+    private Context context;
+    private List<ActionPlan> actionList;
+
+    public ActionPlanAdapter(Context context) {
+        this.context = context;
+    }
+
+    public void setActionList(List<ActionPlan> actionList) {
+        this.actionList = actionList;
+        Log.d("SETTING ActionList", getItemCount() + "actions");
+        notifyDataSetChanged();
+    }
+
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.activity_action_plan_adapter, parent, false);
+        return new ViewHolder(view);    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_action_plan_adapter);
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        ActionPlan actionPlan = actionList.get(position);
+        Log.d("Hello", "" + actionPlan.getName());
+
+//        holder.itemView.setOnClickListener(view -> {
+//            ActionPlanFragmentDirections.ActionActionPlanToTaskUser actionActionPlanToTaskUser = ActionPlanFragmentDirections.actionActionPlanToTaskUser(actionPlan);
+//            Navigation.findNavController(view).navigate(actionActionPlanToTaskUser);
+//        });
     }
+
+    @Override
+    public int getItemCount() {
+        return actionList.size();
+    }
+    public class ViewHolder extends RecyclerView.ViewHolder {
+
+        private TextView name;
+
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+            name = itemView.findViewById(R.id.lbl_action_plan_title);
+        }
+    }
+
+
 }

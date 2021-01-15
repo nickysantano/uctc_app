@@ -175,7 +175,11 @@
         android:id="@+id/addActionPlanStaffFragment"
         android:name="com.example.uctc_app.ui.pages.staff.action_plan.AddActionPlanStaffFragment"
         android:label="fragment_add_action_plan_staff"
-        tools:layout="@layout/fragment_add_action_plan_staff" />
+        tools:layout="@layout/fragment_add_action_plan_staff" >
+        <action
+            android:id="@+id/action_add_action_plan_to_action_plan_staff"
+            app:destination="@id/nav_action_plan_staff" />
+    </fragment>
     <fragment
         android:id="@+id/detailToDoListStaffFragment"
         android:name="com.example.uctc_app.ui.pages.staff.action_plan.DetailToDoListStaffFragment"
@@ -228,7 +232,11 @@
         android:id="@+id/profileStaffFragment"
         android:name="com.example.uctc_app.ui.pages.staff.profile.ProfileStaffFragment"
         android:label="fragment_profile_staff"
-        tools:layout="@layout/fragment_profile_staff" />
+        tools:layout="@layout/fragment_profile_staff" >
+        <action
+            android:id="@+id/action_profile_staff_to_login"
+            app:destination="@id/loginFragment" />
+    </fragment>
     <fragment
         android:id="@+id/detailProgramStaffFragment"
         android:name="com.example.uctc_app.ui.pages.staff.program_list.DetailProgramStaffFragment"
@@ -237,5 +245,8 @@
         <argument
             android:name="DetailProgramStaff"
             app:argType="com.example.uctc_app.model.local.role.Program" />
+        <action
+            android:id="@+id/action_detail_program_staff_to_action_plan"
+            app:destination="@id/nav_action_plan_staff" />
     </fragment>
 </navigation>

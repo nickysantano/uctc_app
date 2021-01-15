@@ -34,4 +34,5 @@
     <string name="txtDescProgramStaff">Description Here</string>
     <string name="txtTaskToDoListUser">[TASK NAME]</string>
     <string name="txtDate">YYYY-MM-DD</string>
+    <string name="btnCreateActionPlan">ADD ACTION PLAN</string>
 </resources>

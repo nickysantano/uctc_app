@@ -74,7 +74,7 @@ public class ProfileStaffFragment extends Fragment {
                 public void onChanged(String message) {
                     if (!message.isEmpty()) {
                         helper.clearPref();
-                        NavDirections action = ProfileUserFragmentDirections.actionNavProfileToLoginFragment();
+                        NavDirections action = ProfileStaffFragmentDirections.actionProfileStaffToLogin();
                         Navigation.findNavController(view).navigate(action);
                         Toast.makeText(ProfileStaffFragment.this.getActivity(), message, Toast.LENGTH_SHORT).show();
                     }
