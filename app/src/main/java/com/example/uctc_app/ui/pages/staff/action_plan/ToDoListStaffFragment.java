@@ -7,6 +7,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,8 +19,10 @@ import android.view.ViewGroup;
 import com.example.uctc_app.R;
 import com.example.uctc_app.model.local.role.Task;
 import com.example.uctc_app.ui.MainActivity;
+import com.example.uctc_app.ui.pages.staff.program_list.DetailProgramStaffFragmentDirections;
 import com.example.uctc_app.ui.pages.user.adapter.TaskAdapter;
 import com.example.uctc_app.ui.pages.user.my_program.TaskViewModel;
+import com.example.uctc_app.ui.pages.user.program_list.ProgramUserFragmentDirections;
 import com.example.uctc_app.utils.SharedPreferenceHelper;
 
 import java.util.List;
@@ -59,6 +63,12 @@ public class ToDoListStaffFragment extends Fragment {
 
         rvTask.setLayoutManager(new LinearLayoutManager(getActivity()));
         adapter = new TaskAdapter(getActivity());
+    }
+
+    @OnClick({R.id.btn_add_task})
+    public void onClick(View view) {
+        NavDirections action = ToDoListStaffFragmentDirections.actionToDoListStaffToAddTask();
+        Navigation.findNavController(view).navigate(action);
     }
 
 //    @OnClick({R.id.btnPic})

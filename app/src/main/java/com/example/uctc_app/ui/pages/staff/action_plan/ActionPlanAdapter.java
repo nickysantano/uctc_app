@@ -40,7 +40,8 @@ public class ActionPlanAdapter extends RecyclerView.Adapter<ActionPlanAdapter.Vi
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.activity_action_plan_adapter, parent, false);
-        return new ViewHolder(view);    }
+        return new ViewHolder(view);
+    }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
@@ -66,6 +67,5 @@ public class ActionPlanAdapter extends RecyclerView.Adapter<ActionPlanAdapter.Vi
             name = itemView.findViewById(R.id.lbl_action_plan_title);
         }
     }
-
 
 }

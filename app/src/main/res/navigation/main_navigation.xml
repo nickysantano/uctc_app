@@ -199,6 +199,9 @@
             app:destination="@id/detailToDoListStaffFragment" />
         <argument android:name="actionPlan_id"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_to_do_list_staff_to_add_task"
+            app:destination="@id/addTaskStaffFragment" />
     </fragment>
     <fragment
         android:id="@+id/commiteeListStaffFragment"
@@ -250,5 +253,14 @@
         <action
             android:id="@+id/action_detail_program_staff_to_action_plan"
             app:destination="@id/nav_action_plan_staff" />
+    </fragment>
+    <fragment
+        android:id="@+id/addTaskStaffFragment"
+        android:name="com.example.uctc_app.ui.pages.staff.action_plan.AddTaskStaffFragment"
+        android:label="fragment_add_task_staff"
+        tools:layout="@layout/fragment_add_task_staff" >
+        <action
+            android:id="@+id/action_add_staff_fragment_to_to_do_list"
+            app:destination="@id/toDoListStaffFragment" />
     </fragment>
 </navigation>
