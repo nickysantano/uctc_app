@@ -197,6 +197,8 @@
         <action
             android:id="@+id/action_to_do_list_to_detail_to_do_list_staff"
             app:destination="@id/detailToDoListStaffFragment" />
+        <argument android:name="actionPlan_id"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/commiteeListStaffFragment"

@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.uctc_app.R;
 import com.example.uctc_app.model.local.role.ActionPlan;
+import com.example.uctc_app.ui.pages.staff.action_plan.ActionPlanStaffFragmentDirections;
 import com.example.uctc_app.ui.pages.user.my_program.ActionPlanFragmentDirections;
 import com.example.uctc_app.model.local.role.Program;
 import com.example.uctc_app.repository.login.ProgramRepository;
@@ -52,10 +53,10 @@ public class ActionPlanAdapter extends RecyclerView.Adapter<ActionPlanAdapter.Vi
 
         holder.name.setText(actionPlan.getName());
 
-//        holder.itemView.setOnClickListener(view -> {
-//            ActionPlanFragmentDirections.ActionActionPlanToTaskUser actionActionPlanToTaskUser = ActionPlanFragmentDirections.actionActionPlanToTaskUser(actionPlan);
-//            Navigation.findNavController(view).navigate(actionActionPlanToTaskUser);
-//        });
+        holder.itemView.setOnClickListener(view -> {
+            ActionPlanStaffFragmentDirections.ActionActionPlanToToDoListStaff actionActionPlanToToDoListStaff = ActionPlanStaffFragmentDirections.actionActionPlanToToDoListStaff(actionPlan.getId());
+            Navigation.findNavController(view).navigate(actionActionPlanToToDoListStaff);
+        });
     }
 
     @Override

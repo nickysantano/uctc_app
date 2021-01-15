@@ -80,11 +80,7 @@ public class ActionPlanStaffFragment extends Fragment {
 
     }
 
-    @OnClick({R.id.btn_program_add_action_plan_staff})
-    public void onClick(View view) {
-        NavDirections action = ActionPlanStaffFragmentDirections.actionActionPlanToAddActionPlanStaff();
-        Navigation.findNavController(view).navigate(action);
-    }
+
 
     private Observer<ActionPlan> observer = new Observer<ActionPlan>() {
         @Override

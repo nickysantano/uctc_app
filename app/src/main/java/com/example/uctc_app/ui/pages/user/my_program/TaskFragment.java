@@ -60,10 +60,10 @@ public class TaskFragment extends Fragment {
         adapter = new TaskAdapter(getActivity());
     }
 
-    @OnClick({R.id.btnPic})
-    public void onClick(View view) {
-        //
-    }
+//    @OnClick({R.id.btnPic})
+//    public void onClick(View view) {
+//        //
+//    }
 
     private Observer<List<Task>> observeViewModel = new Observer<List<Task>>() {
         @Override
