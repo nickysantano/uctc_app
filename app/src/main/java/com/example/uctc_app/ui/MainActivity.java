@@ -113,7 +113,8 @@ public class MainActivity extends AppCompatActivity { //ini dipake
                 navigationViewUser.setVisibility(View.GONE);
 
                 navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
-                    if (destination.getId() == R.id.nav_home_staff || destination.getId() == R.id.nav_program_staff || destination.getId() == R.id.profileStaffFragment){
+                    if (destination.getId() == R.id.nav_home_staff || destination.getId() == R.id.nav_program_staff
+                            || destination.getId() == R.id.nav_my_program_staff || destination.getId() == R.id.profileStaffFragment){
                         navigationViewStaff.setVisibility(View.VISIBLE);
                     }else{
                         navigationViewStaff.setVisibility(View.GONE);
