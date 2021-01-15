@@ -1,5 +1,6 @@
 package com.example.uctc_app.ui.pages.staff.action_plan;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,6 +14,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
@@ -29,6 +33,7 @@ import com.example.uctc_app.ui.pages.user.program_list.AddProgramStaffFragmentDi
 import com.example.uctc_app.utils.SharedPreferenceHelper;
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.util.List;
 import java.util.Objects;
 
 import butterknife.BindView;
@@ -43,14 +48,9 @@ public class AddTaskStaffFragment extends Fragment {
     @BindView(R.id.lbl_input_description_task)
     TextInputLayout lbl_taskDescription;
 
-    @BindView(R.id.lbl_input_year_task)
-    TextInputLayout lbl_taskYear;
+    @BindView(R.id.lbl_input_date_task)
+    TextInputLayout lbl_taskDate;
 
-    @BindView(R.id.lbl_input_month_task)
-    TextInputLayout lbl_taskMonth;
-
-    @BindView(R.id.lbl_input_day_task)
-    TextInputLayout lbl_taskDay;
 
     @BindView(R.id.spinner_pic_add_task)
     Spinner spinner_pic;
@@ -59,9 +59,10 @@ public class AddTaskStaffFragment extends Fragment {
     Button button_addtask;
 
     SharedPreferenceHelper helper;
-    ProfileRepository repositoryProfile;
-
+    ProgramRepository programRepository;
+    Adapter adapter;
     TaskRepository taskRepository;
+    Context context;
 
     public AddTaskStaffFragment() {
     }
@@ -83,34 +84,44 @@ public class AddTaskStaffFragment extends Fragment {
         Objects.requireNonNull((MainActivity) requireActivity()).getSupportActionBar().hide();
 
         helper = SharedPreferenceHelper.getInstance(requireActivity());
+        context = getActivity();
+        programRepository = ProgramRepository.getInstance(helper.getAccessToken());
+        programRepository.getCommittees(Integer.parseInt(???.fromBundle(getArguments()).getProgram_id()).observe(requireActivity(), observer );
+
+        //Need from navigation, program Id and Action Plan ID
+
         button_addtask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                repositoryProfile = ProfileRepository.getInstance(helper.getAccessToken());
-                repositoryProfile.getUser().observe(requireActivity(), observer );
 
 
 
+                taskRepository = TaskRepository.getInstance(helper.getAccessToken());
+                taskRepository.addTask(new Task( lbl_taskName.getEditText().getText().toString(), "0", lbl_taskDescription.getEditText().getText().toString(),
+                        lbl_taskDate.getEditText().getText().toString()  ,
+                        Integer.parseInt(???.fromBundle(getArguments()).getId()), user.getUser_id()));
+                AddProgramStaffFragmentDirections.ActionAddProgramToProgramUser actionAddProgramToProgramUser = AddProgramStaffFragmentDirections.actionAddProgramToProgramUser();
+                Navigation.findNavController(v).navigate(actionAddProgramToProgramUser);
             }
         });
     }
 
-    private Observer<User> observer = new Observer<User>() {
+    private Observer <List<User>> observer = new Observer<List<User>>() {
         @Override
-        public void onChanged(User user) {
-            if (user != null){
-                Log.d("CHECK", "ADDING PROGRAM");
-                taskRepository = TaskRepository.getInstance(helper.getAccessToken());
-                taskRepository.addTask(new Task( lbl_taskName.getEditText().getText().toString(), "0", lbl_taskDescription.getEditText().getText().toString(),
-                        lbl_taskYear.getEditText().getText().toString()  + "-" + lbl_taskMonth.getEditText().getText().toString() + "-"+lbl_taskDay.getEditText().getText().toString(),
-                        Integer.parseInt(?????????????.fromBundle(getArguments()).getId()), user.getUser_id()));
-                AddProgramStaffFragmentDirections.ActionAddProgramToProgramUser actionAddProgramToProgramUser = AddProgramStaffFragmentDirections.actionAddProgramToProgramUser();
-                Navigation.findNavController(v).navigate(actionAddProgramToProgramUser);
+        public void onChanged(List<User> users) {
+            if (users!=null){
+                User[] teamArr = new User[users.size()];
+                teamArr = users.toArray(teamArr);
 
+
+                ArrayAdapter<User> dataAdapter = new ArrayAdapter<User>(context, android.R.layout.simple_spinner_item, teamArr);
+                dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinner_pic.setAdapter(dataAdapter);
+
+                //need to check from previous UTS to how to fill in
             }
-        }
     };
-
+    };
 
 
 //    @OnClick({R.id.btn_add_task})
