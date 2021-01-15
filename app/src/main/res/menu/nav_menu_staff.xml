@@ -14,6 +14,11 @@
         />
 
     <item
+        android:id="@+id/nav_my_program_staff"
+        android:icon="@drawable/note"
+        android:title="My Program" />
+
+    <item
         android:id="@+id/profileStaffFragment"
         android:icon="@drawable/user"
         android:title="Profile" />
