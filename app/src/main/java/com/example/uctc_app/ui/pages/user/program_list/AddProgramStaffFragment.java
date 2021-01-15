@@ -61,7 +61,6 @@ public class AddProgramStaffFragment extends Fragment {
     @BindView(R.id.btn_add_program_staff)
     Button btn_add_program_staff;
 
-    ProgramViewModel viewModel;
     SharedPreferenceHelper helper;
     ProfileRepository repositoryProfile;
     ProgramRepository repositoryProgram;
@@ -81,7 +80,6 @@ public class AddProgramStaffFragment extends Fragment {
 
         Objects.requireNonNull((MainActivity) requireActivity()).getSupportActionBar().hide();
 
-        viewModel = ViewModelProviders.of(requireActivity()).get(ProgramViewModel.class);
         helper = SharedPreferenceHelper.getInstance(requireActivity());
         btn_add_program_staff.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -29,6 +29,15 @@ public class TaskStaffViewModel extends ViewModel {
         return repository.getMyTasks(id);
     }
 
+    public void deleteTask(int id) {
+        Log.d("getMyTask: ", "Success");
+        repository.deleteTask(id);
+    }
+
+    public void updateTask(int id,Task task){
+        repository.updateTask(id,task);
+    }
+
     @Override
     protected void onCleared() {
         super.onCleared();

@@ -28,6 +28,10 @@ public class ProgramViewModel extends ViewModel {
         Log.d("Hello","VIewModel");
         return repository.getPrograms();
     }
+    public void deleteProgram(int id) {
+        Log.d("Hello","DeleteProgram");
+        repository.deleteProgram(id);
+    }
 
 
     @Override

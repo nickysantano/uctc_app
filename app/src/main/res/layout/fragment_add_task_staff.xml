@@ -46,7 +46,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/lbl_input_description_task"
         android:layout_width="0dp"
         android:layout_height="57dp"
         android:layout_marginStart="32dp"
@@ -61,13 +61,13 @@
         app:layout_constraintTop_toBottomOf="@+id/lbl_input_name_task" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout8"
+        android:id="@+id/lbl_input_year_task"
         android:layout_width="126dp"
         android:layout_height="61dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2">
+        app:layout_constraintTop_toBottomOf="@+id/lbl_input_description_task">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -77,13 +77,13 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout11"
+        android:id="@+id/lbl_input_month_task"
         android:layout_width="87dp"
         android:layout_height="61dp"
         android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toStartOf="@+id/textInputLayout12"
-        app:layout_constraintStart_toEndOf="@+id/textInputLayout8"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2">
+        app:layout_constraintEnd_toStartOf="@+id/lbl_input_day_task"
+        app:layout_constraintStart_toEndOf="@+id/lbl_input_year_task"
+        app:layout_constraintTop_toBottomOf="@+id/lbl_input_description_task">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -93,13 +93,13 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout12"
+        android:id="@+id/lbl_input_day_task"
         android:layout_width="86dp"
         android:layout_height="61dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2">
+        app:layout_constraintTop_toBottomOf="@+id/lbl_input_description_task">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -117,7 +117,7 @@
         android:layout_marginEnd="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout8" />
+        app:layout_constraintTop_toBottomOf="@+id/lbl_input_year_task" />
 
     <TextView
         android:id="@+id/textView33"
@@ -133,7 +133,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/button_addTask"
         android:layout_width="140dp"
         android:layout_height="59dp"
         android:layout_marginBottom="52dp"
