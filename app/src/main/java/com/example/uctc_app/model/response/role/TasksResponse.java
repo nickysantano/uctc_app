@@ -5,11 +5,12 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class TaskResponse {
+public class TasksResponse {
     @SerializedName("data")
-    private Task result;
+    private List<Task> results;
 
-    public Task getResults() {
-        return result;
+    public List<Task> getResults() {
+        return results;
     }
+
 }

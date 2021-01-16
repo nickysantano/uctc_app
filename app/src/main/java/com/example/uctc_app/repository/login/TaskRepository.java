@@ -4,11 +4,9 @@ import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.uctc_app.model.local.role.ActionPlan;
-import com.example.uctc_app.model.local.role.Program;
 import com.example.uctc_app.model.local.role.Task;
-import com.example.uctc_app.model.response.role.ActionPlanResponse;
 import com.example.uctc_app.model.response.role.TaskResponse;
+import com.example.uctc_app.model.response.role.TasksResponse;
 import com.example.uctc_app.network.RetrofitService;
 
 import java.util.List;
@@ -43,9 +41,9 @@ public class TaskRepository {
     public MutableLiveData<List<Task>> getTasks(int id) {
         MutableLiveData<List<Task>> listTasks = new MutableLiveData<>();
 
-        apiService.getTasks(id).enqueue(new Callback<TaskResponse>() {
+        apiService.getTasks(id).enqueue(new Callback<TasksResponse>() {
             @Override
-            public void onResponse(Call<TaskResponse> call, Response<TaskResponse> response) {
+            public void onResponse(Call<TasksResponse> call, Response<TasksResponse> response) {
                 Log.d(TAG, "onResponse: haiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii " + response.code());
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
@@ -56,7 +54,7 @@ public class TaskRepository {
             }
 
             @Override
-            public void onFailure(Call<TaskResponse> call, Throwable t) {
+            public void onFailure(Call<TasksResponse> call, Throwable t) {
                 Log.d(TAG, "onFailure: " + t.getMessage());
             }
         });
@@ -67,9 +65,9 @@ public class TaskRepository {
     public MutableLiveData<List<Task>> getMyTasks(int id) {
         MutableLiveData<List<Task>> listTasks = new MutableLiveData<>();
 
-        apiService.getMyTasks(id).enqueue(new Callback<TaskResponse>() {
+        apiService.getMyTasks(id).enqueue(new Callback<TasksResponse>() {
             @Override
-            public void onResponse(Call<TaskResponse> call, Response<TaskResponse> response) {
+            public void onResponse(Call<TasksResponse> call, Response<TasksResponse> response) {
                 Log.d(TAG, "onResponse: " + response.code());
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
@@ -80,7 +78,7 @@ public class TaskRepository {
             }
 
             @Override
-            public void onFailure(Call<TaskResponse> call, Throwable t) {
+            public void onFailure(Call<TasksResponse> call, Throwable t) {
                 Log.d(TAG, "onFailure: " + t.getMessage());
             }
         });
@@ -133,6 +131,30 @@ public class TaskRepository {
                 Log.d(TAG, "onFailure: " + t.getMessage());
             }
         });
+    }
+
+    public MutableLiveData<Task> getTask(int id) {
+        MutableLiveData<Task> task = new MutableLiveData<>();
+
+        apiService.getTask(id).enqueue(new Callback<TaskResponse>() {
+            @Override
+            public void onResponse(Call<TaskResponse> call, Response<TaskResponse> response) {
+                Log.d(TAG, "onResponse: " + response.code());
+                if (response.isSuccessful()) {
+                    if (response.body() != null) {
+                        Log.d(TAG, "onResponse: User " + response.body().getResults());
+                        task.postValue(response.body().getResults());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<TaskResponse> call, Throwable t) {
+                Log.d(TAG, "onFailure: " + t.getMessage());
+            }
+        });
+
+        return task;
     }
 
 

@@ -7,21 +7,18 @@ import com.example.uctc_app.model.local.role.Task;
 import com.example.uctc_app.model.response.role.ActionPlanResponse;
 import com.example.uctc_app.model.response.role.ProgramResponse;
 import com.example.uctc_app.model.response.role.TaskResponse;
+import com.example.uctc_app.model.response.role.TasksResponse;
 import com.example.uctc_app.model.response.role.TokenResponse;
 import com.example.uctc_app.model.response.role.UserResponse;
 import com.example.uctc_app.model.response.role.UsersResponse;
 import com.example.uctc_app.utils.Constants;
 import com.google.gson.JsonObject;
 
-import kotlin.text.UStringsKt;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import retrofit2.Call;
-import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.http.Body;
-import retrofit2.http.POST;
 
 public class RetrofitService {
 
@@ -101,18 +98,23 @@ public class RetrofitService {
     public Call<ActionPlanResponse> getActionPlans(int program_id){
         return api.getActionPlans(program_id);
     }
-    public Call<TaskResponse> getTasks(int action_id){
+    public Call<TasksResponse> getTasks(int action_id){
         return api.getTasks(action_id);
     }
-    public Call<TaskResponse> getMyTasks(int user_id){
+    public Call<TasksResponse> getMyTasks(int user_id){
         return api.getMyTasks(user_id);
     }
     public Call<Void> addTask(Task task){
         return api.addTask(task.getName(),Integer.parseInt(task.getStatus()),task.getDescription(),task.getDate(),task.getAction_plan(),task.getPic());
     }
+    public Call<TaskResponse> getTask(int id) {
+        return api.getTask(id);
+    }
+
     public Call<Void> deleteTask(int id){
         return api.deleteTask(id);
     }
+
     public Call<Void> updateTask(int id,Task task){
         return api.updateTasks(id, task);
     }
