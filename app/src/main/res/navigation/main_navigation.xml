@@ -113,7 +113,11 @@
         android:id="@+id/nav_home_staff"
         android:name="com.example.uctc_app.ui.pages.staff.home.HomeStaffFragment"
         android:label="fragment_home_staff"
-        tools:layout="@layout/fragment_home_staff" />
+        tools:layout="@layout/fragment_home_staff" >
+        <action
+            android:id="@+id/action_home_staff_to_detail_to_do_list"
+            app:destination="@id/detailToDoListStaffFragment" />
+    </fragment>
     <fragment
         android:id="@+id/nav_program_staff"
         android:name="com.example.uctc_app.ui.pages.staff.program_list.ProgramStaffFragment"
@@ -283,5 +287,8 @@
         <argument
             android:name="program_id"
             app:argType="string" />
+        <action
+            android:id="@+id/action_action_plan_staff_to_to_do_list"
+            app:destination="@id/toDoListStaffFragment" />
     </fragment>
 </navigation>

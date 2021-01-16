@@ -13,7 +13,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.example.uctc_app.R;
 import com.example.uctc_app.model.local.role.Task;
 import com.example.uctc_app.ui.MainActivity;
@@ -33,6 +36,15 @@ public class TaskFragment extends Fragment {
     @BindView(R.id.rv_task_list)
     RecyclerView rvTask;
 
+    @BindView(R.id.progressBar_cover)
+    ImageView loading_cover;
+
+    @BindView(R.id.progressBar)
+    LottieAnimationView loading;
+
+    @BindView(R.id.lbl_no_data)
+    TextView noDataText;
+
     private TaskViewModel viewModel;
     private TaskUserAdapter adapter;
     private SharedPreferenceHelper helper;
@@ -50,6 +62,9 @@ public class TaskFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
+        showLoading(true);
+        checkNoData(true);
+
         Objects.requireNonNull(((MainActivity) requireActivity()).getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         helper = SharedPreferenceHelper.getInstance(requireActivity());
@@ -73,8 +88,33 @@ public class TaskFragment extends Fragment {
                 adapter.setTaskList(tasks);
                 adapter.notifyDataSetChanged();
                 rvTask.setAdapter(adapter);
+                showLoading(false);
+                checkNoData(false);
+            }else if(tasks == null){
+                checkNoData(true);
             }
         }
     };
 
+    private void showLoading(Boolean state) {
+        if (state) {
+            rvTask.setVisibility(View.GONE);
+            loading.setVisibility(View.VISIBLE);
+            loading_cover.setVisibility(View.VISIBLE);
+        } else {
+            rvTask.setVisibility(View.VISIBLE);
+            loading.setVisibility(View.GONE);
+            loading_cover.setVisibility(View.GONE);
+        }
+    }
+
+    private void checkNoData(Boolean state) {
+        if (state) {
+            rvTask.setVisibility(View.GONE);
+            noDataText.setVisibility(View.VISIBLE);
+        } else {
+            rvTask.setVisibility(View.VISIBLE);
+            noDataText.setVisibility(View.GONE);
+        }
+    }
 }

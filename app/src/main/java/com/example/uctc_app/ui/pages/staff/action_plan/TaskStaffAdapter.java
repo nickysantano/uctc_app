@@ -55,6 +55,7 @@ public class TaskStaffAdapter extends RecyclerView.Adapter<TaskStaffAdapter.View
 
         holder.taskTtl.setText(task.getName());
         holder.taskDate.setText(task.getDate());
+        holder.taskStatus.setText(task.getStatus());
 
         holder.itemView.setOnClickListener(v -> {
             ToDoListStaffFragmentDirections.ActionToDoListToDetailToDoListStaff actionToDoListToDetailToDoListStaff =
@@ -79,13 +80,14 @@ public class TaskStaffAdapter extends RecyclerView.Adapter<TaskStaffAdapter.View
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView taskTtl, taskDate;
+        private TextView taskTtl, taskDate, taskStatus;
         FloatingActionButton delete;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             taskTtl = itemView.findViewById(R.id.task_title);
             taskDate = itemView.findViewById(R.id.lbl_date_task_user);
+            taskStatus = itemView.findViewById(R.id.lbl_status_task);
             delete = itemView.findViewById(R.id.btn_delete_task);
         }
     }

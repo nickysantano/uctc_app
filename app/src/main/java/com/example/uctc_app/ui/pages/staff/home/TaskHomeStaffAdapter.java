@@ -50,8 +50,8 @@ public class TaskHomeStaffAdapter extends RecyclerView.Adapter<TaskHomeStaffAdap
         holder.taskTtl.setText(task.getName());
         holder.taskDate.setText(task.getDate());
         holder.itemView.setOnClickListener(v -> {
-            HomeUserFragmentDirections.ActionHomeToDetailTask actionHomeToDetailTask = HomeUserFragmentDirections.actionHomeToDetailTask(task);
-            Navigation.findNavController(v).navigate(actionHomeToDetailTask);
+            HomeStaffFragmentDirections.ActionHomeStaffToDetailToDoList actionHomeStaffToDetailToDoList = HomeStaffFragmentDirections.actionHomeStaffToDetailToDoList(task);
+            Navigation.findNavController(v).navigate(actionHomeStaffToDetailToDoList);
         });
     }
 

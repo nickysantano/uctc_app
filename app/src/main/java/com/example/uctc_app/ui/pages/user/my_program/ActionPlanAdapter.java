@@ -52,8 +52,10 @@ public class ActionPlanAdapter extends RecyclerView.Adapter<ActionPlanAdapter.Vi
     public void onBindViewHolder(@NonNull ActionPlanAdapter.ViewHolder holder, int position) {
         ActionPlan actionPlan = actionList.get(position);
         Log.d("Hello", "" + actionPlan.getName());
+        Log.d("Hello", "" + actionPlan.getDescription());
 
         holder.name.setText(actionPlan.getName());
+        holder.description.setText(actionPlan.getDescription());
 
         holder.itemView.setOnClickListener(view -> {
             ActionPlanFragmentDirections.ActionActionPlanToTaskUser actionActionPlanToTaskUser = ActionPlanFragmentDirections.actionActionPlanToTaskUser(actionPlan.getId(), program_id);
@@ -67,11 +69,12 @@ public class ActionPlanAdapter extends RecyclerView.Adapter<ActionPlanAdapter.Vi
     }
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView name;
+        private TextView name, description;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.lbl_action_plan_title);
+            description = itemView.findViewById(R.id.lbl_action_plan_description);
         }
     }
 }

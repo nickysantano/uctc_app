@@ -22,6 +22,8 @@ import android.widget.TextView;
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.uctc_app.R;
 import com.example.uctc_app.model.local.role.ActionPlan;
+import com.example.uctc_app.model.local.role.Program;
+import com.example.uctc_app.model.local.role.Task;
 import com.example.uctc_app.ui.MainActivity;
 import com.example.uctc_app.ui.pages.user.my_program.ActionPlanFragmentArgs;
 import com.example.uctc_app.ui.pages.user.my_program.ActionPlanViewModel;
@@ -82,14 +84,22 @@ public class ActionPlanStaffFragment extends Fragment {
 
         rvAction.setLayoutManager(new LinearLayoutManager(getActivity()));
         adapter = new ActionPlanAdapter(getActivity());
+
+
     }
 
-    private Observer<ActionPlan> observer = new Observer<ActionPlan>() {
-        @Override
-        public void onChanged(ActionPlan actionPlan) {
-            programName.setText(actionPlan.getName());
-        }
-    };
+    private void initDetailProgram(Program program) {
+        Objects.requireNonNull((MainActivity) requireActivity()).getSupportActionBar().setTitle("Detail Program");
+        programName.setText(program.getName());
+//        picTask.setText(task.getPic());
+    }
+
+//    private Observer<Program> observer = new Observer<Program>() {
+//        @Override
+//        public void onChanged(Program program) {
+//            programName.setText(program.getName());
+//        }
+//    };
 
     private Observer<List<ActionPlan>> observeViewModel = new Observer<List<ActionPlan>>() {
         @Override

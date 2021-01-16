@@ -84,25 +84,14 @@
                 android:id="@+id/floatingActionButton5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="8dp"
+                android:layout_marginStart="28dp"
                 android:clickable="true"
                 android:src="@drawable/ic_baseline_edit_24"
                 app:backgroundTint="#D6A000"
-                app:layout_constraintEnd_toStartOf="@+id/floatingActionButton6"
-                app:layout_constraintTop_toTopOf="@+id/imageView33" />
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/floatingActionButton6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="24dp"
-                android:clickable="true"
-                android:src="@drawable/ic_baseline_delete_24"
-                app:backgroundTint="#F34949"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/imageView33" />
+                app:layout_constraintBottom_toTopOf="@+id/lbl_due_date_task"
+                app:layout_constraintStart_toEndOf="@+id/lbl_to_do_list_title"
+                app:layout_constraintTop_toTopOf="@+id/lbl_due_date_task"
+                app:layout_constraintVertical_bias="1.0" />
 
             <TextView
                 android:id="@+id/lbl_pic_task"

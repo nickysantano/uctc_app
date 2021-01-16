@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,6 +15,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.example.uctc_app.R;
 import com.example.uctc_app.model.local.role.ActionPlan;
 import com.example.uctc_app.ui.MainActivity;
@@ -30,7 +32,13 @@ import butterknife.ButterKnife;
 
 public class ActionPlanStaffFragment extends Fragment {
 
-    @BindView(R.id.rv_action_plan_user)
+    @BindView(R.id.progressBar_cover)
+    ImageView loading_cover;
+
+    @BindView(R.id.progressBar)
+    LottieAnimationView loading;
+
+    @BindView(R.id.rv_action_plan_staff)
     RecyclerView rvAction;
 
     private ActionPlanViewModel viewModel;
@@ -52,6 +60,7 @@ public class ActionPlanStaffFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
         Log.d("Hello","In the java");
+        showLoading(true);
         Objects.requireNonNull(((MainActivity) requireActivity()).getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         program_id = ActionPlanFragmentArgs.fromBundle(getArguments()).getProgramId();
@@ -71,7 +80,20 @@ public class ActionPlanStaffFragment extends Fragment {
                 adapter.setActionList(actionPlans, program_id);
                 adapter.notifyDataSetChanged();
                 rvAction.setAdapter(adapter);
+                showLoading(false);
             }
         }
     };
+
+    private void showLoading(Boolean state) {
+        if (state) {
+            rvAction.setVisibility(View.GONE);
+            loading.setVisibility(View.VISIBLE);
+            loading_cover.setVisibility(View.VISIBLE);
+        } else {
+            rvAction.setVisibility(View.VISIBLE);
+            loading.setVisibility(View.GONE);
+            loading_cover.setVisibility(View.GONE);
+        }
+    }
 }

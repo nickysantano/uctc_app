@@ -40,7 +40,7 @@ public class HomeStaffFragment extends Fragment {
     @BindView(R.id.rv_to_do_list_staff)
     RecyclerView rvTask;
 
-    private TaskStaffAdapter adapterTask;
+    private TaskHomeStaffAdapter adapterTask;
     private ProfileUserViewModel viewModelProfile;
     private TaskHomeViewModel viewModelTask;
     private SharedPreferenceHelper helper;
@@ -76,7 +76,7 @@ public class HomeStaffFragment extends Fragment {
         viewModelTask = ViewModelProviders.of(requireActivity()).get(TaskHomeViewModel.class);
         viewModelTask.init(helper.getAccessToken());
         rvTask.setLayoutManager(new LinearLayoutManager(getActivity()));
-        adapterTask = new TaskStaffAdapter(getActivity());
+        adapterTask = new TaskHomeStaffAdapter(getActivity());
     }
 
     private Observer<User> observeViewModelProfile = new Observer<User>() {
@@ -92,9 +92,9 @@ public class HomeStaffFragment extends Fragment {
         @Override
         public void onChanged(List<Task> tasks) {
             if (tasks != null) {
-//                adapterTask.setTaskList(tasks);
-//                adapterTask.notifyDataSetChanged();
-//                rvTask.setAdapter(adapterTask);
+                adapterTask.setTaskList(tasks);
+                adapterTask.notifyDataSetChanged();
+                rvTask.setAdapter(adapterTask);
             }
         }
     };

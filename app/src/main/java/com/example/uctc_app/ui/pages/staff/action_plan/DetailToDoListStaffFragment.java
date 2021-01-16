@@ -70,15 +70,7 @@ public class DetailToDoListStaffFragment extends Fragment {
             task = DetailToDoListStaffFragmentArgs.fromBundle(getArguments()).getDetailTask();
             initDetailTask(task);
         }
-
     }
-
-//    @OnClick({R.id.btn_detail_program_action_plan_program})
-//    public void onClick(View view) {
-//        DetailProgramStaffFragmentDirections.ActionDetailProgramStaffToActionPlan actionDetailProgramStaffToActionPlan =
-//                DetailProgramStaffFragmentDirections.actionDetailProgramStaffToActionPlan(program.getProgram_id() + "");
-//        Navigation.findNavController(view).navigate(actionDetailProgramStaffToActionPlan);
-//    }
 
     private void initDetailTask(Task task) {
         Objects.requireNonNull((MainActivity) requireActivity()).getSupportActionBar().setTitle("Detail Program");

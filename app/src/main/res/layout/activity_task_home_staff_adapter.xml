@@ -72,19 +72,6 @@
                 app:layout_constraintStart_toEndOf="@+id/textView29"
                 app:layout_constraintTop_toBottomOf="@+id/task_title" />
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/btn_delete_task"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:clickable="true"
-                android:src="@drawable/ic_baseline_delete_24"
-                app:backgroundTint="#ED4D4D"
-                app:fabSize="mini"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 

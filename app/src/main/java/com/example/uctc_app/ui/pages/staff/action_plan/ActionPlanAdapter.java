@@ -52,6 +52,7 @@ public class ActionPlanAdapter extends RecyclerView.Adapter<ActionPlanAdapter.Vi
         Log.d("Hello", "" + actionPlan.getName());
 
         holder.name.setText(actionPlan.getName());
+        holder.description.setText(actionPlan.getDescription());
 
         holder.itemView.setOnClickListener(view -> {
             ActionPlanStaffFragmentDirections.ActionActionPlanToToDoListStaff actionActionPlanToToDoListStaff =
@@ -68,11 +69,12 @@ public class ActionPlanAdapter extends RecyclerView.Adapter<ActionPlanAdapter.Vi
     }
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView name;
+        private TextView name, description;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.lbl_action_plan_title);
+            description = itemView.findViewById(R.id.lbl_action_plan_description);
         }
     }
 

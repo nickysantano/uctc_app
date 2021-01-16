@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.example.uctc_app.R;
 import com.example.uctc_app.model.local.role.ActionPlan;
+import com.example.uctc_app.model.local.role.Program;
 import com.example.uctc_app.ui.pages.user.my_program.ActionPlanAdapter;
 import com.example.uctc_app.ui.pages.user.my_program.ActionPlanFragmentDirections;
 
@@ -51,8 +52,9 @@ public class ActionPlanStaffAdapter extends RecyclerView.Adapter<ActionPlanStaff
         holder.name.setText(actionPlan.getName());
 
         holder.itemView.setOnClickListener(view -> {
-            ActionPlanFragmentDirections.ActionActionPlanToTaskUser actionActionPlanToTaskUser = ActionPlanFragmentDirections.actionActionPlanToTaskUser(actionPlan.getId(), program_id);
-            Navigation.findNavController(view).navigate(actionActionPlanToTaskUser);
+            ActionPlanStaffFragmentDirections.ActionActionPlanStaffToToDoList actionActionPlanStaffToToDoList =
+                    ActionPlanStaffFragmentDirections.actionActionPlanStaffToToDoList(actionPlan.getId(), program_id);
+            Navigation.findNavController(view).navigate(actionActionPlanStaffToToDoList);
         });
     }
 
