@@ -25,7 +25,6 @@ import com.example.uctc_app.ui.MainActivity;
 import com.example.uctc_app.ui.pages.staff.program_list.DetailProgramStaffFragmentDirections;
 import com.example.uctc_app.ui.pages.staff.program_list.ProgramStaffFragment;
 import com.example.uctc_app.ui.pages.staff.program_list.ProgramStaffFragmentDirections;
-import com.example.uctc_app.ui.pages.user.my_program.ActionPlanAdapter;
 import com.example.uctc_app.ui.pages.user.my_program.ActionPlanFragmentArgs;
 import com.example.uctc_app.ui.pages.user.my_program.ActionPlanViewModel;
 import com.example.uctc_app.ui.pages.user.program_list.AddProgramStaffFragmentDirections;
@@ -44,6 +43,8 @@ public class ActionPlanStaffFragment extends Fragment {
 
     public ActionPlanStaffFragment() {
     }
+
+
     @BindView(R.id.rv_action_plan_staff)
     RecyclerView rvAction;
 
@@ -54,8 +55,9 @@ public class ActionPlanStaffFragment extends Fragment {
 //    FloatingActionButton btnAddActionPlan;
 
     private ActionPlanViewModel viewModel;
-    private com.example.uctc_app.ui.pages.user.my_program.ActionPlanAdapter adapter;
+    private com.example.uctc_app.ui.pages.staff.action_plan.ActionPlanAdapter adapter;
     private SharedPreferenceHelper helper;
+    private String program_id;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -70,14 +72,15 @@ public class ActionPlanStaffFragment extends Fragment {
         Log.d("Hello","In the java");
         Objects.requireNonNull(((MainActivity) requireActivity()).getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
+        program_id = ActionPlanFragmentArgs.fromBundle(getArguments()).getProgramId();
+
         helper = SharedPreferenceHelper.getInstance(requireActivity());
         viewModel = ViewModelProviders.of(requireActivity()).get(ActionPlanViewModel.class);
         viewModel.init(helper.getAccessToken());
-        viewModel.getActionPlans( Integer.parseInt(ActionPlanFragmentArgs.fromBundle(getArguments()).getProgramId())).observe(requireActivity(), observeViewModel); //untuk ambil argument navigation
+        viewModel.getActionPlans(Integer.parseInt(program_id)).observe(requireActivity(), observeViewModel); //untuk ambil argument navigation
 
         rvAction.setLayoutManager(new LinearLayoutManager(getActivity()));
         adapter = new ActionPlanAdapter(getActivity());
-
     }
 
 
@@ -94,7 +97,7 @@ public class ActionPlanStaffFragment extends Fragment {
         @Override
         public void onChanged(List<ActionPlan> actionPlans) {
             if (actionPlans != null) {
-                adapter.setActionList(actionPlans);
+                adapter.setActionList(actionPlans, program_id);
                 adapter.notifyDataSetChanged();
                 rvAction.setAdapter(adapter);
             }

@@ -38,11 +38,12 @@ public class ProgramStaffFragment extends Fragment {
     @BindView(R.id.progressBar)
     ProgressBar loading;
 
-    @BindView(R.id.rv_program_list)
+    @BindView(R.id.rv_program_list_staff)
     RecyclerView rvProgram;
 
     private com.example.uctc_app.ui.pages.user.program_list.ProgramViewModel viewModel;
-    private ProgramAdapter adapter;
+    private ProgramStaffAdapter adapter;
+
     private SharedPreferenceHelper helper;
 
     public ProgramStaffFragment() {
@@ -51,7 +52,7 @@ public class ProgramStaffFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_program_user, container, false);
+        return inflater.inflate(R.layout.fragment_program_staff, container, false);
     }
 
     @Override
@@ -68,14 +69,14 @@ public class ProgramStaffFragment extends Fragment {
         viewModel.getPrograms().observe(requireActivity(), observeViewModel);
 
         rvProgram.setLayoutManager(new LinearLayoutManager(getActivity()));
-        adapter = new ProgramAdapter(getActivity());
+        adapter = new ProgramStaffAdapter(getActivity());
     }
 
-    @OnClick({R.id.btn_add_program})
-    public void onClick(View view) {
-//        NavDirections action = ProgramUserFragmentDirections.actionNavProgramUserToAddProgramStaffFragment();
-//        Navigation.findNavController(view).navigate(action);
-    }
+//    @OnClick({R.id.btn_add_program})
+//    public void onClick(View view) {
+////        NavDirections action = ProgramUserFragmentDirections.actionNavProgramUserToAddProgramStaffFragment();
+////        Navigation.findNavController(view).navigate(action);
+//    }
 
     private Observer<List<Program>> observeViewModel = new Observer<List<Program>>() {
         @Override

@@ -55,10 +55,12 @@ public class ProgramAdapter extends RecyclerView.Adapter<ProgramAdapter.ViewHold
         holder.status.setText(program.getStatus());
         holder.creator.setText(program.getCreated_by());
 
-        holder.itemView.setOnClickListener(view -> {
-            ProgramStaffFragmentDirections.ActionProgramStaffToDetailProgram actionProgramStaffToDetailProgram = ProgramStaffFragmentDirections.actionProgramStaffToDetailProgram(program);
-            Navigation.findNavController(view).navigate(actionProgramStaffToDetailProgram);
-        });
+            holder.itemView.setOnClickListener(view -> {
+                ProgramUserFragmentDirections.ActionProgramToDetailProgramUser actionProgramToDetailProgramUser = ProgramUserFragmentDirections.actionProgramToDetailProgramUser(program);
+                Navigation.findNavController(view).navigate(actionProgramToDetailProgramUser);
+            });
+
+
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

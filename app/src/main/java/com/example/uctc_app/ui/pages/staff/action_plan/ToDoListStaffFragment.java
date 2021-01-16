@@ -12,6 +12,7 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,8 +20,10 @@ import android.view.ViewGroup;
 import com.example.uctc_app.R;
 import com.example.uctc_app.model.local.role.Task;
 import com.example.uctc_app.ui.MainActivity;
+import com.example.uctc_app.ui.pages.user.my_program.ActionPlanFragmentArgs;
 import com.example.uctc_app.ui.pages.user.my_program.TaskViewModel;
 import com.example.uctc_app.utils.SharedPreferenceHelper;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 import java.util.Objects;
@@ -33,6 +36,9 @@ public class ToDoListStaffFragment extends Fragment {
 
     @BindView(R.id.rv_to_do_list_staff)
     RecyclerView rvTask;
+
+    @BindView(R.id.btn_add_task)
+    FloatingActionButton addTask;
 
     private TaskStaffViewModel viewModel;
     private TaskStaffAdapter adapter;
@@ -56,7 +62,9 @@ public class ToDoListStaffFragment extends Fragment {
         helper = SharedPreferenceHelper.getInstance(requireActivity());
         viewModel = ViewModelProviders.of(requireActivity()).get(TaskStaffViewModel.class);
         viewModel.init(helper.getAccessToken());
-//        viewModel.getTask(id).observe(requireActivity(), observeViewModel);
+        viewModel.getTask(ToDoListStaffFragmentArgs.fromBundle(getArguments()).getActionPlanId()).observe(requireActivity(), observeViewModel);
+
+//        viewModel.getActionPlans( Integer.parseInt(ActionPlanFragmentArgs.fromBundle(getArguments()).getProgramId())).observe(requireActivity(), observeViewModel); //untuk ambil argument navigation
 
         rvTask.setLayoutManager(new LinearLayoutManager(getActivity()));
         adapter = new TaskStaffAdapter(getActivity());
@@ -64,8 +72,8 @@ public class ToDoListStaffFragment extends Fragment {
 
     @OnClick({R.id.btn_add_task})
     public void onClick(View view) {
-        NavDirections action = ToDoListStaffFragmentDirections.actionToDoListStaffToAddTask();
-        Navigation.findNavController(view).navigate(action);
+//        NavDirections action = ToDoListStaffFragmentDirections.actionToDoListStaffToAddTask(ActionPlanFragmentArgs.fromBundle(getArguments()).get);
+//        Navigation.findNavController(view).navigate(action);
     }
 
 //    @OnClick({R.id.btnPic})
@@ -78,8 +86,9 @@ public class ToDoListStaffFragment extends Fragment {
         public void onChanged(List<Task> tasks) {
             if (tasks != null) {
                 adapter.setTaskList(tasks);
+                Log.d("WASUPPPPPPPPPPP", "INI TASKS");
                 adapter.notifyDataSetChanged();
-                //recycle
+                rvTask.setAdapter(adapter);
             }
         }
     };

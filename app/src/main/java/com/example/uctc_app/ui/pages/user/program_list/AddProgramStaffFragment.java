@@ -16,22 +16,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.uctc_app.R;
 import com.example.uctc_app.model.local.role.Program;
 import com.example.uctc_app.model.local.role.User;
-import com.example.uctc_app.model.response.role.ProgramResponse;
 import com.example.uctc_app.repository.login.ProfileRepository;
 import com.example.uctc_app.repository.login.ProgramRepository;
 import com.example.uctc_app.ui.MainActivity;
-import com.example.uctc_app.ui.login.LoginFragmentDirections;
-import com.example.uctc_app.ui.login.LoginViewModel;
-import com.example.uctc_app.ui.pages.user.home.HomeUserFragmentDirections;
-import com.example.uctc_app.ui.pages.user.home.RecentEventAdapter;
-import com.example.uctc_app.ui.splash.SplashFragmentDirections;
 import com.example.uctc_app.utils.SharedPreferenceHelper;
-import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Objects;
@@ -55,8 +49,8 @@ public class AddProgramStaffFragment extends Fragment {
     @BindView(R.id.textInputLayout9)
     TextInputLayout lbl_add_client_staff;
 
-//    @BindView(R.id.editTextDate)
-//    TextInputEditText editTextDate;
+    @BindView(R.id.lbl_date_add_program)
+    EditText dateProgram;
 
     @BindView(R.id.btn_add_program_staff)
     Button btn_add_program_staff;
@@ -85,7 +79,7 @@ public class AddProgramStaffFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 repositoryProfile = ProfileRepository.getInstance(helper.getAccessToken());
-                repositoryProfile.getUser().observe(requireActivity(), observer );
+                repositoryProfile.getUser().observe(requireActivity(), observer);
 
                 AddProgramStaffFragmentDirections.ActionAddProgramToProgramUser actionAddProgramToProgramUser = AddProgramStaffFragmentDirections.actionAddProgramToProgramUser();
                 Navigation.findNavController(v).navigate(actionAddProgramToProgramUser);
@@ -101,12 +95,12 @@ public class AddProgramStaffFragment extends Fragment {
 //        });
 //    }
 
-    @OnClick({R.id.btn_add_program_staff})
-    public void onClick(View view) {
-        repositoryProfile = ProfileRepository.getInstance(helper.getAccessToken());
-        repositoryProfile.getUser().observe(requireActivity(), observer );
+//    @OnClick({R.id.btn_add_program_staff})
+//    public void onClick(View view) {
+//        repositoryProfile = ProfileRepository.getInstance(helper.getAccessToken());
+//        repositoryProfile.getUser().observe(requireActivity(), observer );
+//    }
 
-    }
     private Observer<User> observer = new Observer<User>() {
         @Override
         public void onChanged(User user) {
@@ -115,10 +109,10 @@ public class AddProgramStaffFragment extends Fragment {
             repositoryProgram= ProgramRepository.getInstance(helper.getAccessToken());
             repositoryProgram.addProgram(new Program(lbl_add_program_name_staff.getEditText().getText().toString(),
                     lbl_add_description_program_staff.getEditText().getText().toString(),lbl_add_goal_program_staff.getEditText().getText().toString(),
-                    user.getUser_id() + "","Started", "2000-10-10"));
+                    user.getUser_id() + "","Started", dateProgram.getText().toString()));
 
-        }
              }
+        }
     };
 //    public void saveProgram(Program program){
 //        Call<ProgramResponse> programResponseCall =

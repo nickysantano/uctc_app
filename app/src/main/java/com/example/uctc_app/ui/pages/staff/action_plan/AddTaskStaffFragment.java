@@ -86,24 +86,26 @@ public class AddTaskStaffFragment extends Fragment {
         helper = SharedPreferenceHelper.getInstance(requireActivity());
         context = getActivity();
         programRepository = ProgramRepository.getInstance(helper.getAccessToken());
-        programRepository.getCommittees(Integer.parseInt(???.fromBundle(getArguments()).getProgram_id()).observe(requireActivity(), observer );
+//        programRepository.getCommittees(Integer.parseInt(???.fromBundle(getArguments()).getProgram_id()).observe(requireActivity(), observer );
+
+        // viewModel.getActionPlans( Integer.parseInt(ActionPlanFragmentArgs.fromBundle(getArguments()).getProgramId())).observe(requireActivity(), observeViewModel); //untuk ambil argument navigation
 
         //Need from navigation, program Id and Action Plan ID
 
-        button_addtask.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-
-
-                taskRepository = TaskRepository.getInstance(helper.getAccessToken());
-                taskRepository.addTask(new Task( lbl_taskName.getEditText().getText().toString(), "0", lbl_taskDescription.getEditText().getText().toString(),
-                        lbl_taskDate.getEditText().getText().toString()  ,
-                        Integer.parseInt(???.fromBundle(getArguments()).getId()), user.getUser_id()));
-                AddProgramStaffFragmentDirections.ActionAddProgramToProgramUser actionAddProgramToProgramUser = AddProgramStaffFragmentDirections.actionAddProgramToProgramUser();
-                Navigation.findNavController(v).navigate(actionAddProgramToProgramUser);
-            }
-        });
+//        button_addtask.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//
+//
+//                taskRepository = TaskRepository.getInstance(helper.getAccessToken());
+//                taskRepository.addTask(new Task( lbl_taskName.getEditText().getText().toString(), "0", lbl_taskDescription.getEditText().getText().toString(),
+//                        lbl_taskDate.getEditText().getText().toString()  ,
+//                        Integer.parseInt(???.fromBundle(getArguments()).getId()), user.getUser_id()));
+//                AddProgramStaffFragmentDirections.ActionAddProgramToProgramUser actionAddProgramToProgramUser = AddProgramStaffFragmentDirections.actionAddProgramToProgramUser();
+//                Navigation.findNavController(v).navigate(actionAddProgramToProgramUser);
+//            }
+//        });
     }
 
     private Observer <List<User>> observer = new Observer<List<User>>() {

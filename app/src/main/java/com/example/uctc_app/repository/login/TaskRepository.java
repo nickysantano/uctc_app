@@ -46,10 +46,10 @@ public class TaskRepository {
         apiService.getTasks(id).enqueue(new Callback<TaskResponse>() {
             @Override
             public void onResponse(Call<TaskResponse> call, Response<TaskResponse> response) {
-                Log.d(TAG, "onResponse: " + response.code());
+                Log.d(TAG, "onResponse: haiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii " + response.code());
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
-                        Log.d(TAG, "onResponse: Program " + response.body().getResults().size());
+                        Log.d(TAG, "onResponse: Task " + response.body().getResults().size());
                         listTasks.postValue(response.body().getResults());
                     }
                 }

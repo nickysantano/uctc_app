@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.uctc_app.R;
@@ -46,7 +47,8 @@ public class TaskStaffAdapter extends RecyclerView.Adapter<TaskStaffAdapter.View
         holder.taskTtl.setText(task.getName());
         holder.taskDate.setText(task.getDate());
         holder.itemView.setOnClickListener(v -> {
-
+            ToDoListStaffFragmentDirections.ActionToDoListToDetailToDoListStaff actionToDoListToDetailToDoListStaff = ToDoListStaffFragmentDirections.actionToDoListToDetailToDoListStaff(task);
+            Navigation.findNavController(v).navigate(actionToDoListToDetailToDoListStaff);
         });
     }
 

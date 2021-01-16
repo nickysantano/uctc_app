@@ -24,6 +24,11 @@ public class TaskStaffViewModel extends ViewModel {
         repository = TaskRepository.getInstance(token);
     }
 
+    public MutableLiveData<List<Task>> getTask(int id) {
+        Log.d("getTask: ", "Success");
+        return repository.getTasks(id);
+    }
+
     public MutableLiveData<List<Task>> getMyTask(int id) {
         Log.d("getMyTask: ", "Success");
         return repository.getMyTasks(id);

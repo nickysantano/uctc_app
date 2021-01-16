@@ -36,6 +36,7 @@ public class ActionPlanFragment extends Fragment {
 
     private ActionPlanViewModel viewModel;
     private ActionPlanAdapter adapter;
+    private String program_id;
     private SharedPreferenceHelper helper;
 
     public ActionPlanFragment() {
@@ -54,10 +55,12 @@ public class ActionPlanFragment extends Fragment {
         Log.d("Hello","In the java");
         Objects.requireNonNull(((MainActivity) requireActivity()).getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
+        program_id = ActionPlanFragmentArgs.fromBundle(getArguments()).getProgramId();
+
         helper = SharedPreferenceHelper.getInstance(requireActivity());
         viewModel = ViewModelProviders.of(requireActivity()).get(ActionPlanViewModel.class);
         viewModel.init(helper.getAccessToken());
-        viewModel.getActionPlans( Integer.parseInt(ActionPlanFragmentArgs.fromBundle(getArguments()).getProgramId())).observe(requireActivity(), observeViewModel); //untuk ambil argument navigation
+        viewModel.getActionPlans( Integer.parseInt(program_id)).observe(requireActivity(), observeViewModel); //untuk ambil argument navigation
 
         rvAction.setLayoutManager(new LinearLayoutManager(getActivity()));
         adapter = new ActionPlanAdapter(getActivity());
@@ -66,7 +69,7 @@ public class ActionPlanFragment extends Fragment {
         @Override
         public void onChanged(List<ActionPlan> actionPlans) {
             if (actionPlans != null) {
-                adapter.setActionList(actionPlans);
+                adapter.setActionList(actionPlans, program_id);
                 adapter.notifyDataSetChanged();
                 rvAction.setAdapter(adapter);
             }

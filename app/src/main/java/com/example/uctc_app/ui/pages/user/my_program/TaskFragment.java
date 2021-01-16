@@ -17,7 +17,8 @@ import android.view.ViewGroup;
 import com.example.uctc_app.R;
 import com.example.uctc_app.model.local.role.Task;
 import com.example.uctc_app.ui.MainActivity;
-import com.example.uctc_app.ui.pages.user.adapter.TaskAdapter;
+import com.example.uctc_app.ui.pages.staff.action_plan.TaskStaffAdapter;
+import com.example.uctc_app.ui.pages.staff.action_plan.ToDoListStaffFragmentArgs;
 import com.example.uctc_app.utils.SharedPreferenceHelper;
 
 import java.util.List;
@@ -33,7 +34,7 @@ public class TaskFragment extends Fragment {
     RecyclerView rvTask;
 
     private TaskViewModel viewModel;
-    private TaskAdapter adapter;
+    private TaskStaffAdapter adapter;
     private SharedPreferenceHelper helper;
 
     public TaskFragment() {
@@ -54,10 +55,10 @@ public class TaskFragment extends Fragment {
         helper = SharedPreferenceHelper.getInstance(requireActivity());
         viewModel = ViewModelProviders.of(requireActivity()).get(TaskViewModel.class);
         viewModel.init(helper.getAccessToken());
-//        viewModel.getTask(id).observe(requireActivity(), observeViewModel);
+        viewModel.getTask(TaskFragmentArgs.fromBundle(getArguments()).getActionPlanId()).observe(requireActivity(), observeViewModel);
 
         rvTask.setLayoutManager(new LinearLayoutManager(getActivity()));
-        adapter = new TaskAdapter(getActivity());
+        adapter = new TaskStaffAdapter(getActivity());
     }
 
 //    @OnClick({R.id.btnPic})
@@ -71,7 +72,7 @@ public class TaskFragment extends Fragment {
             if (tasks != null) {
                 adapter.setTaskList(tasks);
                 adapter.notifyDataSetChanged();
-                //recycle
+                rvTask.setAdapter(adapter);
             }
         }
     };

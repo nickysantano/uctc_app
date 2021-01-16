@@ -17,6 +17,7 @@ import com.example.uctc_app.model.local.role.ActionPlan;
 import com.example.uctc_app.model.local.role.Program;
 import com.example.uctc_app.model.local.role.User;
 import com.example.uctc_app.ui.pages.staff.program_list.ProgramStaffFragmentDirections;
+import com.example.uctc_app.ui.pages.user.my_program.ActionPlanFragmentArgs;
 import com.example.uctc_app.ui.pages.user.my_program.ActionPlanFragmentDirections;
 
 import java.util.List;
@@ -25,13 +26,15 @@ public class ActionPlanAdapter extends RecyclerView.Adapter<ActionPlanAdapter.Vi
 
     private Context context;
     private List<ActionPlan> actionList;
+    private String program_id;
 
     public ActionPlanAdapter(Context context) {
         this.context = context;
     }
 
-    public void setActionList(List<ActionPlan> actionList) {
+    public void setActionList(List<ActionPlan> actionList, String program_id) {
         this.actionList = actionList;
+        this.program_id = program_id;
         Log.d("SETTING ActionList", getItemCount() + "actions");
         notifyDataSetChanged();
     }
@@ -48,9 +51,14 @@ public class ActionPlanAdapter extends RecyclerView.Adapter<ActionPlanAdapter.Vi
         ActionPlan actionPlan = actionList.get(position);
         Log.d("Hello", "" + actionPlan.getName());
 
+        holder.name.setText(actionPlan.getName());
+
         holder.itemView.setOnClickListener(view -> {
-            ActionPlanStaffFragmentDirections.ActionActionPlanToToDoListStaff actionActionPlanToToDoListStaff = ActionPlanStaffFragmentDirections.actionActionPlanToToDoListStaff(actionPlan.getId());
+            ActionPlanStaffFragmentDirections.ActionActionPlanToToDoListStaff actionActionPlanToToDoListStaff =
+                    ActionPlanStaffFragmentDirections.actionActionPlanToToDoListStaff(actionPlan.getId(), program_id);
             Navigation.findNavController(view).navigate(actionActionPlanToToDoListStaff);
+
+//            viewModel.getActionPlans( Integer.parseInt(ActionPlanFragmentArgs.fromBundle(getArguments()).getProgramId())).observe(requireActivity(), observeViewModel); //untuk ambil argument navigation
         });
     }
 

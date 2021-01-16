@@ -29,13 +29,15 @@ public class ActionPlanAdapter extends RecyclerView.Adapter<ActionPlanAdapter.Vi
 
     private Context context;
     private List<ActionPlan> actionList;
+    private String program_id;
 
     public ActionPlanAdapter(Context context) {
         this.context = context;
     }
 
-    public void setActionList(List<ActionPlan> actionList) {
+    public void setActionList(List<ActionPlan> actionList, String program_id) {
         this.actionList = actionList;
+        this.program_id = program_id;
         Log.d("SETTING ActionList", getItemCount() + "actions");
         notifyDataSetChanged();
     }
@@ -54,8 +56,8 @@ public class ActionPlanAdapter extends RecyclerView.Adapter<ActionPlanAdapter.Vi
         holder.name.setText(actionPlan.getName());
 
         holder.itemView.setOnClickListener(view -> {
-            ActionPlanStaffFragmentDirections.ActionActionPlanToToDoListStaff actionActionPlanToToDoListStaff = ActionPlanStaffFragmentDirections.actionActionPlanToToDoListStaff(actionPlan.getId());
-            Navigation.findNavController(view).navigate(actionActionPlanToToDoListStaff);
+            ActionPlanFragmentDirections.ActionActionPlanToTaskUser actionActionPlanToTaskUser = ActionPlanFragmentDirections.actionActionPlanToTaskUser(actionPlan.getId(), program_id);
+            Navigation.findNavController(view).navigate(actionActionPlanToTaskUser);
         });
     }
 

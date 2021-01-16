@@ -70,11 +70,11 @@ public class ProgramUserFragment extends Fragment {
         adapter = new ProgramAdapter(getActivity());
     }
 
-    @OnClick({R.id.btn_add_program})
-    public void onClick(View view) {
-            NavDirections action = ProgramUserFragmentDirections.actionNavProgramUserToAddProgramStaffFragment();
-            Navigation.findNavController(view).navigate(action);
-    }
+//    @OnClick({R.id.btn_add_program})
+//    public void onClick(View view) {
+//            NavDirections action = ProgramUserFragmentDirections.actionNavProgramUserToAddProgramStaffFragment();
+//            Navigation.findNavController(view).navigate(action);
+//    }
 
     private Observer<List<Program>> observeViewModel = new Observer<List<Program>>() {
         @Override

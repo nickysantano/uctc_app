@@ -134,9 +134,6 @@
         android:label="fragment_action_plan_staff"
         tools:layout="@layout/fragment_action_plan_staff" >
         <action
-            android:id="@+id/action_action_plan_to_add_action_plan_staff"
-            app:destination="@id/addActionPlanStaffFragment" />
-        <action
             android:id="@+id/action_action_plan_to_to_do_list_staff"
             app:destination="@id/toDoListStaffFragment" />
         <action
@@ -172,22 +169,13 @@
         android:label="fragment_user_list_admin"
         tools:layout="@layout/fragment_user_list_admin" />
     <fragment
-        android:id="@+id/addActionPlanStaffFragment"
-        android:name="com.example.uctc_app.ui.pages.staff.action_plan.AddActionPlanStaffFragment"
-        android:label="fragment_add_action_plan_staff"
-        tools:layout="@layout/fragment_add_action_plan_staff" >
-        <action
-            android:id="@+id/action_add_action_plan_to_action_plan_staff"
-            app:destination="@id/nav_action_plan_staff" />
-    </fragment>
-    <fragment
         android:id="@+id/detailToDoListStaffFragment"
         android:name="com.example.uctc_app.ui.pages.staff.action_plan.DetailToDoListStaffFragment"
         android:label="fragment_detail_to_do_list_staff"
         tools:layout="@layout/fragment_detail_to_do_list_staff" >
-        <action
-            android:id="@+id/action_detail_to_do_list_to_create_to_do_list"
-            app:destination="@id/addToDoListStaffFragment" />
+        <argument
+            android:name="DetailTask"
+            app:argType="com.example.uctc_app.model.local.role.Task" />
     </fragment>
     <fragment
         android:id="@+id/toDoListStaffFragment"
@@ -202,17 +190,15 @@
         <action
             android:id="@+id/action_to_do_list_staff_to_add_task"
             app:destination="@id/addTaskStaffFragment" />
+        <argument
+            android:name="program_id"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/commiteeListStaffFragment"
         android:name="com.example.uctc_app.ui.pages.staff.action_plan.CommiteeListStaffFragment"
         android:label="fragment_commitee_list_staff"
         tools:layout="@layout/fragment_commitee_list_staff" />
-    <fragment
-        android:id="@+id/addToDoListStaffFragment"
-        android:name="com.example.uctc_app.ui.pages.staff.action_plan.AddToDoListStaffFragment"
-        android:label="fragment_add_to_do_list_staff"
-        tools:layout="@layout/fragment_add_to_do_list_staff" />
     <fragment
         android:id="@+id/action_plan_fragment"
         android:name="com.example.uctc_app.ui.pages.user.my_program.ActionPlanFragment"
@@ -232,6 +218,9 @@
         <argument
             android:name="actionPlan_id"
             app:argType="integer" />
+        <argument
+            android:name="program_id"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/profileStaffFragment"
@@ -262,6 +251,11 @@
         <action
             android:id="@+id/action_add_staff_fragment_to_to_do_list"
             app:destination="@id/toDoListStaffFragment" />
+        <argument android:name="actionPlan_id"
+            app:argType="integer" />
+        <argument
+            android:name="program_id"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/nav_my_program_staff"
