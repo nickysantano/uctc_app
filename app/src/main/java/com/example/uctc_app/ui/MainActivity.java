@@ -74,6 +74,8 @@ public class MainActivity extends AppCompatActivity { //ini dipake
         public void onChanged(User user) {
             Log.d("USER ROLE", "hai rayyyyyyyyyyyyyyyyyyyyy");
             NavDirections action;
+
+            //ADMIN
             if (user.getRole_id().equalsIgnoreCase("1")) {
                 Log.d("USER ROLE", "ADMIIIN");
                 AppBarConfiguration configuration = new AppBarConfiguration
@@ -97,11 +99,12 @@ public class MainActivity extends AppCompatActivity { //ini dipake
                     }
                 });
 
+                //STAFF
             } else if (user.getRole_id().equalsIgnoreCase("2")) {
                 Log.d("USER ROLE", "STAFF");
 
                 AppBarConfiguration configuration = new AppBarConfiguration
-                        .Builder(R.id.nav_home_staff,  R.id.nav_program_staff, R.id.profileStaffFragment)
+                        .Builder(R.id.nav_home_staff,  R.id.nav_program_staff, R.id.nav_my_program_staff, R.id.profileStaffFragment)
                         .build();
 
                 NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.fragmentcontainer);
@@ -121,6 +124,7 @@ public class MainActivity extends AppCompatActivity { //ini dipake
                     }
                 });
 
+                //USER
             } else if (user.getRole_id().equalsIgnoreCase("3")) {
 
                 AppBarConfiguration configuration = new AppBarConfiguration

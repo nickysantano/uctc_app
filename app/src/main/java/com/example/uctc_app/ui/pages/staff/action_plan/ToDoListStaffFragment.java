@@ -19,10 +19,7 @@ import android.view.ViewGroup;
 import com.example.uctc_app.R;
 import com.example.uctc_app.model.local.role.Task;
 import com.example.uctc_app.ui.MainActivity;
-import com.example.uctc_app.ui.pages.staff.program_list.DetailProgramStaffFragmentDirections;
-import com.example.uctc_app.ui.pages.user.adapter.TaskAdapter;
 import com.example.uctc_app.ui.pages.user.my_program.TaskViewModel;
-import com.example.uctc_app.ui.pages.user.program_list.ProgramUserFragmentDirections;
 import com.example.uctc_app.utils.SharedPreferenceHelper;
 
 import java.util.List;
@@ -37,8 +34,8 @@ public class ToDoListStaffFragment extends Fragment {
     @BindView(R.id.rv_to_do_list_staff)
     RecyclerView rvTask;
 
-    private TaskViewModel viewModel;
-    private TaskAdapter adapter;
+    private TaskStaffViewModel viewModel;
+    private TaskStaffAdapter adapter;
     private SharedPreferenceHelper helper;
 
     public ToDoListStaffFragment() {
@@ -57,12 +54,12 @@ public class ToDoListStaffFragment extends Fragment {
         Objects.requireNonNull(((MainActivity) requireActivity()).getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         helper = SharedPreferenceHelper.getInstance(requireActivity());
-        viewModel = ViewModelProviders.of(requireActivity()).get(TaskViewModel.class);
+        viewModel = ViewModelProviders.of(requireActivity()).get(TaskStaffViewModel.class);
         viewModel.init(helper.getAccessToken());
 //        viewModel.getTask(id).observe(requireActivity(), observeViewModel);
 
         rvTask.setLayoutManager(new LinearLayoutManager(getActivity()));
-        adapter = new TaskAdapter(getActivity());
+        adapter = new TaskStaffAdapter(getActivity());
     }
 
     @OnClick({R.id.btn_add_task})
