@@ -43,6 +43,7 @@ public class ToDoListStaffFragment extends Fragment {
     private TaskStaffViewModel viewModel;
     private TaskStaffAdapter adapter;
     private SharedPreferenceHelper helper;
+    private int actionPlan_id;
 
     public ToDoListStaffFragment() {
     }
@@ -59,12 +60,14 @@ public class ToDoListStaffFragment extends Fragment {
         ButterKnife.bind(this, view);
         Objects.requireNonNull(((MainActivity) requireActivity()).getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
+        actionPlan_id = ToDoListStaffFragmentArgs.fromBundle(getArguments()).getActionPlanId();
+
         helper = SharedPreferenceHelper.getInstance(requireActivity());
         viewModel = ViewModelProviders.of(requireActivity()).get(TaskStaffViewModel.class);
         viewModel.init(helper.getAccessToken());
-        viewModel.getTask(ToDoListStaffFragmentArgs.fromBundle(getArguments()).getActionPlanId()).observe(requireActivity(), observeViewModel);
+        viewModel.getTask(actionPlan_id).observe(requireActivity(), observeViewModel);
 
-//        viewModel.getActionPlans( Integer.parseInt(ActionPlanFragmentArgs.fromBundle(getArguments()).getProgramId())).observe(requireActivity(), observeViewModel); //untuk ambil argument navigation
+//        viewModel.getActionPlans(Integer.parseInt(ActionPlanFragmentArgs.fromBundle(getArguments()).getProgramId())).observe(requireActivity(), observeViewModel); //untuk ambil argument navigation
 
         rvTask.setLayoutManager(new LinearLayoutManager(getActivity()));
         adapter = new TaskStaffAdapter(getActivity());
@@ -72,8 +75,8 @@ public class ToDoListStaffFragment extends Fragment {
 
     @OnClick({R.id.btn_add_task})
     public void onClick(View view) {
-//        NavDirections action = ToDoListStaffFragmentDirections.actionToDoListStaffToAddTask(ActionPlanFragmentArgs.fromBundle(getArguments()).get);
-//        Navigation.findNavController(view).navigate(action);
+        NavDirections action = ToDoListStaffFragmentDirections.actionToDoListStaffToAddTask(actionPlan_id);
+        Navigation.findNavController(view).navigate(action);
     }
 
 //    @OnClick({R.id.btnPic})

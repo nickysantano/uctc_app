@@ -1,8 +1,4 @@
-package com.example.uctc_app.ui.pages.user.home;
-
-import androidx.annotation.NonNull;
-import androidx.navigation.Navigation;
-import androidx.recyclerview.widget.RecyclerView;
+package com.example.uctc_app.ui.pages.user.my_program;
 
 import android.content.Context;
 import android.util.Log;
@@ -11,25 +7,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.uctc_app.R;
 import com.example.uctc_app.model.local.role.Task;
-import com.example.uctc_app.ui.pages.staff.action_plan.TaskStaffAdapter;
-import com.example.uctc_app.ui.pages.user.my_program.TaskFragmentDirections;
-import com.example.uctc_app.ui.pages.user.my_program.TaskViewModel;
-import com.example.uctc_app.utils.SharedPreferenceHelper;
+import com.example.uctc_app.ui.pages.staff.action_plan.ToDoListStaffFragmentDirections;
 
 import java.util.List;
 
-import butterknife.BindView;
-
-public class TaskHomeAdapter extends RecyclerView.Adapter<TaskHomeAdapter.ViewHolder> {
+public class TaskUserAdapter extends RecyclerView.Adapter<TaskUserAdapter.ViewHolder> {
 
 
     private static final String TAG = "TaskAdapter";
     private Context context;
     private List<Task> taskList;
 
-    public TaskHomeAdapter(Context context) {
+    public TaskUserAdapter(Context context) {
         this.context = context;
     }
 
@@ -40,21 +35,23 @@ public class TaskHomeAdapter extends RecyclerView.Adapter<TaskHomeAdapter.ViewHo
 
     @NonNull
     @Override
-    public TaskHomeAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public TaskUserAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.activity_task_adapter, parent, false);
-        return new TaskHomeAdapter.ViewHolder(view);
+        return new TaskUserAdapter.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull TaskHomeAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull TaskUserAdapter.ViewHolder holder, int position) {
         Task task = taskList.get(position);
         Log.d(TAG, "onBindViewHolder: " + task.getName());
 
         holder.taskTtl.setText(task.getName());
         holder.taskDate.setText(task.getDate());
         holder.itemView.setOnClickListener(v -> {
-            HomeUserFragmentDirections.ActionHomeToDetailTask actionHomeToDetailTask = HomeUserFragmentDirections.actionHomeToDetailTask(task);
-            Navigation.findNavController(v).navigate(actionHomeToDetailTask);
+            TaskFragmentDirections.ActionTaskFragmentToDetailTask actionTaskFragmentToDetailTask = TaskFragmentDirections.actionTaskFragmentToDetailTask(task);
+            Navigation.findNavController(v).navigate(actionTaskFragmentToDetailTask);
+//            ToDoListStaffFragmentDirections.ActionToDoListToDetailToDoListStaff actionToDoListToDetailToDoListStaff = ToDoListStaffFragmentDirections.actionToDoListToDetailToDoListStaff(task);
+//            Navigation.findNavController(v).navigate(actionToDoListToDetailToDoListStaff);
         });
     }
 

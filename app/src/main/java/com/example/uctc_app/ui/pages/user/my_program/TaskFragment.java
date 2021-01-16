@@ -34,7 +34,7 @@ public class TaskFragment extends Fragment {
     RecyclerView rvTask;
 
     private TaskViewModel viewModel;
-    private TaskStaffAdapter adapter;
+    private TaskUserAdapter adapter;
     private SharedPreferenceHelper helper;
 
     public TaskFragment() {
@@ -58,7 +58,7 @@ public class TaskFragment extends Fragment {
         viewModel.getTask(TaskFragmentArgs.fromBundle(getArguments()).getActionPlanId()).observe(requireActivity(), observeViewModel);
 
         rvTask.setLayoutManager(new LinearLayoutManager(getActivity()));
-        adapter = new TaskStaffAdapter(getActivity());
+        adapter = new TaskUserAdapter(getActivity());
     }
 
 //    @OnClick({R.id.btnPic})

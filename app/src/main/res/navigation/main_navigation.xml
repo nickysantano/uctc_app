@@ -29,6 +29,9 @@
         <action
             android:id="@+id/action_home_user_to_detail_program_user"
             app:destination="@id/detailProgramUserFragment" />
+        <action
+            android:id="@+id/action_home_to_detail_task"
+            app:destination="@id/detailToDoListFragment" />
     </fragment>
     <fragment
         android:id="@+id/nav_programUser"
@@ -136,9 +139,6 @@
         <action
             android:id="@+id/action_action_plan_to_to_do_list_staff"
             app:destination="@id/toDoListStaffFragment" />
-        <action
-            android:id="@+id/action_action_plan_to_commitee_list_staff"
-            app:destination="@id/commiteeListStaffFragment" />
         <argument
             android:name="program_id"
             app:argType="string" />
@@ -195,11 +195,6 @@
             app:argType="string" />
     </fragment>
     <fragment
-        android:id="@+id/commiteeListStaffFragment"
-        android:name="com.example.uctc_app.ui.pages.staff.action_plan.CommiteeListStaffFragment"
-        android:label="fragment_commitee_list_staff"
-        tools:layout="@layout/fragment_commitee_list_staff" />
-    <fragment
         android:id="@+id/action_plan_fragment"
         android:name="com.example.uctc_app.ui.pages.user.my_program.ActionPlanFragment"
         android:label="fragment_action_plan"
@@ -221,6 +216,9 @@
         <argument
             android:name="program_id"
             app:argType="string" />
+        <action
+            android:id="@+id/action_task_fragment_to_detail_task"
+            app:destination="@id/detailToDoListFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileStaffFragment"
@@ -262,4 +260,13 @@
         android:name="com.example.uctc_app.ui.pages.staff.my_program.MyProgramStaffFragment"
         android:label="fragment_my_program_staff"
         tools:layout="@layout/fragment_my_program_staff" />
+    <fragment
+        android:id="@+id/detailToDoListFragment"
+        android:name="com.example.uctc_app.ui.pages.user.my_program.DetailToDoListFragment"
+        android:label="fragment_detail_to_do_list"
+        tools:layout="@layout/fragment_detail_to_do_list" >
+        <argument
+            android:name="DetailTask"
+            app:argType="com.example.uctc_app.model.local.role.Task" />
+    </fragment>
 </navigation>
