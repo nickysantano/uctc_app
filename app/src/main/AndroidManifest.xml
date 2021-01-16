@@ -9,11 +9,13 @@
         android:icon="@drawable/icon"
         android:label="UCTC"
         android:roundIcon="@mipmap/ic_launcher_round"
+        android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/Theme.Uctc_app"
-        android:screenOrientation="portrait"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.pages.staff.my_program.MyProgramStaffAdapter"></activity>
+        <activity android:name=".ui.pages.staff.home.TaskHomeStaffAdapter"></activity>
+        <activity android:name=".ui.pages.staff.my_program.ActionPlanStaffAdapter" />
+        <activity android:name=".ui.pages.staff.my_program.MyProgramStaffAdapter" />
         <activity android:name=".ui.pages.staff.program_list.ProgramStaffAdapter" />
         <activity android:name=".ui.pages.user.home.TaskHomeAdapter" />
         <activity android:name=".ui.pages.user.home.RecentEventAdapter" />

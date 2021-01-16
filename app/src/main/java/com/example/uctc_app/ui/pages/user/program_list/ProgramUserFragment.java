@@ -16,9 +16,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.example.uctc_app.R;
 import com.example.uctc_app.model.local.role.Program;
 import com.example.uctc_app.ui.MainActivity;
@@ -37,8 +39,13 @@ public class ProgramUserFragment extends Fragment {
     @BindView(R.id.rv_program_list)
     RecyclerView rvProgram;
 
+    @BindView(R.id.progressBar_cover)
+    ImageView loading_cover;
+
     @BindView(R.id.progressBar)
-    ProgressBar loading;
+    LottieAnimationView loading;
+
+
 
     private ProgramViewModel viewModel;
     private ProgramAdapter adapter;
@@ -93,9 +100,11 @@ public class ProgramUserFragment extends Fragment {
         if (state) {
             rvProgram.setVisibility(View.GONE);
             loading.setVisibility(View.VISIBLE);
+            loading_cover.setVisibility(View.VISIBLE);
         } else {
             rvProgram.setVisibility(View.VISIBLE);
             loading.setVisibility(View.GONE);
+            loading_cover.setVisibility(View.GONE);
         }
     }
 }

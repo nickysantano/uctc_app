@@ -14,8 +14,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.example.uctc_app.R;
 import com.example.uctc_app.model.local.role.Program;
 import com.example.uctc_app.model.local.role.User;
@@ -36,8 +38,11 @@ public class MyProgramStaffFragment extends Fragment {
     public MyProgramStaffFragment() {
     }
 
+    @BindView(R.id.progressBar_cover)
+    ImageView loading_cover;
+
     @BindView(R.id.progressBar)
-    ProgressBar loading;
+    LottieAnimationView loading;
 
     @BindView(R.id.rv_my_program_staff)
     RecyclerView rvMyProgram;
@@ -46,7 +51,7 @@ public class MyProgramStaffFragment extends Fragment {
 
     private com.example.uctc_app.ui.pages.user.my_program.MyProgramViewModel viewModel;
     private ProfileUserViewModel profileViewModel;
-    private MyProgramUserAdapter adapter;
+    private MyProgramStaffAdapter adapter;
     private SharedPreferenceHelper helper;
 
     @Override
@@ -72,7 +77,7 @@ public class MyProgramStaffFragment extends Fragment {
 
 
         rvMyProgram.setLayoutManager(new LinearLayoutManager(getActivity()));
-        adapter = new MyProgramUserAdapter(getActivity());
+        adapter = new MyProgramStaffAdapter(getActivity());
 
     }
 
@@ -108,9 +113,11 @@ public class MyProgramStaffFragment extends Fragment {
         if (state) {
             rvMyProgram.setVisibility(View.GONE);
             loading.setVisibility(View.VISIBLE);
+            loading_cover.setVisibility(View.VISIBLE);
         } else {
             rvMyProgram.setVisibility(View.VISIBLE);
             loading.setVisibility(View.GONE);
+            loading_cover.setVisibility(View.GONE);
         }
     }
 

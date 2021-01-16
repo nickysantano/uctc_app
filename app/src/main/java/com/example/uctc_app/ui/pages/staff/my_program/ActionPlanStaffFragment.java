@@ -1,28 +1,23 @@
-package com.example.uctc_app.ui.pages.staff.action_plan;
+package com.example.uctc_app.ui.pages.staff.my_program;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.navigation.NavDirections;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-import com.airbnb.lottie.LottieAnimationView;
 import com.example.uctc_app.R;
 import com.example.uctc_app.model.local.role.ActionPlan;
 import com.example.uctc_app.ui.MainActivity;
+import com.example.uctc_app.ui.pages.user.my_program.ActionPlanAdapter;
 import com.example.uctc_app.ui.pages.user.my_program.ActionPlanFragmentArgs;
 import com.example.uctc_app.ui.pages.user.my_program.ActionPlanViewModel;
 import com.example.uctc_app.utils.SharedPreferenceHelper;
@@ -32,32 +27,19 @@ import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class ActionPlanStaffFragment extends Fragment {
 
-    public ActionPlanStaffFragment() {
-    }
-
-    @BindView(R.id.progressBar_cover)
-    ImageView loading_cover;
-
-    @BindView(R.id.progressBar)
-    LottieAnimationView loading;
-
-    @BindView(R.id.rv_action_plan_staff)
+    @BindView(R.id.rv_action_plan_user)
     RecyclerView rvAction;
 
-    @BindView(R.id.lbl_program_name_staff)
-    TextView programName;
-
-//    @BindView(R.id.btn_program_add_action_plan_staff)
-//    FloatingActionButton btnAddActionPlan;
-
     private ActionPlanViewModel viewModel;
-    private com.example.uctc_app.ui.pages.staff.action_plan.ActionPlanAdapter adapter;
-    private SharedPreferenceHelper helper;
+    private ActionPlanStaffAdapter adapter;
     private String program_id;
+    private SharedPreferenceHelper helper;
+
+    public ActionPlanStaffFragment() {
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -71,26 +53,17 @@ public class ActionPlanStaffFragment extends Fragment {
         ButterKnife.bind(this, view);
         Log.d("Hello","In the java");
         Objects.requireNonNull(((MainActivity) requireActivity()).getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        showLoading(true);
 
         program_id = ActionPlanFragmentArgs.fromBundle(getArguments()).getProgramId();
 
         helper = SharedPreferenceHelper.getInstance(requireActivity());
         viewModel = ViewModelProviders.of(requireActivity()).get(ActionPlanViewModel.class);
         viewModel.init(helper.getAccessToken());
-        viewModel.getActionPlans(Integer.parseInt(program_id)).observe(requireActivity(), observeViewModel); //untuk ambil argument navigation
+        viewModel.getActionPlans( Integer.parseInt(program_id)).observe(requireActivity(), observeViewModel); //untuk ambil argument navigation
 
         rvAction.setLayoutManager(new LinearLayoutManager(getActivity()));
-        adapter = new ActionPlanAdapter(getActivity());
+        adapter = new ActionPlanStaffAdapter(getActivity());
     }
-
-    private Observer<ActionPlan> observer = new Observer<ActionPlan>() {
-        @Override
-        public void onChanged(ActionPlan actionPlan) {
-            programName.setText(actionPlan.getName());
-        }
-    };
-
     private Observer<List<ActionPlan>> observeViewModel = new Observer<List<ActionPlan>>() {
         @Override
         public void onChanged(List<ActionPlan> actionPlans) {
@@ -98,20 +71,7 @@ public class ActionPlanStaffFragment extends Fragment {
                 adapter.setActionList(actionPlans, program_id);
                 adapter.notifyDataSetChanged();
                 rvAction.setAdapter(adapter);
-                showLoading(false);
             }
         }
     };
-
-    private void showLoading(Boolean state) {
-        if (state) {
-            rvAction.setVisibility(View.GONE);
-            loading.setVisibility(View.VISIBLE);
-            loading_cover.setVisibility(View.VISIBLE);
-        } else {
-            rvAction.setVisibility(View.VISIBLE);
-            loading.setVisibility(View.GONE);
-            loading_cover.setVisibility(View.GONE);
-        }
-    }
 }

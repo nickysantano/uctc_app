@@ -53,6 +53,7 @@ public class ProgramRepository {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 Log.d(TAG, "onResponse:" + response.code());
+                Log.d(TAG, "HELLO DELETE HERE " + response.message());
 
             }
 

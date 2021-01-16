@@ -34,6 +34,7 @@ import com.example.uctc_app.ui.pages.user.program_list.AddProgramStaffFragmentDi
 import com.example.uctc_app.utils.SharedPreferenceHelper;
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -52,7 +53,6 @@ public class AddTaskStaffFragment extends Fragment {
     @BindView(R.id.lbl_input_date_task)
     TextInputLayout lbl_taskDate;
 
-
     @BindView(R.id.spinner_pic_add_task)
     Spinner spinner_pic;
 
@@ -64,6 +64,8 @@ public class AddTaskStaffFragment extends Fragment {
     Adapter adapter;
     TaskRepository taskRepository;
     Context context;
+    ArrayList<String> namaTeam = new ArrayList<>();
+    ArrayList<Integer> namaTeamId = new ArrayList<>();
 
     private int actionPlan_id;
     private String program_id;
@@ -74,10 +76,7 @@ public class AddTaskStaffFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-
         return inflater.inflate(R.layout.fragment_add_task_staff, container, false);
-
     }
 
     @Override
@@ -100,12 +99,13 @@ public class AddTaskStaffFragment extends Fragment {
         btnAddTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d("Spinner PIC: ",spinner_pic.getSelectedItem().toString());
                 taskRepository = TaskRepository.getInstance(helper.getAccessToken());
-//                taskRepository.addTask(new Task( lbl_taskName.getEditText().getText().toString(), "0",
-//                        lbl_taskDescription.getText().toString(), lbl_taskDate.getEditText().getText().toString(), actionPlan_id, user.getUser_id());
+                taskRepository.addTask(new Task( lbl_taskName.getEditText().getText().toString(), "0",
+                        lbl_taskDescription.getText().toString(), lbl_taskDate.getEditText().getText().toString(), actionPlan_id, namaTeamId.get(spinner_pic.getSelectedItemPosition())));
 
-//                AddTaskStaffFragmentDirections.ActionAddStaffFragmentToToDoList actionAddStaffFragmentToToDoList = AddTaskStaffFragmentDirections.actionAddStaffFragmentToToDoList();
-//                Navigation.findNavController(v).navigate(actionAddStaffFragmentToToDoList);
+                AddTaskStaffFragmentDirections.ActionAddStaffFragmentToToDoList actionAddStaffFragmentToToDoList = AddTaskStaffFragmentDirections.actionAddStaffFragmentToToDoList(actionPlan_id, program_id);
+                Navigation.findNavController(v).navigate(actionAddStaffFragmentToToDoList);
             }
         });
     }
@@ -113,18 +113,25 @@ public class AddTaskStaffFragment extends Fragment {
     private Observer <List<User>> observer = new Observer<List<User>>() {
         @Override
         public void onChanged(List<User> users) {
+            namaTeam.clear();
+            namaTeamId.clear();
+
             if (users!=null){
                 User[] teamArr = new User[users.size()];
                 teamArr = users.toArray(teamArr);
 
+                for (int i = 0; teamArr.length > i; i++){
+                    namaTeam.add(teamArr[i].getName());
+                    namaTeamId.add(teamArr[i].getUser_id());
+                }
 
-                ArrayAdapter<User> dataAdapter = new ArrayAdapter<User>(context, android.R.layout.simple_spinner_item, teamArr);
+                ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_item, namaTeam);
                 dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinner_pic.setAdapter(dataAdapter);
-
                 //need to check from previous UTS to how to fill in
+
             }
-    };
+        }
     };
 
 

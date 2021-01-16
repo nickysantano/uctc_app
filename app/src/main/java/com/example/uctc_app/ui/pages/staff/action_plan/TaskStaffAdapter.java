@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.uctc_app.R;
 import com.example.uctc_app.model.local.role.Task;
 import com.example.uctc_app.repository.login.ProgramRepository;
+import com.example.uctc_app.repository.login.TaskRepository;
 import com.example.uctc_app.ui.pages.staff.program_list.ProgramStaffFragmentDirections;
 import com.example.uctc_app.utils.SharedPreferenceHelper;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -33,8 +34,10 @@ public class TaskStaffAdapter extends RecyclerView.Adapter<TaskStaffAdapter.View
         this.context = context;
     }
 
-    public void setTaskList(List<Task> taskList) {
+    public void setTaskList(List<Task> taskList, int actionPlan_id, String program_id) {
         this.taskList = taskList;
+        this.actionPlan_id = actionPlan_id;
+        this.program_id = program_id;
         notifyDataSetChanged();
     }
 
@@ -50,23 +53,22 @@ public class TaskStaffAdapter extends RecyclerView.Adapter<TaskStaffAdapter.View
         Task task = taskList.get(position);
         Log.d(TAG, "onBindViewHolder: " + task.getName());
 
-//        actionPlan_id = ToDoListStaffFragmentArgs.fromBundle(getArguments()).getActionPlanId();
-//        program_id = ToDoListStaffFragmentArgs.fromBundle(getArguments()).getProgramId();
-
         holder.taskTtl.setText(task.getName());
         holder.taskDate.setText(task.getDate());
 
         holder.itemView.setOnClickListener(v -> {
-            ToDoListStaffFragmentDirections.ActionToDoListToDetailToDoListStaff actionToDoListToDetailToDoListStaff = ToDoListStaffFragmentDirections.actionToDoListToDetailToDoListStaff(task);
+            ToDoListStaffFragmentDirections.ActionToDoListToDetailToDoListStaff actionToDoListToDetailToDoListStaff =
+                    ToDoListStaffFragmentDirections.actionToDoListToDetailToDoListStaff(task);
             Navigation.findNavController(v).navigate(actionToDoListToDetailToDoListStaff);
         });
 
         holder.delete.setOnClickListener(v -> {
-            ProgramRepository repository = ProgramRepository.getInstance(SharedPreferenceHelper.getInstance(context).getAccessToken());
-            repository.deleteProgram(task.getTask_id());
+            TaskRepository repository = TaskRepository.getInstance(SharedPreferenceHelper.getInstance(context).getAccessToken());
+            repository.deleteTask(task.getTask_id());
+            Log.d("DELETEEEEEEEEEEE", "PLEASEEEEE");
 
-//            ToDoListStaffFragmentDirections.ActionToDoListStaffSelf actionToDoListStaffSelf = ToDoListStaffFragmentDirections.actionToDoListStaffSelf();
-//            Navigation.findNavController(v).navigate(actionToDoListStaffSelf);
+            ToDoListStaffFragmentDirections.ActionToDoListStaffSelf actionToDoListStaffSelf = ToDoListStaffFragmentDirections.actionToDoListStaffSelf(actionPlan_id, program_id);
+            Navigation.findNavController(v).navigate(actionToDoListStaffSelf);
         });
     }
 
