@@ -55,7 +55,7 @@ public class ProfileRepository {
                 Log.d(TAG, "onResponse: " + response.code());
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
-                        Log.d(TAG, "onResponse: Program " + response.body().getResults());
+                        Log.d(TAG, "onResponse: User " + response.body().getResults());
                         listUser.postValue(response.body().getResults());
                     }
                 }

@@ -5,13 +5,13 @@ import com.example.uctc_app.model.local.role.Task;
 import com.example.uctc_app.model.response.role.ActionPlanResponse;
 import com.example.uctc_app.model.response.role.ProgramResponse;
 import com.example.uctc_app.model.response.role.TaskResponse;
+import com.example.uctc_app.model.response.role.TasksResponse;
 import com.example.uctc_app.model.response.role.TokenResponse;
 import com.example.uctc_app.model.response.role.UserResponse;
 import com.example.uctc_app.model.response.role.UsersResponse;
 import com.google.gson.JsonObject;
 
 import retrofit2.Call;
-import retrofit2.Response;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.Field;
@@ -19,7 +19,6 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
-import retrofit2.http.Part;
 import retrofit2.http.Path;
 
 public interface Endpoints {
@@ -35,10 +34,10 @@ public interface Endpoints {
     Call<ActionPlanResponse> getActionPlans(@Path("id") int program_id);
 
     @GET("tasks/{id}")
-    Call<TaskResponse> getTasks(@Path("id") int action_id);
+    Call<TasksResponse> getTasks(@Path("id") int action_id);
 
     @GET("user/{id}/tasks")
-    Call<TaskResponse> getMyTasks(@Path("id") int user_id);
+    Call<TasksResponse> getMyTasks(@Path("id") int user_id);
 
     @POST("tasks")
     @FormUrlEncoded
@@ -52,6 +51,9 @@ public interface Endpoints {
     
     @DELETE("tasks/{id}")
     Call<Void> deleteTask(@Path("id") int id);
+
+    @GET("task/{id}")
+    Call<TaskResponse> getTask(@Path("id") int id);
 
     @GET("programs/{id}")
     Call<ProgramResponse> myPrograms(@Path("id") int user_id);
