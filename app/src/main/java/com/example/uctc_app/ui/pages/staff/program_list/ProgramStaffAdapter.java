@@ -16,7 +16,6 @@ import android.widget.TextView;
 import com.example.uctc_app.R;
 import com.example.uctc_app.model.local.role.Program;
 import com.example.uctc_app.repository.login.ProgramRepository;
-import com.example.uctc_app.ui.pages.user.program_list.ProgramUserFragmentDirections;
 import com.example.uctc_app.utils.SharedPreferenceHelper;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 

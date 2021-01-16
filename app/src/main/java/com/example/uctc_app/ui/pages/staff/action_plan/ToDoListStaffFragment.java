@@ -44,6 +44,7 @@ public class ToDoListStaffFragment extends Fragment {
     private TaskStaffAdapter adapter;
     private SharedPreferenceHelper helper;
     private int actionPlan_id;
+    private  String program_id;
 
     public ToDoListStaffFragment() {
     }
@@ -61,6 +62,7 @@ public class ToDoListStaffFragment extends Fragment {
         Objects.requireNonNull(((MainActivity) requireActivity()).getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         actionPlan_id = ToDoListStaffFragmentArgs.fromBundle(getArguments()).getActionPlanId();
+        program_id = ToDoListStaffFragmentArgs.fromBundle(getArguments()).getProgramId();
 
         helper = SharedPreferenceHelper.getInstance(requireActivity());
         viewModel = ViewModelProviders.of(requireActivity()).get(TaskStaffViewModel.class);
@@ -75,7 +77,7 @@ public class ToDoListStaffFragment extends Fragment {
 
     @OnClick({R.id.btn_add_task})
     public void onClick(View view) {
-        NavDirections action = ToDoListStaffFragmentDirections.actionToDoListStaffToAddTask(actionPlan_id);
+        NavDirections action = ToDoListStaffFragmentDirections.actionToDoListStaffToAddTask(actionPlan_id, program_id);
         Navigation.findNavController(view).navigate(action);
     }
 

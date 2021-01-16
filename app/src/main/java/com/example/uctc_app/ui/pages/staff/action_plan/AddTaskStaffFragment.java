@@ -101,8 +101,8 @@ public class AddTaskStaffFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 taskRepository = TaskRepository.getInstance(helper.getAccessToken());
-                taskRepository.addTask(new Task( lbl_taskName.getEditText().getText().toString(), "0", lbl_taskDescription.getText().toString(),
-                        lbl_taskDate.getEditText().getText().toString(), actionPlan_id, user.getUser_id());
+//                taskRepository.addTask(new Task( lbl_taskName.getEditText().getText().toString(), "0",
+//                        lbl_taskDescription.getText().toString(), lbl_taskDate.getEditText().getText().toString(), actionPlan_id, user.getUser_id());
 
 //                AddTaskStaffFragmentDirections.ActionAddStaffFragmentToToDoList actionAddStaffFragmentToToDoList = AddTaskStaffFragmentDirections.actionAddStaffFragmentToToDoList();
 //                Navigation.findNavController(v).navigate(actionAddStaffFragmentToToDoList);
