@@ -65,6 +65,7 @@ public class UpdateTaskStaffFragment extends Fragment {
     ArrayList<String> namaTeam = new ArrayList<>();
     ArrayList<Integer> namaTeamId = new ArrayList<>();
     Task task;
+    int setPICSpinnerPos;
 
     private int actionPlan_id;
     private String program_id;
@@ -140,11 +141,15 @@ public class UpdateTaskStaffFragment extends Fragment {
                 for (int i = 0; teamArr.length > i; i++){
                     namaTeam.add(teamArr[i].getName());
                     namaTeamId.add(teamArr[i].getUser_id());
+                    if (task.getPic() == teamArr[i].getUser_id()){
+                        setPICSpinnerPos = i;
+                    }
                 }
 
                 ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_item, namaTeam);
                 dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinner_pic.setAdapter(dataAdapter);
+                spinner_pic.setSelection(setPICSpinnerPos);
             }
         }
     };
