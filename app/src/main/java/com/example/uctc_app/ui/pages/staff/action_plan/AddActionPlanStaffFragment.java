@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.example.uctc_app.R;
@@ -45,7 +46,7 @@ public class AddActionPlanStaffFragment extends Fragment {
     TextInputLayout actionPlanName;
 
     @BindView(R.id.lbl_action_plan_description)
-    TextInputEditText actionPlanDescription;
+    EditText actionPlanDescription;
 
     @BindView(R.id.btn_add_action_plan)
     Button btnAddActionPlan;
@@ -82,7 +83,7 @@ public class AddActionPlanStaffFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 ActionPlanRepository actionPlanRepository = ActionPlanRepository.getInstance(helper.getAccessToken());
-                actionPlanRepository.addActionPlan(new ActionPlan(actionPlanName.getEditText().getText().toString(), actionPlanDescription.getEditText().getText().toString(),Integer.parseInt(program_id)));
+                actionPlanRepository.addActionPlan(new ActionPlan(actionPlanName.getEditText().getText().toString(), actionPlanDescription.getText().toString(),Integer.parseInt(program_id)));
 
                 AddActionPlanStaffFragmentDirections.ActionAddActionPlanStaffToActionPlan actionAddActionPlanStaffToActionPlan =
                         AddActionPlanStaffFragmentDirections.actionAddActionPlanStaffToActionPlan(program_id);

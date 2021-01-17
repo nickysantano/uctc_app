@@ -64,11 +64,11 @@ public class UpdateTaskStaffFragment extends Fragment {
     Context context;
     ArrayList<String> namaTeam = new ArrayList<>();
     ArrayList<Integer> namaTeamId = new ArrayList<>();
-    Task task;
     int setPICSpinnerPos;
 
     private int actionPlan_id;
     private String program_id;
+    private Task task;
 
     public UpdateTaskStaffFragment() {
     }
@@ -86,8 +86,9 @@ public class UpdateTaskStaffFragment extends Fragment {
 
         Objects.requireNonNull((MainActivity) requireActivity()).getSupportActionBar().hide();
 
-        actionPlan_id = ToDoListStaffFragmentArgs.fromBundle(getArguments()).getActionPlanId();
-        program_id = ToDoListStaffFragmentArgs.fromBundle(getArguments()).getProgramId();
+        actionPlan_id = UpdateTaskStaffFragmentArgs.fromBundle(getArguments()).getActionPlanId();
+        program_id = UpdateTaskStaffFragmentArgs.fromBundle(getArguments()).getProgramId();
+        task = UpdateTaskStaffFragmentArgs.fromBundle(getArguments()).getDetailTask();
 
         helper = SharedPreferenceHelper.getInstance(requireActivity());
         context = getActivity();
@@ -97,7 +98,7 @@ public class UpdateTaskStaffFragment extends Fragment {
         lbl_taskName.getEditText().setText(task.getName());
         lbl_taskDescription.setText(task.getDescription());
         lbl_taskDate.getEditText().setText(task.getDate());
-        namaTeamId.get(spinner_pic.getSelectedItemPosition());
+//        namaTeamId.get(spinner_pic.getSelectedItemPosition());
 
 //        if (getArguments() != null){
 //            task = UpdateTaskStaffFragmentArgs.fromBundle(getArguments()).getDetailTask();
