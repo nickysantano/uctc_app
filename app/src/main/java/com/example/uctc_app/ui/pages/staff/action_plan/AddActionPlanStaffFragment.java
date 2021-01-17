@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.Spinner;
 
 import com.example.uctc_app.R;
+import com.example.uctc_app.model.local.role.ActionPlan;
 import com.example.uctc_app.model.local.role.Task;
 import com.example.uctc_app.model.local.role.User;
 import com.example.uctc_app.repository.login.ActionPlanRepository;
@@ -34,6 +35,9 @@ import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class AddActionPlanStaffFragment extends Fragment {
 
@@ -69,18 +73,16 @@ public class AddActionPlanStaffFragment extends Fragment {
 
         Objects.requireNonNull((MainActivity) requireActivity()).getSupportActionBar().hide();
 
-        program_id = ToDoListStaffFragmentArgs.fromBundle(getArguments()).getProgramId();
+        program_id = AddActionPlanStaffFragmentArgs.fromBundle(getArguments()).getProgramId();
 
         helper = SharedPreferenceHelper.getInstance(requireActivity());
         context = getActivity();
-        programRepository = ProgramRepository.getInstance(helper.getAccessToken());
-        programRepository.getCommittees(Integer.parseInt(program_id)).observe(requireActivity(), observer);
 
         btnAddActionPlan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                ActionPlanRepository actionPlanRepository = ActionPlanRepository.getInstance(helper.getAccessToken());
-//                actionPlanRepository.addTask(new Task(actionPlanName.getEditText().getText().toString(), actionPlanDescription.getText().toString()));
+                ActionPlanRepository actionPlanRepository = ActionPlanRepository.getInstance(helper.getAccessToken());
+                actionPlanRepository.addActionPlan(new ActionPlan(actionPlanName.getEditText().getText().toString(), actionPlanDescription.getEditText().getText().toString(),Integer.parseInt(program_id)));
 
                 AddActionPlanStaffFragmentDirections.ActionAddActionPlanStaffToActionPlan actionAddActionPlanStaffToActionPlan =
                         AddActionPlanStaffFragmentDirections.actionAddActionPlanStaffToActionPlan(program_id);
@@ -89,12 +91,6 @@ public class AddActionPlanStaffFragment extends Fragment {
         });
     }
 
-    private Observer<List<User>> observer = new Observer<List<User>>() {
-        @Override
-        public void onChanged(List<User> users) {
-
-            }
-    };
 
 
 //    @OnClick({R.id.btn_add_task})
