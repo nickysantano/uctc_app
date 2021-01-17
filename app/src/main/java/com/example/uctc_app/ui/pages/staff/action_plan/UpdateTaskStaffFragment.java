@@ -66,7 +66,6 @@ public class UpdateTaskStaffFragment extends Fragment {
     ArrayList<Integer> namaTeamId = new ArrayList<>();
     Task task;
 
-
     private int actionPlan_id;
     private String program_id;
 
@@ -88,7 +87,6 @@ public class UpdateTaskStaffFragment extends Fragment {
 
         actionPlan_id = ToDoListStaffFragmentArgs.fromBundle(getArguments()).getActionPlanId();
         program_id = ToDoListStaffFragmentArgs.fromBundle(getArguments()).getProgramId();
-
 
         helper = SharedPreferenceHelper.getInstance(requireActivity());
         context = getActivity();
@@ -121,7 +119,7 @@ public class UpdateTaskStaffFragment extends Fragment {
                 Log.d("Spinner PIC: ",spinner_pic.getSelectedItem().toString());
                 taskRepository = TaskRepository.getInstance(helper.getAccessToken());
                 taskRepository.updateTask(task.getTask_id(), task);
-//
+
                 UpdateTaskStaffFragmentDirections.ActionUpdateTaskStaffToToDoList actionUpdateTaskToTaskStaff =
                         UpdateTaskStaffFragmentDirections.actionUpdateTaskStaffToToDoList(actionPlan_id, program_id);
                 Navigation.findNavController(v).navigate(actionUpdateTaskToTaskStaff);

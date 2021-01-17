@@ -238,6 +238,9 @@
         <action
             android:id="@+id/action_task_to_add_task_user"
             app:destination="@id/addTaskUserFragment" />
+        <action
+            android:id="@+id/action_task_user_to_update_task_user"
+            app:destination="@id/updateTaskUserFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileStaffFragment"
@@ -356,4 +359,19 @@
         android:name="com.example.uctc_app.ui.manual.ManualFragment"
         android:label="fragment_manual"
         tools:layout="@layout/fragment_manual" />
+    <fragment
+        android:id="@+id/updateTaskUserFragment"
+        android:name="com.example.uctc_app.ui.pages.user.my_program.UpdateTaskUserFragment"
+        android:label="fragment_update_task_user"
+        tools:layout="@layout/fragment_update_task_user" >
+        <action
+            android:id="@+id/action_update_task_user_to_task_user"
+            app:destination="@id/taskFragment" />
+        <argument
+            android:name="actionPlan_id"
+            app:argType="integer" />
+        <argument
+            android:name="program_id"
+            app:argType="string" />
+    </fragment>
 </navigation>
