@@ -54,6 +54,8 @@ public class DetailToDoListStaffFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
 
+        Objects.requireNonNull((MainActivity) requireActivity()).getSupportActionBar().hide();
+
         helper = SharedPreferenceHelper.getInstance(requireActivity());
         viewModel = ViewModelProviders.of(requireActivity()).get(TaskStaffViewModel.class);
         viewModel.init(helper.getAccessToken());
@@ -65,7 +67,6 @@ public class DetailToDoListStaffFragment extends Fragment {
     }
 
     private void initDetailTask(Task task) {
-        Objects.requireNonNull((MainActivity) requireActivity()).getSupportActionBar().setTitle("Detail Program");
         titleTask.setText(task.getName());
         titleDescription.setText(task.getDescription());
 //        picTask.setText(task.getPic());

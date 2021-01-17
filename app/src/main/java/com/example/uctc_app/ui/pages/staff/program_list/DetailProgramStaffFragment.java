@@ -50,6 +50,9 @@ public class DetailProgramStaffFragment extends Fragment {
     @BindView(R.id.lbl_date_program)
     TextView dateProgram;
 
+    @BindView(R.id.btn_detail_program_action_plan_program)
+    FloatingActionButton toActionPlan;
+
     private ProgramViewModel viewModel;
     private ProfileUserViewModel viewModelProfile;
     private SharedPreferenceHelper helper;
@@ -77,11 +80,7 @@ public class DetailProgramStaffFragment extends Fragment {
         viewModel.init(helper.getAccessToken());
         viewModel.getCommittees(program.getProgram_id()).observe(requireActivity(),programObserver);
 
-
 //        viewModelProfile.getUser().observe(requireActivity(), observer);
-
-
-
 
     }
     private Observer <List<User>> programObserver = new Observer<List<User>>() {
@@ -103,6 +102,8 @@ public class DetailProgramStaffFragment extends Fragment {
                 for (int i = 0 ; i < committeeList.size();i++){
                     if (committeeList.get(i).getUser_id() == user.getUser_id()){
                         //disable button
+                        toActionPlan.setVisibility(View.VISIBLE);
+                        toActionPlan.setEnabled(true);
                     }
                 }
             }

@@ -53,7 +53,6 @@ public class ProfileStaffFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
 
-
         helper = SharedPreferenceHelper.getInstance(requireActivity());
         viewModel = ViewModelProviders.of(requireActivity()).get(ProfileUserViewModel.class);
         viewModel.init(helper.getAccessToken());

@@ -51,9 +51,9 @@ public class MyProgramStaffAdapter extends RecyclerView.Adapter<MyProgramStaffAd
         holder.date.setText(program.getDate());
 
         holder.itemView.setOnClickListener(view -> {
-            MyProgramStaffFragmentDirections.ActionMyProgramStaffToActionPlan actionMyProgramStaffToActionPlan =
-                    MyProgramStaffFragmentDirections.actionMyProgramStaffToActionPlan(program.getProgram_id() + "");
-            Navigation.findNavController(view).navigate(actionMyProgramStaffToActionPlan);
+            MyProgramStaffFragmentDirections.ActionMyProgramStaffToDetailProgram actionMyProgramStaffToDetailProgram =
+                    MyProgramStaffFragmentDirections.actionMyProgramStaffToDetailProgram(program);
+            Navigation.findNavController(view).navigate(actionMyProgramStaffToDetailProgram);
         });
     }
 

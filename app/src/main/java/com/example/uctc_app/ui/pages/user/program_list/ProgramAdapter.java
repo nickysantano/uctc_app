@@ -55,22 +55,9 @@ public class ProgramAdapter extends RecyclerView.Adapter<ProgramAdapter.ViewHold
         holder.status.setText(program.getStatus());
         holder.creator.setText(program.getCreated_by());
 
-            holder.itemView.setOnClickListener(view -> {
-                ProgramUserFragmentDirections.ActionProgramToDetailProgramUser actionProgramToDetailProgramUser = ProgramUserFragmentDirections.actionProgramToDetailProgramUser(program);
-                Navigation.findNavController(view).navigate(actionProgramToDetailProgramUser);
-            });
-
-
-        holder.delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ProgramRepository repository = ProgramRepository.getInstance(SharedPreferenceHelper.getInstance(context).getAccessToken());
-                repository.deleteProgram(program.getProgram_id());
-
-                //buat refresh page
-                ProgramUserFragmentDirections.ActionProgramUserSelf actionProgramUserSelf = ProgramUserFragmentDirections.actionProgramUserSelf();
-                Navigation.findNavController(v).navigate(actionProgramUserSelf);
-            }
+        holder.itemView.setOnClickListener(view -> {
+            ProgramUserFragmentDirections.ActionProgramToDetailProgramUser actionProgramToDetailProgramUser = ProgramUserFragmentDirections.actionProgramToDetailProgramUser(program);
+            Navigation.findNavController(view).navigate(actionProgramToDetailProgramUser);
         });
     }
 
@@ -91,7 +78,6 @@ public class ProgramAdapter extends RecyclerView.Adapter<ProgramAdapter.ViewHold
             description = itemView.findViewById(R.id.lbl_email_user_list_admin);
             status = itemView.findViewById(R.id.lbl_txt_status_event);
             creator = itemView.findViewById(R.id.lbl_user_name);
-            delete = itemView.findViewById(R.id.lbl_program_del);
         }
     }
 

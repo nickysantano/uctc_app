@@ -10,7 +10,7 @@
         android:id="@+id/imageView34"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="150dp"
+        android:layout_marginEnd="125dp"
         android:layout_marginBottom="550dp"
         android:src="@drawable/circle_yellow"
         app:layout_constraintBottom_toBottomOf="@+id/nestedScrollView2"
@@ -21,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
-        tools:layout_editor_absoluteX="-107dp"
+        tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -80,19 +80,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/lbl_to_do_list_description" />
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/floatingActionButton5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="28dp"
-                android:clickable="true"
-                android:src="@drawable/ic_baseline_edit_24"
-                app:backgroundTint="#D6A000"
-                app:layout_constraintBottom_toTopOf="@+id/lbl_due_date_task"
-                app:layout_constraintStart_toEndOf="@+id/lbl_to_do_list_title"
-                app:layout_constraintTop_toTopOf="@+id/lbl_due_date_task"
-                app:layout_constraintVertical_bias="1.0" />
-
             <TextView
                 android:id="@+id/lbl_pic_task"
                 android:layout_width="wrap_content"
@@ -122,6 +109,19 @@
                 android:textSize="18sp"
                 app:layout_constraintStart_toEndOf="@+id/textView35"
                 app:layout_constraintTop_toBottomOf="@+id/lbl_to_do_list_title" />
+
+            <TextView
+                android:id="@+id/textView36"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:text="DETAIL TASK"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/imageView33"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

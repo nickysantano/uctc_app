@@ -11,10 +11,12 @@
         android:id="@+id/lbl_cover_img"
         android:layout_width="410dp"
         android:layout_height="252dp"
+        android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_launcher_background"
         tools:src="@tools:sample/avatars" />
 
     <ImageView
@@ -201,6 +203,23 @@
                 tools:layout_editor_absoluteX="114dp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_detail_program_action_plan_program"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="16dp"
+        android:clickable="true"
+        android:enabled="false"
+        android:src="@drawable/clipboard"
+        android:visibility="gone"
+        app:backgroundTint="#DDB901"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -52,9 +52,9 @@ public class ActionPlanStaffAdapter extends RecyclerView.Adapter<ActionPlanStaff
         holder.name.setText(actionPlan.getName());
 
         holder.itemView.setOnClickListener(view -> {
-            ActionPlanStaffFragmentDirections.ActionActionPlanStaffToToDoList actionActionPlanStaffToToDoList =
-                    ActionPlanStaffFragmentDirections.actionActionPlanStaffToToDoList(actionPlan.getId(), program_id);
-            Navigation.findNavController(view).navigate(actionActionPlanStaffToToDoList);
+//            ActionPlanStaffFragmentDirections.ActionActionPlanStaffToToDoList actionActionPlanStaffToToDoList =
+//                    ActionPlanStaffFragmentDirections.actionActionPlanStaffToToDoList(actionPlan.getId(), program_id);
+//            Navigation.findNavController(view).navigate(actionActionPlanStaffToToDoList);
         });
     }
 

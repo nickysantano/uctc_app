@@ -57,14 +57,6 @@ public class ProgramStaffAdapter  extends RecyclerView.Adapter<ProgramStaffAdapt
             ProgramStaffFragmentDirections.ActionProgramStaffToDetailProgram actionProgramStaffToDetailProgram = ProgramStaffFragmentDirections.actionProgramStaffToDetailProgram(program);
             Navigation.findNavController(view).navigate(actionProgramStaffToDetailProgram);
         });
-
-        holder.delete.setOnClickListener(v -> {
-            ProgramRepository repository = ProgramRepository.getInstance(SharedPreferenceHelper.getInstance(context).getAccessToken());
-            repository.deleteProgram(program.getProgram_id());
-
-            ProgramStaffFragmentDirections.ActionNavProgramStaffSelf actionNavProgramStaffSelf = ProgramStaffFragmentDirections.actionNavProgramStaffSelf();
-            Navigation.findNavController(v).navigate(actionNavProgramStaffSelf);
-        });
     }
 
     @Override
@@ -84,7 +76,6 @@ public class ProgramStaffAdapter  extends RecyclerView.Adapter<ProgramStaffAdapt
             description = itemView.findViewById(R.id.lbl_email_user_list_admin);
             status = itemView.findViewById(R.id.lbl_txt_status_event);
             creator = itemView.findViewById(R.id.lbl_user_name);
-            delete = itemView.findViewById(R.id.lbl_program_del);
         }
     }
 }

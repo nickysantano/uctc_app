@@ -35,6 +35,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="@+id/imageView16"
         app:layout_constraintTop_toTopOf="@+id/imageView16"
+        app:srcCompat="@drawable/user"
         tools:src="@tools:sample/avatars" />
 
     <TextView

@@ -41,7 +41,7 @@ public class TaskHomeAdapter extends RecyclerView.Adapter<TaskHomeAdapter.ViewHo
     @NonNull
     @Override
     public TaskHomeAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.activity_task_adapter, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.activity_task_home_adapter, parent, false);
         return new TaskHomeAdapter.ViewHolder(view);
     }
 

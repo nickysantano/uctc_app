@@ -58,8 +58,8 @@
         android:label="fragment_my_program_user"
         tools:layout="@layout/fragment_my_program_user" >
         <action
-            android:id="@+id/action_my_program_user_to_action_plan"
-            app:destination="@id/action_plan_fragment" />
+            android:id="@+id/action_my_program_user_to_detail_program"
+            app:destination="@id/detailProgramUserFragment" />
     </fragment>
     <fragment
         android:id="@+id/nav_profile"
@@ -102,6 +102,9 @@
         tools:layout="@layout/fragment_detail_program_user" >
         <argument android:name="DetailProgramUser"
             app:argType="com.example.uctc_app.model.local.role.Program" />
+        <action
+            android:id="@+id/action_detail_program_user_to_action_plan_fragment"
+            app:destination="@id/action_plan_fragment" />
     </fragment>
     <fragment
         android:id="@+id/addProgramStaffFragment"
@@ -292,8 +295,8 @@
         android:label="fragment_my_program_staff"
         tools:layout="@layout/fragment_my_program_staff" >
         <action
-            android:id="@+id/action_my_program_staff_to_action_plan"
-            app:destination="@id/actionPlanStaffFragment" />
+            android:id="@+id/action_my_program_staff_to_detail_program"
+            app:destination="@id/detailProgramStaffFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailToDoListFragment"
@@ -303,17 +306,6 @@
         <argument
             android:name="DetailTask"
             app:argType="com.example.uctc_app.model.local.role.Task" />
-    </fragment>
-    <fragment
-        android:id="@+id/actionPlanStaffFragment"
-        android:name="com.example.uctc_app.ui.pages.staff.my_program.ActionPlanStaffFragment"
-        android:label="ActionPlanStaffFragment" >
-        <argument
-            android:name="program_id"
-            app:argType="string" />
-        <action
-            android:id="@+id/action_action_plan_staff_to_to_do_list"
-            app:destination="@id/toDoListStaffFragment" />
     </fragment>
     <fragment
         android:id="@+id/addTaskUserFragment"
