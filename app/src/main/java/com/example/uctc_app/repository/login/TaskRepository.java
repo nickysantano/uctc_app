@@ -124,7 +124,7 @@ public class TaskRepository {
             public void onResponse(Call<Void> call, Response<Void> response) {
                 Log.d(TAG, "onResponse:" + response.code());
                 Log.d(TAG, "onResponse:" + response.message());
-                Log.d("WIFI SUCCESS", "ADDING Task");
+                Log.d("WIFI SUCCESS", "UPDATING Task");
             }
             @Override
             public void onFailure(Call<Void> call, Throwable t) {

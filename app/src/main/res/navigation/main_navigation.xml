@@ -200,6 +200,9 @@
         <action
             android:id="@+id/action_to_do_list_staff_self"
             app:destination="@id/toDoListStaffFragment" />
+        <action
+            android:id="@+id/action_to_do_list_staff_to_update_task_staff"
+            app:destination="@id/updateTaskStaffFragment" />
     </fragment>
     <fragment
         android:id="@+id/action_plan_fragment"
@@ -226,6 +229,9 @@
         <action
             android:id="@+id/action_task_fragment_to_detail_task"
             app:destination="@id/detailToDoListFragment" />
+        <action
+            android:id="@+id/action_task_to_add_task_user"
+            app:destination="@id/addTaskUserFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileStaffFragment"
@@ -290,5 +296,38 @@
         <action
             android:id="@+id/action_action_plan_staff_to_to_do_list"
             app:destination="@id/toDoListStaffFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addTaskUserFragment"
+        android:name="com.example.uctc_app.ui.pages.user.my_program.AddTaskUserFragment"
+        android:label="fragment_add_task_user"
+        tools:layout="@layout/fragment_add_task_user" >
+        <argument
+            android:name="actionPlan_id"
+            app:argType="integer" />
+        <argument
+            android:name="program_id"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_add_task_user_to_task_fragment"
+            app:destination="@id/taskFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateTaskStaffFragment"
+        android:name="com.example.uctc_app.ui.pages.staff.action_plan.UpdateTaskStaffFragment"
+        android:label="fragment_update_task_staff"
+        tools:layout="@layout/fragment_update_task_staff" >
+        <argument
+            android:name="actionPlan_id"
+            app:argType="integer" />
+        <argument
+            android:name="program_id"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_update_task_staff_to_to_do_list"
+            app:destination="@id/toDoListStaffFragment" />
+        <argument
+            android:name="DetailTask"
+            app:argType="com.example.uctc_app.model.local.role.Task" />
     </fragment>
 </navigation>

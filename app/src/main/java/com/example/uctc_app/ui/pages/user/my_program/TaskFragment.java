@@ -7,6 +7,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,7 +24,9 @@ import com.example.uctc_app.model.local.role.Task;
 import com.example.uctc_app.ui.MainActivity;
 import com.example.uctc_app.ui.pages.staff.action_plan.TaskStaffAdapter;
 import com.example.uctc_app.ui.pages.staff.action_plan.ToDoListStaffFragmentArgs;
+import com.example.uctc_app.ui.pages.staff.action_plan.ToDoListStaffFragmentDirections;
 import com.example.uctc_app.utils.SharedPreferenceHelper;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 import java.util.Objects;
@@ -45,9 +49,14 @@ public class TaskFragment extends Fragment {
     @BindView(R.id.lbl_no_data)
     TextView noDataText;
 
+    @BindView(R.id.btn_add_task)
+    FloatingActionButton addTask;
+
     private TaskViewModel viewModel;
     private TaskUserAdapter adapter;
     private SharedPreferenceHelper helper;
+    private int actionPlan_id;
+    private String program_id;
 
     public TaskFragment() {
     }
@@ -67,6 +76,9 @@ public class TaskFragment extends Fragment {
 
         Objects.requireNonNull(((MainActivity) requireActivity()).getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
+        actionPlan_id = ToDoListStaffFragmentArgs.fromBundle(getArguments()).getActionPlanId();
+        program_id = ToDoListStaffFragmentArgs.fromBundle(getArguments()).getProgramId();
+
         helper = SharedPreferenceHelper.getInstance(requireActivity());
         viewModel = ViewModelProviders.of(requireActivity()).get(TaskViewModel.class);
         viewModel.init(helper.getAccessToken());
@@ -74,6 +86,12 @@ public class TaskFragment extends Fragment {
 
         rvTask.setLayoutManager(new LinearLayoutManager(getActivity()));
         adapter = new TaskUserAdapter(getActivity());
+    }
+
+    @OnClick({R.id.btn_add_task})
+    public void onClick(View view) {
+        NavDirections action = TaskFragmentDirections.actionTaskToAddTaskUser(actionPlan_id, program_id);
+        Navigation.findNavController(view).navigate(action);
     }
 
 //    @OnClick({R.id.btnPic})

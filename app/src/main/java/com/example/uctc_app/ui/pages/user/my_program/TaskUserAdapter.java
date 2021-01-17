@@ -47,6 +47,8 @@ public class TaskUserAdapter extends RecyclerView.Adapter<TaskUserAdapter.ViewHo
 
         holder.taskTtl.setText(task.getName());
         holder.taskDate.setText(task.getDate());
+        holder.taskStatus.setText(task.getStatus());
+
         holder.itemView.setOnClickListener(v -> {
             TaskFragmentDirections.ActionTaskFragmentToDetailTask actionTaskFragmentToDetailTask = TaskFragmentDirections.actionTaskFragmentToDetailTask(task);
             Navigation.findNavController(v).navigate(actionTaskFragmentToDetailTask);
@@ -62,12 +64,13 @@ public class TaskUserAdapter extends RecyclerView.Adapter<TaskUserAdapter.ViewHo
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView taskTtl, taskDate;
+        private TextView taskTtl, taskDate, taskStatus;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             taskTtl = itemView.findViewById(R.id.task_title);
             taskDate = itemView.findViewById(R.id.lbl_date_task_user);
+            taskStatus = itemView.findViewById(R.id.lbl_status_task);
         }
     }
 }

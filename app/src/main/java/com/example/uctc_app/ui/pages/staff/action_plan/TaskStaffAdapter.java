@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -21,14 +22,23 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
+import butterknife.BindView;
+
 public class TaskStaffAdapter extends RecyclerView.Adapter<TaskStaffAdapter.ViewHolder> {
 
+    @BindView(R.id.btn_status_on)
+    Button status_done;
+
+    @BindView(R.id.btn_status_off)
+    Button status_ongoing;
 
     private static final String TAG = "TaskAdapter";
     private Context context;
     private List<Task> taskList;
     private int actionPlan_id;
     private String program_id;
+    Task task;
+    private boolean isStatus;
 
     public TaskStaffAdapter(Context context) {
         this.context = context;
@@ -38,6 +48,7 @@ public class TaskStaffAdapter extends RecyclerView.Adapter<TaskStaffAdapter.View
         this.taskList = taskList;
         this.actionPlan_id = actionPlan_id;
         this.program_id = program_id;
+        this.isStatus = isStatus;
         notifyDataSetChanged();
     }
 
@@ -57,10 +68,31 @@ public class TaskStaffAdapter extends RecyclerView.Adapter<TaskStaffAdapter.View
         holder.taskDate.setText(task.getDate());
         holder.taskStatus.setText(task.getStatus());
 
+        if(isStatus){
+            if (task.getStatus().equals("1")) {
+                status_ongoing.setVisibility(View.GONE);
+                status_done.setVisibility(View.VISIBLE);
+            } else if ((task.getStatus().equals("0"))){
+                status_ongoing.setVisibility(View.VISIBLE);
+                status_done.setVisibility(View.GONE);
+            }
+        }
+
+
         holder.itemView.setOnClickListener(v -> {
             ToDoListStaffFragmentDirections.ActionToDoListToDetailToDoListStaff actionToDoListToDetailToDoListStaff =
                     ToDoListStaffFragmentDirections.actionToDoListToDetailToDoListStaff(task);
             Navigation.findNavController(v).navigate(actionToDoListToDetailToDoListStaff);
+        });
+
+        holder.update.setOnClickListener(v -> {
+//            TaskRepository repository = TaskRepository.getInstance(SharedPreferenceHelper.getInstance(context).getAccessToken());
+//            repository.updateTask(task.getTask_id());
+//            Log.d("UPDATE", "PLEASEEEEE");
+
+            ToDoListStaffFragmentDirections.ActionToDoListStaffToUpdateTaskStaff actionToDoListStaffToUpdateTaskStaff =
+                    ToDoListStaffFragmentDirections.actionToDoListStaffToUpdateTaskStaff(actionPlan_id, program_id, task);
+            Navigation.findNavController(v).navigate(actionToDoListStaffToUpdateTaskStaff);
         });
 
         holder.delete.setOnClickListener(v -> {
@@ -81,14 +113,19 @@ public class TaskStaffAdapter extends RecyclerView.Adapter<TaskStaffAdapter.View
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         private TextView taskTtl, taskDate, taskStatus;
-        FloatingActionButton delete;
+        FloatingActionButton update, delete;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             taskTtl = itemView.findViewById(R.id.task_title);
             taskDate = itemView.findViewById(R.id.lbl_date_task_user);
             taskStatus = itemView.findViewById(R.id.lbl_status_task);
+            update = itemView.findViewById(R.id.btn_update_task);
             delete = itemView.findViewById(R.id.btn_delete_task);
         }
+    }
+
+    private void showStatus(Boolean state) {
+
     }
 }
