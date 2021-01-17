@@ -71,7 +71,9 @@ public class ActionPlanRepository {
             public void onResponse(Call<Void> call, Response<Void> response) {
                 Log.d(TAG, "onResponse:" + response.code());
                 Log.d(TAG, "onResponse:" + response.message());
-                Log.d("WIFI SUCCESS", "ADDING ActionPlan");
+                Log.d("WIFI SUCCESS", "ADDING ActionPlan, name: " + actionPlan.getName());
+                Log.d("WIFI SUCCESS", "ADDING ActionPlan, desc: " + actionPlan.getDescription());
+                Log.d("WIFI SUCCESS", "ADDING ActionPlan, program: " + actionPlan.getProgram());
             }
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
