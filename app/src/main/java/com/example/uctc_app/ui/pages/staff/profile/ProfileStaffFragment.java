@@ -58,12 +58,12 @@ public class ProfileStaffFragment extends Fragment {
         viewModel = ViewModelProviders.of(requireActivity()).get(ProfileUserViewModel.class);
         viewModel.init(helper.getAccessToken());
         viewModel.getUser().observe(requireActivity(), observer);
+    }
 
-//        if (getArguments() != null) {
-//            initUser(user);
-//        }else
-//            Log.d("HAI ERROR = ", "Profile ini null");
-//        }
+    @OnClick({R.id.btn_faqs_staff})
+    public void onClick(View view) {
+        NavDirections action = ProfileStaffFragmentDirections.actionProfileStaffToManual();
+        Navigation.findNavController(view).navigate(action);
     }
 
     @OnClick(R.id.btn_logout)

@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import com.example.uctc_app.R;
 import com.example.uctc_app.model.local.role.User;
+import com.example.uctc_app.ui.pages.staff.action_plan.ToDoListStaffFragmentDirections;
 import com.example.uctc_app.utils.SharedPreferenceHelper;
 
 import java.util.List;
@@ -84,6 +85,12 @@ public class ProfileUserFragment extends Fragment {
                 }
             });
         }
+    }
+
+    @OnClick({R.id.btn_faqs})
+    public void onClick(View view) {
+        NavDirections action = ProfileUserFragmentDirections.actionProfileToManual();
+        Navigation.findNavController(view).navigate(action);
     }
 
     @Override
