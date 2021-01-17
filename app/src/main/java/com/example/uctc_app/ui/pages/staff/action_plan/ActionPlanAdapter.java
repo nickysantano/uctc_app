@@ -16,9 +16,13 @@ import com.example.uctc_app.R;
 import com.example.uctc_app.model.local.role.ActionPlan;
 import com.example.uctc_app.model.local.role.Program;
 import com.example.uctc_app.model.local.role.User;
+import com.example.uctc_app.repository.login.ActionPlanRepository;
+import com.example.uctc_app.repository.login.TaskRepository;
 import com.example.uctc_app.ui.pages.staff.program_list.ProgramStaffFragmentDirections;
 import com.example.uctc_app.ui.pages.user.my_program.ActionPlanFragmentArgs;
 import com.example.uctc_app.ui.pages.user.my_program.ActionPlanFragmentDirections;
+import com.example.uctc_app.utils.SharedPreferenceHelper;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
@@ -61,6 +65,26 @@ public class ActionPlanAdapter extends RecyclerView.Adapter<ActionPlanAdapter.Vi
 
 //            viewModel.getActionPlans( Integer.parseInt(ActionPlanFragmentArgs.fromBundle(getArguments()).getProgramId())).observe(requireActivity(), observeViewModel); //untuk ambil argument navigation
         });
+
+        holder.update.setOnClickListener(v -> {
+//            TaskRepository repository = TaskRepository.getInstance(SharedPreferenceHelper.getInstance(context).getAccessToken());
+//            repository.updateTask(task.getTask_id());
+//            Log.d("UPDATE", "PLEASEEEEE");
+
+            ActionPlanStaffFragmentDirections.ActionActionPlanStaffToUpdateActionPlan actionActionPlanStaffToUpdateActionPlan =
+                    ActionPlanStaffFragmentDirections.actionActionPlanStaffToUpdateActionPlan(program_id);
+            Navigation.findNavController(v).navigate(actionActionPlanStaffToUpdateActionPlan);
+        });
+
+        holder.delete.setOnClickListener(v -> {
+//            ActionPlanRepository repository = ActionPlanRepository.getInstance(SharedPreferenceHelper.getInstance(context).getAccessToken());
+//            repository.deleteTask(task.getTask_id());
+//            Log.d("DELETEEEEEEEEEEE", "PLEASEEEEE");
+
+            ActionPlanStaffFragmentDirections.ActionActionPlanStaffToUpdateActionPlan actionActionPlanStaffToUpdateActionPlan =
+                    ActionPlanStaffFragmentDirections.actionActionPlanStaffToUpdateActionPlan(program_id);
+            Navigation.findNavController(v).navigate(actionActionPlanStaffToUpdateActionPlan);
+        });
     }
 
     @Override
@@ -70,11 +94,14 @@ public class ActionPlanAdapter extends RecyclerView.Adapter<ActionPlanAdapter.Vi
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         private TextView name, description;
+        FloatingActionButton update,delete;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.lbl_action_plan_title);
             description = itemView.findViewById(R.id.lbl_action_plan_description);
+            update = itemView.findViewById(R.id.btn_edit_action_plan);
+            delete = itemView.findViewById(R.id.btn_delete_action_plan);
         }
     }
 
