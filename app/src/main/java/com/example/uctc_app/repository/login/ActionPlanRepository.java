@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.uctc_app.model.local.role.ActionPlan;
 import com.example.uctc_app.model.local.role.Program;
+import com.example.uctc_app.model.local.role.Task;
 import com.example.uctc_app.model.response.role.ActionPlanResponse;
 import com.example.uctc_app.model.response.role.ProgramResponse;
 import com.example.uctc_app.model.response.role.TokenResponse;
@@ -63,4 +64,51 @@ public class ActionPlanRepository {
 
         return listAction;
     }
+
+    public void addActionPlan(ActionPlan actionPlan){
+        apiService.addActionPlan(actionPlan).enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                Log.d(TAG, "onResponse:" + response.code());
+                Log.d(TAG, "onResponse:" + response.message());
+                Log.d("WIFI SUCCESS", "ADDING ActionPlan");
+            }
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Log.d(TAG, "onFailure: " + t.getMessage());
+            }
+        });
+    }
+    public  void deleteActionPlan(int id){
+        apiService.deleteActionPlan(id).enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                Log.d(TAG, "onResponse:" + response.code());
+
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Log.d(TAG, "onFailure: " + t.getMessage());
+
+            }
+        });
+    }
+
+    public void updateActionPlan(int id, ActionPlan actionPlan){
+        apiService.updateActionPlan(id,actionPlan).enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                Log.d(TAG, "onResponse:" + response.code());
+                Log.d(TAG, "onResponse:" + response.message());
+                Log.d("WIFI SUCCESS", "UPDATING Task");
+            }
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Log.d(TAG, "onFailure: " + t.getMessage());
+            }
+        });
+    }
+
+
 }
