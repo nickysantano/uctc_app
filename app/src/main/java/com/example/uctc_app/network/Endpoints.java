@@ -1,5 +1,6 @@
 package com.example.uctc_app.network;
 
+import com.example.uctc_app.model.local.role.ActionPlan;
 import com.example.uctc_app.model.local.role.Program;
 import com.example.uctc_app.model.local.role.Task;
 import com.example.uctc_app.model.response.role.ActionPlanResponse;
@@ -32,6 +33,18 @@ public interface Endpoints {
 
     @GET("actions/{id}")
     Call<ActionPlanResponse> getActionPlans(@Path("id") int program_id);
+
+    @POST("actions")
+    @FormUrlEncoded
+    Call<Void> addActionPlan(@Field("name") String name, @Field("description") String description,
+                       @Field("program") int program_id );
+
+    @PUT("actions/{id}")
+    @FormUrlEncoded
+    Call<Void> updateActionPlan(@Path("id") int id, @Body ActionPlan actionPlan);
+
+    @DELETE("actions/{id}")
+    Call<Void> deleteActionPlan(@Path("id") int id);
 
     @GET("tasks/{id}")
     Call<TasksResponse> getTasks(@Path("id") int action_id);
