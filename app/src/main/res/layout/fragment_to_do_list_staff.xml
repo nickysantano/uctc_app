@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="150dp"
-        android:layout_marginBottom="600dp"
+        android:layout_marginBottom="550dp"
         android:src="@drawable/circle_yellow"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -20,7 +20,7 @@
         android:id="@+id/imageView28"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="62dp"
         android:src="@drawable/card_white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,9 +31,7 @@
         android:id="@+id/rv_to_do_list_staff"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -57,7 +55,7 @@
         android:layout_marginStart="24dp"
         android:text="TASK"
         android:textColor="#FFFFFF"
-        android:textSize="24sp"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/imageView28"
         app:layout_constraintStart_toStartOf="parent"
@@ -86,8 +84,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:lottie_loop="true"
         app:lottie_autoPlay="true"
+        app:lottie_loop="true"
         app:lottie_rawRes="@raw/progress_bar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

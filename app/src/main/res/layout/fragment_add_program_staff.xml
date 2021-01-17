@@ -20,7 +20,7 @@
         android:id="@+id/imageView32"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="62dp"
+        android:layout_marginTop="82dp"
         android:src="@drawable/card_white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -119,11 +119,12 @@
 
     <Button
         android:id="@+id/btn_add_program_staff"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="88dp"
+        android:layout_width="146dp"
+        android:layout_height="74dp"
+        android:layout_marginBottom="62dp"
         android:text="ADD PROGRAM"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

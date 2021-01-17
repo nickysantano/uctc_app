@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:paddingEnd="8dp"
+    android:paddingBottom="8dp"
     tools:context=".ui.pages.user.adapter.RecentEventAdapter">
 
     <androidx.cardview.widget.CardView
@@ -52,11 +54,13 @@
                 android:id="@+id/imageView"
                 android:layout_width="146dp"
                 android:layout_height="0dp"
+                android:scaleType="centerCrop"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0"
-                tools:srcCompat="@tools:sample/avatars" />
+                app:srcCompat="@drawable/ic_launcher_background"
+                tools:src="@tools:sample/avatars" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

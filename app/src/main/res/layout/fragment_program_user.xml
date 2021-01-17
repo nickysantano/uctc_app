@@ -30,10 +30,12 @@
     <EditText
         android:id="@+id/search_program_list_user"
         android:layout_width="0dp"
-        android:layout_height="49dp"
+        android:layout_height="53dp"
         android:layout_margin="5dp"
         android:background="@drawable/text_input_bg"
         android:hint="Search..."
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.444"
         app:layout_constraintStart_toStartOf="parent"

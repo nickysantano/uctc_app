@@ -38,9 +38,6 @@ public class ProfileUserFragment extends Fragment {
 
     private ProfileUserViewModel viewModel;
     private SharedPreferenceHelper helper;
-//    private Context context;
-//    private List<User> userData;
-//    private User user;
 
     public ProfileUserFragment() {
     }
