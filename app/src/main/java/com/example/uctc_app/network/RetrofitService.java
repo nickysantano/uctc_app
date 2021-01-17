@@ -2,6 +2,7 @@ package com.example.uctc_app.network;
 
 import android.util.Log;
 
+import com.example.uctc_app.model.local.role.ActionPlan;
 import com.example.uctc_app.model.local.role.Program;
 import com.example.uctc_app.model.local.role.Task;
 import com.example.uctc_app.model.response.role.ActionPlanResponse;
@@ -19,6 +20,13 @@ import okhttp3.Request;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.Body;
+import retrofit2.http.DELETE;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.POST;
+import retrofit2.http.PUT;
+import retrofit2.http.Path;
 
 public class RetrofitService {
 
@@ -98,6 +106,18 @@ public class RetrofitService {
     public Call<ActionPlanResponse> getActionPlans(int program_id){
         return api.getActionPlans(program_id);
     }
+
+    public Call<Void> addActionPlan(ActionPlan actionPlan ){
+        return api.addActionPlan(actionPlan.getName(),actionPlan.getDescription(),actionPlan.getProgram());
+    }
+    public Call<Void> updateActionPlan(int id,ActionPlan actionPlan ){
+        return api.updateActionPlan(id, actionPlan);
+    }
+
+    public Call<Void> deleteActionPlan(int id ){
+        return api.deleteActionPlan(id);
+    }
+
     public Call<TasksResponse> getTasks(int action_id){
         return api.getTasks(action_id);
     }
