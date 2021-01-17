@@ -72,7 +72,7 @@ public class AddActionPlanStaffFragment extends Fragment {
 
         Objects.requireNonNull((MainActivity) requireActivity()).getSupportActionBar().hide();
 
-        program_id = ToDoListStaffFragmentArgs.fromBundle(getArguments()).getProgramId();
+        program_id = AddActionPlanStaffFragmentArgs.fromBundle(getArguments()).getProgramId();
 
         helper = SharedPreferenceHelper.getInstance(requireActivity());
         context = getActivity();
