@@ -1,5 +1,6 @@
 package com.example.uctc_app.ui.pages.staff.program_list;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -26,6 +27,7 @@ import com.example.uctc_app.ui.pages.user.program_list.ProgramUserFragmentDirect
 import com.example.uctc_app.utils.SharedPreferenceHelper;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.List;
 import java.util.Objects;
 
 import butterknife.BindView;
@@ -48,9 +50,10 @@ public class DetailProgramStaffFragment extends Fragment {
     @BindView(R.id.lbl_date_program)
     TextView dateProgram;
 
-    private DetailStaffViewModel viewModel;
+    private ProgramViewModel viewModel;
     private ProfileUserViewModel viewModelProfile;
     private SharedPreferenceHelper helper;
+    List<User> committeeList;
     Program program;
 
     public DetailProgramStaffFragment() {
@@ -66,33 +69,45 @@ public class DetailProgramStaffFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
+        program = DetailProgramStaffFragmentArgs.fromBundle(getArguments()).getDetailProgramStaff();
+        initDetailProgram(program);
 
         helper = SharedPreferenceHelper.getInstance(requireActivity());
-        viewModel = ViewModelProviders.of(requireActivity()).get(DetailStaffViewModel.class);
+        viewModel = ViewModelProviders.of(requireActivity()).get(ProgramViewModel.class);
         viewModel.init(helper.getAccessToken());
+        viewModel.getCommittees(program.getProgram_id()).observe(requireActivity(),programObserver);
 
-        viewModelProfile = ViewModelProviders.of(requireActivity()).get(ProfileUserViewModel.class);
-        viewModelProfile.init(helper.getAccessToken());
+
 //        viewModelProfile.getUser().observe(requireActivity(), observer);
 
-        if (getArguments() != null){
-            program = DetailProgramStaffFragmentArgs.fromBundle(getArguments()).getDetailProgramStaff();
-            initDetailProgram(program);
-        }
+
 
 
     }
+    private Observer <List<User>> programObserver = new Observer<List<User>>() {
+        @Override
+        public void onChanged(List<User> users) {
+            if (users!=null){
+                committeeList = users;
+                viewModelProfile = ViewModelProviders.of(requireActivity()).get(ProfileUserViewModel.class);
+                viewModelProfile.init(helper.getAccessToken());
+                viewModelProfile.getUser().observe(requireActivity(),userObserver);
+            }
+        }
+    };
 
-//    private Observer<User> observer = new Observer<User>() {
-//        @Override
-//        public void onChanged(User user) {
-//            name.setText(user.getName());
-//            role.setText(user.getRole_id());
-//            email.setText(user.getEmail());
-//            department.setText(user.getDepartment_id());
-//            phone.setText(user.getPhone_number());
-//        }
-//    }
+    private Observer<User> userObserver = new Observer<User>() {
+        @Override
+        public void onChanged(User user) {
+            if (user !=null){
+                for (int i = 0 ; i < committeeList.size();i++){
+                    if (committeeList.get(i).getUser_id() == user.getUser_id()){
+                        //disable button
+                    }
+                }
+            }
+        }
+    };
 
     @OnClick({R.id.btn_detail_program_action_plan_program})
     public void onClick(View view) {

@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.uctc_app.model.local.role.Program;
+import com.example.uctc_app.model.local.role.User;
 import com.example.uctc_app.repository.login.ProgramRepository;
 
 import java.util.List;
@@ -27,6 +28,10 @@ public class ProgramViewModel extends ViewModel {
     public LiveData<List<Program>> getPrograms() {
         Log.d("Hello","VIewModel");
         return repository.getPrograms();
+    }
+    public LiveData<List<User>> getCommittees(int id){
+        return repository.getCommittees(id);
+
     }
     public void deleteProgram(int id) {
         Log.d("Hello","DeleteProgram");

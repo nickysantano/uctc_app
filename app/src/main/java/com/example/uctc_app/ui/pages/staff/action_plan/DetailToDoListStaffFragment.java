@@ -6,7 +6,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,21 +13,14 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.uctc_app.R;
-import com.example.uctc_app.model.local.role.Program;
 import com.example.uctc_app.model.local.role.Task;
 import com.example.uctc_app.ui.MainActivity;
-import com.example.uctc_app.ui.pages.staff.program_list.DetailProgramStaffFragmentArgs;
-import com.example.uctc_app.ui.pages.staff.program_list.DetailProgramStaffFragmentDirections;
-import com.example.uctc_app.ui.pages.staff.program_list.DetailStaffViewModel;
 import com.example.uctc_app.utils.SharedPreferenceHelper;
-
-import org.w3c.dom.Text;
 
 import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class DetailToDoListStaffFragment extends Fragment {
 
