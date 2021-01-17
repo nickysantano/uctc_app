@@ -79,9 +79,10 @@ public class AddActionPlanStaffFragment extends Fragment {
             public void onClick(View v) {
 //                ActionPlanRepository actionPlanRepository = ActionPlanRepository.getInstance(helper.getAccessToken());
 //                actionPlanRepository.addTask(new Task(actionPlanName.getEditText().getText().toString(), actionPlanDescription.getText().toString()));
-//
-//                AddTaskStaffFragmentDirections.ActionAddStaffFragmentToToDoList actionAddStaffFragmentToToDoList = AddTaskStaffFragmentDirections.actionAddStaffFragmentToToDoList(actionPlan_id, program_id);
-//                Navigation.findNavController(v).navigate(actionAddStaffFragmentToToDoList);
+
+                AddActionPlanStaffFragmentDirections.ActionAddActionPlanStaffToActionPlan actionAddActionPlanStaffToActionPlan =
+                        AddActionPlanStaffFragmentDirections.actionAddActionPlanStaffToActionPlan(program_id);
+                Navigation.findNavController(v).navigate(actionAddActionPlanStaffToActionPlan);
             }
         });
     }

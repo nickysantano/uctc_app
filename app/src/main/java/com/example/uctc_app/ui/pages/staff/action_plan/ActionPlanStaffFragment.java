@@ -53,13 +53,11 @@ public class ActionPlanStaffFragment extends Fragment {
     @BindView(R.id.lbl_program_name_staff)
     TextView programName;
 
-//    @BindView(R.id.btn_program_add_action_plan_staff)
-//    FloatingActionButton btnAddActionPlan;
-
     private ActionPlanViewModel viewModel;
     private com.example.uctc_app.ui.pages.staff.action_plan.ActionPlanAdapter adapter;
     private SharedPreferenceHelper helper;
     private String program_id;
+    private int actionPlan_id;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -84,8 +82,12 @@ public class ActionPlanStaffFragment extends Fragment {
 
         rvAction.setLayoutManager(new LinearLayoutManager(getActivity()));
         adapter = new ActionPlanAdapter(getActivity());
+    }
 
-
+    @OnClick({R.id.btn_add_action_plan})
+    public void onClick(View view) {
+        NavDirections action = ActionPlanStaffFragmentDirections.actionActionPlanStaffToAddActionPlan(program_id);
+        Navigation.findNavController(view).navigate(action);
     }
 
     private void initDetailProgram(Program program) {
