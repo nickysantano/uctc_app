@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
@@ -16,9 +17,11 @@ import android.widget.TextView;
 
 import com.example.uctc_app.R;
 import com.example.uctc_app.model.local.role.Program;
+import com.example.uctc_app.model.local.role.User;
 import com.example.uctc_app.repository.login.ProgramRepository;
 import com.example.uctc_app.ui.MainActivity;
 import com.example.uctc_app.ui.pages.user.my_program.MyProgramUserFragmentDirections;
+import com.example.uctc_app.ui.pages.user.profile.ProfileUserViewModel;
 import com.example.uctc_app.ui.pages.user.program_list.ProgramUserFragmentDirections;
 import com.example.uctc_app.utils.SharedPreferenceHelper;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -46,6 +49,7 @@ public class DetailProgramStaffFragment extends Fragment {
     TextView dateProgram;
 
     private DetailStaffViewModel viewModel;
+    private ProfileUserViewModel viewModelProfile;
     private SharedPreferenceHelper helper;
     Program program;
 
@@ -67,12 +71,28 @@ public class DetailProgramStaffFragment extends Fragment {
         viewModel = ViewModelProviders.of(requireActivity()).get(DetailStaffViewModel.class);
         viewModel.init(helper.getAccessToken());
 
+        viewModelProfile = ViewModelProviders.of(requireActivity()).get(ProfileUserViewModel.class);
+        viewModelProfile.init(helper.getAccessToken());
+//        viewModelProfile.getUser().observe(requireActivity(), observer);
+
         if (getArguments() != null){
             program = DetailProgramStaffFragmentArgs.fromBundle(getArguments()).getDetailProgramStaff();
             initDetailProgram(program);
         }
 
+
     }
+
+//    private Observer<User> observer = new Observer<User>() {
+//        @Override
+//        public void onChanged(User user) {
+//            name.setText(user.getName());
+//            role.setText(user.getRole_id());
+//            email.setText(user.getEmail());
+//            department.setText(user.getDepartment_id());
+//            phone.setText(user.getPhone_number());
+//        }
+//    }
 
     @OnClick({R.id.btn_detail_program_action_plan_program})
     public void onClick(View view) {
