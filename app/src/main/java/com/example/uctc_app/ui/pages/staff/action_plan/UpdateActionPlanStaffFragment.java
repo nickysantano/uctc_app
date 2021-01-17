@@ -13,8 +13,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.example.uctc_app.R;
+import com.example.uctc_app.model.local.role.ActionPlan;
+import com.example.uctc_app.model.local.role.Task;
 import com.example.uctc_app.model.local.role.User;
 import com.example.uctc_app.repository.login.ActionPlanRepository;
 import com.example.uctc_app.repository.login.ProgramRepository;
@@ -34,7 +37,7 @@ public class UpdateActionPlanStaffFragment extends Fragment {
     TextInputLayout actionPlanName;
 
     @BindView(R.id.lbl_action_plan_description)
-    TextInputEditText actionPlanDescription;
+    EditText actionPlanDescription;
 
     @BindView(R.id.btn_add_action_plan)
     Button btnAddActionPlan;
@@ -43,6 +46,7 @@ public class UpdateActionPlanStaffFragment extends Fragment {
     ProgramRepository programRepository;
     ActionPlanRepository actionPlanRepository;
     Context context;
+    ActionPlan actionPlan;
 
     private String program_id;
 
@@ -62,8 +66,8 @@ public class UpdateActionPlanStaffFragment extends Fragment {
 
         Objects.requireNonNull((MainActivity) requireActivity()).getSupportActionBar().hide();
 
-        program_id = ToDoListStaffFragmentArgs.fromBundle(getArguments()).getProgramId();
-
+        program_id = UpdateActionPlanStaffFragmentArgs.fromBundle(getArguments()).getProgramId();
+        actionPlan = UpdateActionPlanStaffFragmentArgs.fromBundle(getArguments()).getActoinPlan();
         helper = SharedPreferenceHelper.getInstance(requireActivity());
         context = getActivity();
         programRepository = ProgramRepository.getInstance(helper.getAccessToken());
@@ -72,8 +76,8 @@ public class UpdateActionPlanStaffFragment extends Fragment {
         btnAddActionPlan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                ActionPlanRepository actionPlanRepository = ActionPlanRepository.getInstance(helper.getAccessToken());
-//                actionPlanRepository.addTask(new Task(actionPlanName.getEditText().getText().toString(), actionPlanDescription.getText().toString()));
+                ActionPlanRepository actionPlanRepository = ActionPlanRepository.getInstance(helper.getAccessToken());
+                actionPlanRepository.updateActionPlan( actionPlan.getId(),new ActionPlan(actionPlanName.getEditText().getText().toString(), actionPlanDescription.getText().toString(), Integer.parseInt(program_id)));
 
 //                UpdateActionPlanStaffFragment.ActionAddActionPlanStaffToActionPlan actionAddActionPlanStaffToActionPlan =
 //                        AddActionPlanStaffFragmentDirections.actionAddActionPlanStaffToActionPlan(program_id);
