@@ -40,7 +40,7 @@ public class UpdateActionPlanStaffFragment extends Fragment {
     EditText actionPlanDescription;
 
     @BindView(R.id.btn_add_action_plan)
-    Button btnAddActionPlan;
+    Button btnUpdateActionPlan;
 
     SharedPreferenceHelper helper;
     ProgramRepository programRepository;
@@ -67,32 +67,26 @@ public class UpdateActionPlanStaffFragment extends Fragment {
         Objects.requireNonNull((MainActivity) requireActivity()).getSupportActionBar().hide();
 
         program_id = UpdateActionPlanStaffFragmentArgs.fromBundle(getArguments()).getProgramId();
-        actionPlan = UpdateActionPlanStaffFragmentArgs.fromBundle(getArguments()).getActoinPlan();
+        actionPlan = UpdateActionPlanStaffFragmentArgs.fromBundle(getArguments()).getThisActionPlan();
         helper = SharedPreferenceHelper.getInstance(requireActivity());
         context = getActivity();
-        programRepository = ProgramRepository.getInstance(helper.getAccessToken());
-        programRepository.getCommittees(Integer.parseInt(program_id)).observe(requireActivity(), observer);
 
-        btnAddActionPlan.setOnClickListener(new View.OnClickListener() {
+        actionPlanName.getEditText().setText(actionPlan.getName());
+        actionPlanDescription.setText(actionPlan.getDescription());
+
+        btnUpdateActionPlan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ActionPlanRepository actionPlanRepository = ActionPlanRepository.getInstance(helper.getAccessToken());
-                actionPlanRepository.updateActionPlan( actionPlan.getId(),new ActionPlan(actionPlanName.getEditText().getText().toString(), actionPlanDescription.getText().toString(), Integer.parseInt(program_id)));
+                actionPlanRepository.updateActionPlan(actionPlan.getId(), new ActionPlan(actionPlanName.getEditText().getText().toString(),
+                        actionPlanDescription.getText().toString(), Integer.parseInt(program_id)));
 
-//                UpdateActionPlanStaffFragment.ActionAddActionPlanStaffToActionPlan actionAddActionPlanStaffToActionPlan =
-//                        AddActionPlanStaffFragmentDirections.actionAddActionPlanStaffToActionPlan(program_id);
-//                Navigation.findNavController(v).navigate(actionAddActionPlanStaffToActionPlan);
+                UpdateActionPlanStaffFragmentDirections.ActionUpdateActionPlanToActionPlanStaff actionUpdateActionPlanToActionPlanStaff =
+                        UpdateActionPlanStaffFragmentDirections.actionUpdateActionPlanToActionPlanStaff(program_id);
+                Navigation.findNavController(v).navigate(actionUpdateActionPlanToActionPlanStaff);
             }
         });
     }
-
-    private Observer<List<User>> observer = new Observer<List<User>>() {
-        @Override
-        public void onChanged(List<User> users) {
-
-        }
-    };
-
 
 //    @OnClick({R.id.btn_add_task})
 //    public void onClick(View view) {

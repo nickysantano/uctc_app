@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.uctc_app.R;
 import com.example.uctc_app.model.local.role.ActionPlan;
 import com.example.uctc_app.model.local.role.Program;
+import com.example.uctc_app.model.local.role.Task;
 import com.example.uctc_app.model.local.role.User;
 import com.example.uctc_app.repository.login.ActionPlanRepository;
 import com.example.uctc_app.repository.login.TaskRepository;
@@ -63,27 +64,26 @@ public class ActionPlanAdapter extends RecyclerView.Adapter<ActionPlanAdapter.Vi
                     ActionPlanStaffFragmentDirections.actionActionPlanToToDoListStaff(actionPlan.getId(), program_id);
             Navigation.findNavController(view).navigate(actionActionPlanToToDoListStaff);
 
+
 //            viewModel.getActionPlans( Integer.parseInt(ActionPlanFragmentArgs.fromBundle(getArguments()).getProgramId())).observe(requireActivity(), observeViewModel); //untuk ambil argument navigation
         });
 
         holder.update.setOnClickListener(v -> {
-//            TaskRepository repository = TaskRepository.getInstance(SharedPreferenceHelper.getInstance(context).getAccessToken());
-//            repository.updateTask(task.getTask_id());
-//            Log.d("UPDATE", "PLEASEEEEE");
-
+            Log.d("UPDATE", "PLEASEEEEE");
+//
             ActionPlanStaffFragmentDirections.ActionActionPlanStaffToUpdateActionPlan actionActionPlanStaffToUpdateActionPlan =
-                    ActionPlanStaffFragmentDirections.actionActionPlanStaffToUpdateActionPlan(program_id);
+                    ActionPlanStaffFragmentDirections.actionActionPlanStaffToUpdateActionPlan(program_id, actionPlan);
             Navigation.findNavController(v).navigate(actionActionPlanStaffToUpdateActionPlan);
         });
 
         holder.delete.setOnClickListener(v -> {
-//            ActionPlanRepository repository = ActionPlanRepository.getInstance(SharedPreferenceHelper.getInstance(context).getAccessToken());
-//            repository.deleteTask(task.getTask_id());
-//            Log.d("DELETEEEEEEEEEEE", "PLEASEEEEE");
+            ActionPlanRepository repository = ActionPlanRepository.getInstance(SharedPreferenceHelper.getInstance(context).getAccessToken());
+            repository.deleteActionPlan(actionPlan.getId());
+            Log.d("DELETEEEEEEEEEEE", "PLEASEEEEE");
 
-            ActionPlanStaffFragmentDirections.ActionActionPlanStaffToUpdateActionPlan actionActionPlanStaffToUpdateActionPlan =
-                    ActionPlanStaffFragmentDirections.actionActionPlanStaffToUpdateActionPlan(program_id);
-            Navigation.findNavController(v).navigate(actionActionPlanStaffToUpdateActionPlan);
+            ActionPlanStaffFragmentDirections.ActionNavActionPlanStaffSelf actionNavActionPlanStaffSelf =
+                    ActionPlanStaffFragmentDirections.actionNavActionPlanStaffSelf(program_id);
+            Navigation.findNavController(v).navigate(actionNavActionPlanStaffSelf);
         });
     }
 
