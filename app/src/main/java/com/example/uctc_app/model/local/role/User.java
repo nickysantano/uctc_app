@@ -28,6 +28,9 @@ public class User {
     @SerializedName("password")
     String password;
 
+    @SerializedName("picture")
+    String picture;
+
     public String getName() {
         return name;
     }
@@ -90,5 +93,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 }
