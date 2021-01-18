@@ -27,6 +27,7 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public class RetrofitService {
 
@@ -111,7 +112,7 @@ public class RetrofitService {
         return api.addActionPlan(actionPlan.getName(),actionPlan.getDescription(),actionPlan.getProgram());
     }
     public Call<Void> updateActionPlan(int id,ActionPlan actionPlan ){
-        return api.updateActionPlan(id, actionPlan);
+        return api.updateActionPlan(id, actionPlan.getName(), actionPlan.getDescription(), actionPlan.getProgram());
     }
 
     public Call<Void> deleteActionPlan(int id ){
@@ -136,7 +137,9 @@ public class RetrofitService {
     }
 
     public Call<Void> updateTask(int id,Task task){
-        return api.updateTasks(id, task);
+        return api.updateTasks(id, task.getName(), Integer.parseInt(task.getStatus()), task.getDescription(), task.getDate(), task.getAction_plan(), task.getPic());
+//        @Path("id") int id, @Query("name") String name, @Query("status") int status,@Query("description") String description,
+//        @Query("due_date") String due_date,@Query("action_plan") int action_plan, @Query("PIC") int pic );
     }
 
 

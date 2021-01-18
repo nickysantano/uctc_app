@@ -146,7 +146,7 @@ public class MainActivity extends AppCompatActivity { //ini dipake
                     }else{
                         navigationViewUser.setVisibility(View.GONE);
                     }
-                });
+                }); //setpreference atau ifnya di tweak
             }
 
 
