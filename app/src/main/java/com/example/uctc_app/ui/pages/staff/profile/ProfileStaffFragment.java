@@ -1,5 +1,7 @@
 package com.example.uctc_app.ui.pages.staff.profile;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,15 +16,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.uctc_app.R;
 import com.example.uctc_app.model.local.role.User;
 import com.example.uctc_app.ui.pages.user.profile.ProfileUserFragment;
 import com.example.uctc_app.ui.pages.user.profile.ProfileUserFragmentDirections;
 import com.example.uctc_app.ui.pages.user.profile.ProfileUserViewModel;
+import com.example.uctc_app.utils.Constants;
 import com.example.uctc_app.utils.SharedPreferenceHelper;
+
+import java.io.File;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -68,15 +75,12 @@ public class ProfileStaffFragment extends Fragment {
     @OnClick(R.id.btn_logout)
     public void logout(View view) {
         if (view.getId() == R.id.btn_logout) {
-            viewModel.logout().observe(requireActivity(), new Observer<String>() {
-                @Override
-                public void onChanged(String message) {
-                    if (!message.isEmpty()) {
-                        helper.clearPref();
-                        NavDirections action = ProfileStaffFragmentDirections.actionProfileStaffToLogin();
-                        Navigation.findNavController(view).navigate(action);
-                        Toast.makeText(ProfileStaffFragment.this.getActivity(), message, Toast.LENGTH_SHORT).show();
-                    }
+            viewModel.logout().observe(requireActivity(), message -> {
+                if (!message.isEmpty()) {
+                    helper.clearPref();
+                    NavDirections action = ProfileStaffFragmentDirections.actionProfileStaffToLogin();
+                    Navigation.findNavController(view).navigate(action);
+                    Toast.makeText(ProfileStaffFragment.this.getActivity(), message, Toast.LENGTH_SHORT).show();
                 }
             });
         }
@@ -87,6 +91,9 @@ public class ProfileStaffFragment extends Fragment {
         super.onDetach();
         getActivity().getViewModelStore().clear();
     }
+
+    @BindView(R.id.lbl_imgProfile_user)
+    ImageView imgProfile;
 
     @BindView(R.id.lbl_name_profile)
     TextView name;
@@ -106,6 +113,16 @@ public class ProfileStaffFragment extends Fragment {
     private Observer<User> observer = new Observer<User>() {
         @Override
         public void onChanged(User user) {
+//            if (user.getStudentResult() != null){
+//                File imgFile = new File("/img/userPic" + user.getStudentResult().getStudentPhoto());
+//
+//                if (imgFile.exists()){
+//                    Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+//                    imgProfile.setImageBitmap(myBitmap);
+//                }
+//                Glide.with(getActivity()).load(Constants.BaseSetting.BASE_IMAGE_URL + user.getImage()).into(imgProfile);
+//            }
+
             name.setText(user.getName());
             role.setText(user.getRole_id());
             email.setText(user.getEmail());
