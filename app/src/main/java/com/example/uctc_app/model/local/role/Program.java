@@ -27,6 +27,9 @@ public class Program implements Parcelable {
     @SerializedName("program_date")
     String date;
 
+    @SerializedName("thumbnail")
+    String thumbnail;
+
     public Program (){}
 
     public Program( String name, String description, String goal, String created_by, String status, String date) {
@@ -46,15 +49,18 @@ public class Program implements Parcelable {
         created_by = in.readString();
         status = in.readString();
         date = in.readString();
+        thumbnail = in.readString();
     }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(name);
         dest.writeString(description);
+        dest.writeString(goal);
         dest.writeString(created_by);
         dest.writeString(status);
         dest.writeString(date);
+        dest.writeString(thumbnail);
     }
 
     @Override
@@ -128,5 +134,13 @@ public class Program implements Parcelable {
 
     public void setProgram_id(int program_id) {
         this.program_id = program_id;
+    }
+
+    public String getThumbnail() {
+        return thumbnail;
+    }
+
+    public void setThumbnail(String thumbnail) {
+        this.thumbnail = thumbnail;
     }
 }
