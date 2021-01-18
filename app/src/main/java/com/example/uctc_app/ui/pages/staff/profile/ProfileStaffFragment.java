@@ -92,7 +92,7 @@ public class ProfileStaffFragment extends Fragment {
         getActivity().getViewModelStore().clear();
     }
 
-    @BindView(R.id.lbl_imgProfile_user)
+    @BindView(R.id.imgProfile)
     ImageView imgProfile;
 
     @BindView(R.id.lbl_name_profile)
@@ -113,16 +113,17 @@ public class ProfileStaffFragment extends Fragment {
     private Observer<User> observer = new Observer<User>() {
         @Override
         public void onChanged(User user) {
-//            if (user.getStudentResult() != null){
-//                File imgFile = new File("/img/userPic" + user.getStudentResult().getStudentPhoto());
+//            if (user.getPicture() != null){
+//                File imgFile = new File("/img/userPic" + user.getPicture());
 //
 //                if (imgFile.exists()){
 //                    Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
 //                    imgProfile.setImageBitmap(myBitmap);
 //                }
-//                Glide.with(getActivity()).load(Constants.BaseSetting.BASE_IMAGE_URL + user.getImage()).into(imgProfile);
+////                Glide.with(getActivity()).load("/img/userPic" + user.getPicture()).into(imgProfile);
 //            }
 
+            Glide.with(getActivity()).load(Constants.BASE_IMAGE_URL + user.getPicture()).into(imgProfile);
             name.setText(user.getName());
             role.setText(user.getRole_id());
             email.setText(user.getEmail());
