@@ -108,7 +108,7 @@ public class TaskStaffAdapter extends RecyclerView.Adapter<TaskStaffAdapter.View
             ToDoListStaffFragmentDirections.ActionToDoListStaffSelf actionToDoListStaffSelf = ToDoListStaffFragmentDirections.actionToDoListStaffSelf(actionPlan_id, program_id);
             Navigation.findNavController(v).navigate(actionToDoListStaffSelf);
         });
-        if (task.getStatus().equalsIgnoreCase("1")){
+        if (task.getStatus().equalsIgnoreCase("0")){
             holder.on.setEnabled(false);
             holder.on.setVisibility(View.GONE);
             holder.off.setEnabled(true);

@@ -89,7 +89,7 @@ public class TaskUserAdapter extends RecyclerView.Adapter<TaskUserAdapter.ViewHo
             TaskFragmentDirections.ActionTaskUserFragmentSelf actionTaskUserFragmentSelf = TaskFragmentDirections.actionTaskUserFragmentSelf(actionPlan_id, program_id);
             Navigation.findNavController(v).navigate(actionTaskUserFragmentSelf);
         });
-        if (task.getStatus().equalsIgnoreCase("1")){
+        if (task.getStatus().equalsIgnoreCase("0")){
             holder.on.setEnabled(false);
             holder.on.setVisibility(View.GONE);
             holder.off.setEnabled(true);
