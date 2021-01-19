@@ -26,19 +26,37 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imgProfile"
-        android:layout_width="129dp"
-        android:layout_height="133dp"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:cardCornerRadius="50dp"
         android:layout_marginTop="84dp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView16"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="@+id/imageView16"
-        app:layout_constraintTop_toTopOf="@+id/imageView16"
-        app:srcCompat="@drawable/user"
-        android:scaleType="centerCrop"
-        tools:src="@tools:sample/avatars" />
+        app:layout_constraintEnd_toEndOf="@+id/imageView4"
+        app:layout_constraintStart_toStartOf="@+id/imageView4"
+        app:layout_constraintTop_toTopOf="@+id/imageView16">
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imgProfile"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintCircleRadius="200dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/user"
+                tools:src="@tools:sample/avatars" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
 <!--    <de.hdodenhof.circleimageview.CircleImageView-->
 <!--        xmlns:app="http://schemas.android.com/apk/res-auto"-->
 <!--        android:id="@+id/profile_image"-->
@@ -59,7 +77,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/imageView16"
         app:layout_constraintStart_toStartOf="@+id/imageView16"
-        app:layout_constraintTop_toBottomOf="@+id/imgProfile" />
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
     <TextView
         android:id="@+id/lbl_name_profile2"

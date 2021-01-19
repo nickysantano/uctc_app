@@ -50,7 +50,17 @@ public class ProgramStaffAdapter  extends RecyclerView.Adapter<ProgramStaffAdapt
 
         holder.name.setText(program.getName());
         holder.description.setText(program.getDescription());
-        holder.status.setText(program.getStatus());
+
+        if (program.getStatus().equalsIgnoreCase("0")){
+            holder.status.setText("Pending");
+        }else if(program.getStatus().equalsIgnoreCase("1")){
+            holder.status.setText("On-going");
+        }else if(program.getStatus().equalsIgnoreCase("2")){
+            holder.status.setText("Finished");
+        }else{
+            holder.status.setText("Suspended");
+        }
+
         holder.creator.setText(program.getCreated_by());
 
         holder.itemView.setOnClickListener(view -> {

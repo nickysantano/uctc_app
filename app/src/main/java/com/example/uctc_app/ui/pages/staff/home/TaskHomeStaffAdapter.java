@@ -52,7 +52,7 @@ public class TaskHomeStaffAdapter extends RecyclerView.Adapter<TaskHomeStaffAdap
         holder.taskTtl.setText(task.getName());
         holder.taskDate.setText(task.getDate());
         holder.itemView.setOnClickListener(v -> {
-            HomeStaffFragmentDirections.ActionHomeStaffToDetailToDoList actionHomeStaffToDetailToDoList = HomeStaffFragmentDirections.actionHomeStaffToDetailToDoList(task, program_id);
+            HomeStaffFragmentDirections.ActionHomeStaffToDetailToDoList actionHomeStaffToDetailToDoList = HomeStaffFragmentDirections.actionHomeStaffToDetailToDoList(task);
             Navigation.findNavController(v).navigate(actionHomeStaffToDetailToDoList);
         });
     }

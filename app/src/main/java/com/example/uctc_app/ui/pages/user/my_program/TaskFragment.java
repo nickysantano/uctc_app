@@ -103,7 +103,7 @@ public class TaskFragment extends Fragment {
         @Override
         public void onChanged(List<Task> tasks) {
             if (tasks != null) {
-                adapter.setTaskList(tasks);
+                adapter.setTaskList(tasks, actionPlan_id, program_id);
                 adapter.notifyDataSetChanged();
                 rvTask.setAdapter(adapter);
                 showLoading(false);

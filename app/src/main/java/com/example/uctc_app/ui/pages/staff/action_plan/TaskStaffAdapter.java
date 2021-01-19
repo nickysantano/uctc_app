@@ -66,7 +66,12 @@ public class TaskStaffAdapter extends RecyclerView.Adapter<TaskStaffAdapter.View
 
         holder.taskTtl.setText(task.getName());
         holder.taskDate.setText(task.getDate());
-        holder.taskStatus.setText(task.getStatus());
+
+        if (task.getStatus().equalsIgnoreCase("0")){
+            holder.taskStatus.setText("On-going");
+        }else if(task.getStatus().equalsIgnoreCase("1")){
+            holder.taskStatus.setText("Finished");
+        }
 
         if(isStatus){
             if (task.getStatus().equals("1")) {
@@ -81,7 +86,7 @@ public class TaskStaffAdapter extends RecyclerView.Adapter<TaskStaffAdapter.View
 
         holder.itemView.setOnClickListener(v -> {
             ToDoListStaffFragmentDirections.ActionToDoListToDetailToDoListStaff actionToDoListToDetailToDoListStaff =
-                    ToDoListStaffFragmentDirections.actionToDoListToDetailToDoListStaff(task, program_id);
+                    ToDoListStaffFragmentDirections.actionToDoListToDetailToDoListStaff(task);
             Navigation.findNavController(v).navigate(actionToDoListToDetailToDoListStaff);
         });
 

@@ -16,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.example.uctc_app.R;
 import com.example.uctc_app.model.local.role.Program;
@@ -41,6 +42,12 @@ public class HomeUserFragment extends Fragment {
 
     @BindView(R.id.rv_task_home_user)
     RecyclerView rvTask;
+
+    @BindView(R.id.no_task)
+    TextView no_task;
+
+    @BindView(R.id.no_program)
+    TextView no_program;
 
     private RecentEventAdapter adapter;
     private TaskHomeAdapter adapterTask;
@@ -95,6 +102,8 @@ public class HomeUserFragment extends Fragment {
                 adapter.setEventList(programs);
                 adapter.notifyDataSetChanged();
                 rvRecentProgram.setAdapter(adapter);
+                no_program.setVisibility(View.GONE);
+
 //                showLoading(false);
             }
         }
@@ -116,19 +125,8 @@ public class HomeUserFragment extends Fragment {
                 adapterTask.setTaskList(tasks);
                 adapterTask.notifyDataSetChanged();
                 rvTask.setAdapter(adapterTask);
+                no_task.setVisibility(View.GONE);
             }
         }
     };
-
-//    private void showLoading(Boolean state) {
-//        if (state) {
-//            rvRecentProgram.setVisibility(View.GONE);
-//            rvTask.setVisibility(View.GONE);
-//            loading.setVisibility(View.VISIBLE);
-//        } else {
-//            rvRecentProgram.setVisibility(View.VISIBLE);
-//            rvTask.setVisibility(View.VISIBLE);
-//            loading.setVisibility(View.GONE);
-//        }
-//    }
 }

@@ -10,104 +10,127 @@
         android:id="@+id/imageView34"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="150dp"
+        android:layout_marginEnd="100dp"
         android:layout_marginBottom="550dp"
         android:src="@drawable/circle_yellow"
         app:layout_constraintBottom_toBottomOf="@+id/nestedScrollView2"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <ImageView
+        android:id="@+id/imageView33"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="62dp"
+        android:src="@drawable/card_white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView43"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="470dp"
+        android:layout_marginEnd="200dp"
+        android:src="@drawable/circle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView30"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:text="DETAIL TASK"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/imageView33"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nestedScrollView2"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:fillViewport="true"
-        tools:layout_editor_absoluteX="-107dp"
-        tools:layout_editor_absoluteY="0dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView33">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/imageView33"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginTop="62dp"
-                android:src="@drawable/card_white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/lbl_to_do_list_title"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="32dp"
                 android:text="@string/txtToDoLists"
                 android:textColor="#0E2F56"
-                android:textSize="24sp"
+                android:textSize="30sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/imageView33" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/lbl_to_do_list_description"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="32dp"
                 android:layout_marginEnd="16dp"
                 android:text="@string/txtDescToDoList"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.516"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView35" />
+                app:layout_constraintTop_toBottomOf="@+id/lbl_pic_task" />
 
             <TextView
                 android:id="@+id/textview22"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:text="Person In Charge"
+                android:layout_marginTop="8dp"
+                android:text="PIC: "
                 android:textColor="#0E2F56"
-                android:textSize="24sp"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/lbl_to_do_list_description" />
+                app:layout_constraintTop_toBottomOf="@+id/lbl_due_date_task" />
 
             <TextView
                 android:id="@+id/lbl_pic_task"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
                 android:text="TextView"
                 android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textview22" />
-
-            <TextView
-                android:id="@+id/textView35"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="Due Date: "
-                android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/lbl_to_do_list_title" />
+                app:layout_constraintStart_toEndOf="@+id/textview22"
+                app:layout_constraintTop_toBottomOf="@+id/lbl_due_date_task" />
 
             <TextView
                 android:id="@+id/lbl_due_date_task"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="16dp"
+                android:background="@drawable/blue_layout"
+                android:paddingStart="8dp"
+                android:paddingTop="4dp"
+                android:paddingEnd="8dp"
+                android:paddingBottom="4dp"
                 android:text="YYYY-MM-DD"
-                android:textSize="18sp"
-                app:layout_constraintStart_toEndOf="@+id/textView35"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/lbl_to_do_list_title" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

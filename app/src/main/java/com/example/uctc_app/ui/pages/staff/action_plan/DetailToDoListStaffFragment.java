@@ -19,6 +19,7 @@ import com.example.uctc_app.model.local.role.Task;
 import com.example.uctc_app.model.local.role.User;
 import com.example.uctc_app.repository.login.ProgramRepository;
 import com.example.uctc_app.ui.MainActivity;
+import com.example.uctc_app.ui.pages.staff.profile.ProfileStaffViewModel;
 import com.example.uctc_app.ui.pages.staff.program_list.DetailProgramStaffFragmentArgs;
 import com.example.uctc_app.ui.pages.staff.program_list.ProgramViewModel;
 import com.example.uctc_app.ui.pages.user.profile.ProfileUserViewModel;
@@ -45,11 +46,9 @@ public class DetailToDoListStaffFragment extends Fragment {
     TextView dateTask;
 
     private TaskStaffViewModel viewModel;
-    private ProgramViewModel viewModelProgram;
-    private ProgramRepository repository;
+    private ProfileStaffViewModel viewModelProfile;
     private SharedPreferenceHelper helper;
     Task task;
-    String program_id;
 
     public DetailToDoListStaffFragment() {
     }
@@ -64,17 +63,16 @@ public class DetailToDoListStaffFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
-        program_id = DetailToDoListStaffFragmentArgs.fromBundle(getArguments()).getProgramId();
 
-        Objects.requireNonNull((MainActivity) requireActivity()).getSupportActionBar().hide();
+        Objects.requireNonNull((MainActivity) requireActivity()).getSupportActionBar().setTitle("Detail Task");
 
         helper = SharedPreferenceHelper.getInstance(requireActivity());
         viewModel = ViewModelProviders.of(requireActivity()).get(TaskStaffViewModel.class);
         viewModel.init(helper.getAccessToken());
 
-        viewModelProgram = ViewModelProviders.of(requireActivity()).get(ProgramViewModel.class);
-        viewModelProgram.init(helper.getAccessToken());
-        viewModelProgram.getCommittees(Integer.parseInt(program_id)).observe(requireActivity(), programObserver);
+        viewModelProfile = ViewModelProviders.of(requireActivity()).get(ProfileStaffViewModel.class);
+        viewModelProfile.init(helper.getAccessToken());
+        viewModelProfile.getUsers().observe(requireActivity(), profileObserver);
 
         if (getArguments() != null){
             task = DetailToDoListStaffFragmentArgs.fromBundle(getArguments()).getDetailTask();
@@ -85,11 +83,10 @@ public class DetailToDoListStaffFragment extends Fragment {
     private void initDetailTask(Task task) {
         titleTask.setText(task.getName());
         titleDescription.setText(task.getDescription());
-        picTask.setText(task.getPic());
         dateTask.setText(task.getDate());
     }
 
-    private Observer<List<User>> programObserver = new Observer<List<User>>() {
+    private Observer<List<User>> profileObserver = new Observer<List<User>>() {
         @Override
         public void onChanged(List<User> users) {
             if (users!=null){
@@ -98,7 +95,6 @@ public class DetailToDoListStaffFragment extends Fragment {
                         picTask.setText(users.get(i).getName());
                         break;
                     }
-
                 }
             }
         }

@@ -113,21 +113,24 @@ public class ProfileStaffFragment extends Fragment {
     private Observer<User> observer = new Observer<User>() {
         @Override
         public void onChanged(User user) {
-//            if (user.getPicture() != null){
-//                File imgFile = new File("/img/userPic" + user.getPicture());
-//
-//                if (imgFile.exists()){
-//                    Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
-//                    imgProfile.setImageBitmap(myBitmap);
-//                }
-////                Glide.with(getActivity()).load("/img/userPic" + user.getPicture()).into(imgProfile);
-//            }
 
             Glide.with(getActivity()).load(Constants.BASE_IMAGE_URL + user.getPicture()).into(imgProfile);
             name.setText(user.getName());
-            role.setText(user.getRole_id());
+
+            if (user.getRole_id().equalsIgnoreCase("2")){
+                role.setText("LECTURER");
+            }else {
+                role.setText("STUDENT");
+            }
+
             email.setText(user.getEmail());
-            department.setText(user.getDepartment_id());
+
+            if (user.getDepartment_id().equalsIgnoreCase("1")){
+                department.setText("ISB");
+            }else{
+                department.setText("IMT");
+            }
+
             phone.setText(user.getPhone_number());
         }
 

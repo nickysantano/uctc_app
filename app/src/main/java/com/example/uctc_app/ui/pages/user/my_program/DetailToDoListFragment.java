@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.view.LayoutInflater;
@@ -14,11 +15,13 @@ import android.widget.TextView;
 
 import com.example.uctc_app.R;
 import com.example.uctc_app.model.local.role.Task;
+import com.example.uctc_app.model.local.role.User;
 import com.example.uctc_app.ui.MainActivity;
-import com.example.uctc_app.ui.pages.staff.action_plan.DetailToDoListStaffFragmentArgs;
 import com.example.uctc_app.ui.pages.staff.action_plan.TaskStaffViewModel;
+import com.example.uctc_app.ui.pages.staff.profile.ProfileStaffViewModel;
 import com.example.uctc_app.utils.SharedPreferenceHelper;
 
+import java.util.List;
 import java.util.Objects;
 
 import butterknife.BindView;
@@ -39,6 +42,7 @@ public class DetailToDoListFragment extends Fragment {
     TextView dateTask;
 
     private TaskStaffViewModel viewModel;
+    private ProfileStaffViewModel viewModelProfile;
     private SharedPreferenceHelper helper;
     Task task;
 
@@ -57,31 +61,43 @@ public class DetailToDoListFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
 
+        Objects.requireNonNull((MainActivity) requireActivity()).getSupportActionBar().hide();
+
         helper = SharedPreferenceHelper.getInstance(requireActivity());
         viewModel = ViewModelProviders.of(requireActivity()).get(TaskStaffViewModel.class);
         viewModel.init(helper.getAccessToken());
 
+        viewModelProfile = ViewModelProviders.of(requireActivity()).get(ProfileStaffViewModel.class);
+        viewModelProfile.init(helper.getAccessToken());
+        viewModelProfile.getUsers().observe(requireActivity(), profileObserver);
+
         if (getArguments() != null){
-            task = DetailToDoListStaffFragmentArgs.fromBundle(getArguments()).getDetailTask();
+            task = DetailToDoListFragmentArgs.fromBundle(getArguments()).getDetailTask();
             initDetailTask(task);
         }
 
     }
 
-//    @OnClick({R.id.btn_detail_program_action_plan_program})
-//    public void onClick(View view) {
-//        DetailProgramStaffFragmentDirections.ActionDetailProgramStaffToActionPlan actionDetailProgramStaffToActionPlan =
-//                DetailProgramStaffFragmentDirections.actionDetailProgramStaffToActionPlan(program.getProgram_id() + "");
-//        Navigation.findNavController(view).navigate(actionDetailProgramStaffToActionPlan);
-//    }
-
     private void initDetailTask(Task task) {
-        Objects.requireNonNull((MainActivity) requireActivity()).getSupportActionBar().setTitle("Detail Program");
         titleTask.setText(task.getName());
         titleDescription.setText(task.getDescription());
 //        picTask.setText(task.getPic());
-        dateTask.setText(task.getDate());
+        dateTask.setText("Due Date: " + task.getDate());
     }
+
+    private Observer<List<User>> profileObserver = new Observer<List<User>>() {
+        @Override
+        public void onChanged(List<User> users) {
+            if (users!=null){
+                for (int i = 0 ; i < users.size();i++){
+                    if(users.get(i).getUser_id()==task.getPic()){
+                        picTask.setText(users.get(i).getName());
+                        break;
+                    }
+                }
+            }
+        }
+    };
 
     @Override
     public void onStart() {

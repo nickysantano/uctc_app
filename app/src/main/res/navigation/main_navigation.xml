@@ -195,9 +195,6 @@
         <argument
             android:name="DetailTask"
             app:argType="com.example.uctc_app.model.local.role.Task" />
-        <argument
-            android:name="program_id"
-            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/toDoListStaffFragment"
@@ -253,6 +250,9 @@
         <action
             android:id="@+id/action_task_user_to_update_task_user"
             app:destination="@id/updateTaskUserFragment" />
+        <action
+            android:id="@+id/action_task_user_fragment_self"
+            app:destination="@id/taskFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileStaffFragment"
@@ -318,12 +318,12 @@
         <argument
             android:name="actionPlan_id"
             app:argType="integer" />
-        <argument
-            android:name="program_id"
-            app:argType="string" />
         <action
             android:id="@+id/action_add_task_user_to_task_fragment"
             app:destination="@id/taskFragment" />
+        <argument
+            android:name="program_id"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/updateTaskStaffFragment"
@@ -374,6 +374,9 @@
         <argument
             android:name="program_id"
             app:argType="string" />
+        <argument
+            android:name="DetailTask"
+            app:argType="com.example.uctc_app.model.local.role.Task" />
     </fragment>
     <fragment
         android:id="@+id/updateActionPlanStaffFragment"

@@ -30,6 +30,10 @@ public class ProfileUserViewModel extends ViewModel {
         return repository.getUser();
     }
 
+    public MutableLiveData<List<User>> getUsers(){
+        return repository.getUsers();
+    }
+
     public LiveData<String> logout() {
         return repository.logout();
     }

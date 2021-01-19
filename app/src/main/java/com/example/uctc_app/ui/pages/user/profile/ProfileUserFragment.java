@@ -119,23 +119,17 @@ public class ProfileUserFragment extends Fragment {
         public void onChanged(User user) {
             Glide.with(getActivity()).load(Constants.BASE_IMAGE_URL + user.getPicture()).into(imgProfile);
             name.setText(user.getName());
-            role.setText(user.getRole_id());
+            if (user.getRole_id().equalsIgnoreCase("2")){
+                role.setText("LECTURER");
+            }else {
+                role.setText("STUDENT");
+            }
+//            role.setText(user.getRole_id());
             email.setText(user.getEmail());
             department.setText(user.getDepartment_id());
             phone.setText(user.getPhone_number());
         }
 
-//        @Override
-//        public void onChanged(List<User> users) {
-//            if (users != null){
-//                User user = users.get(0);
-//                name.setText(user.getName());
-//                role.setText(user.getRole_id());
-//                email.setText(user.getEmail());
-//                department.setText(user.getDepartment_id());
-//                phone.setText(user.getPhone_number());
-//            }
-//        }
     };
 
 }

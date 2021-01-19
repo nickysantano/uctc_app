@@ -57,7 +57,7 @@ public class MyProgramUserAdapter extends RecyclerView.Adapter<MyProgramUserAdap
         Log.d("My Program List: ", "" + program.getName());
 
         holder.name.setText(program.getName());
-        holder.date.setText(program.getDate());
+        holder.date.setText("Date: " + program.getDate());
 
         holder.itemView.setOnClickListener(view -> {
             MyProgramUserFragmentDirections.ActionMyProgramUserToDetailProgram actionMyProgramUserToDetailProgram =

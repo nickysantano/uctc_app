@@ -31,11 +31,12 @@
         android:id="@+id/search_program_list_user"
         android:layout_width="0dp"
         android:layout_height="53dp"
-        android:layout_margin="5dp"
+        android:padding="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/text_input_bg"
         android:hint="Search..."
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.444"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,11 +46,21 @@
         android:id="@+id/rv_program_list"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/search_program_list_user" />
+
+    <ImageView
+        android:id="@+id/imageView43"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="470dp"
+        android:layout_marginEnd="200dp"
+        android:src="@drawable/circle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView25"

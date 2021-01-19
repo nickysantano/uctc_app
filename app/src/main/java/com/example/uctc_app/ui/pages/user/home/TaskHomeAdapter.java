@@ -52,6 +52,13 @@ public class TaskHomeAdapter extends RecyclerView.Adapter<TaskHomeAdapter.ViewHo
 
         holder.taskTtl.setText(task.getName());
         holder.taskDate.setText(task.getDate());
+
+        if (task.getStatus().equalsIgnoreCase("0")){
+            holder.taskStatus.setText("On-going");
+        }else if(task.getStatus().equalsIgnoreCase("1")){
+            holder.taskStatus.setText("Finished");
+        }
+
         holder.itemView.setOnClickListener(v -> {
             HomeUserFragmentDirections.ActionHomeToDetailTask actionHomeToDetailTask = HomeUserFragmentDirections.actionHomeToDetailTask(task);
             Navigation.findNavController(v).navigate(actionHomeToDetailTask);
@@ -65,12 +72,13 @@ public class TaskHomeAdapter extends RecyclerView.Adapter<TaskHomeAdapter.ViewHo
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView taskTtl, taskDate;
+        private TextView taskTtl, taskDate, taskStatus;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             taskTtl = itemView.findViewById(R.id.task_title);
             taskDate = itemView.findViewById(R.id.lbl_date_task_user);
+            taskStatus = itemView.findViewById(R.id.lbl_status_task);
         }
     }
 }

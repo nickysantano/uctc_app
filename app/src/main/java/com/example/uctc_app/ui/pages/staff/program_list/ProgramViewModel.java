@@ -29,10 +29,11 @@ public class ProgramViewModel extends ViewModel {
         Log.d("Hello","VIewModel");
         return repository.getPrograms();
     }
+
     public LiveData<List<User>> getCommittees(int id){
         return repository.getCommittees(id);
-
     }
+
     public void deleteProgram(int id) {
         Log.d("Hello","DeleteProgram");
         repository.deleteProgram(id);

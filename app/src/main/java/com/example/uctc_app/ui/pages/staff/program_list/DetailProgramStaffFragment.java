@@ -10,20 +10,30 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.uctc_app.R;
+import com.example.uctc_app.model.local.role.Documentation;
 import com.example.uctc_app.model.local.role.Program;
+import com.example.uctc_app.model.local.role.Task;
 import com.example.uctc_app.model.local.role.User;
 import com.example.uctc_app.repository.login.ProgramRepository;
 import com.example.uctc_app.ui.MainActivity;
+import com.example.uctc_app.ui.pages.staff.documentation.DocumentationAdapter;
+import com.example.uctc_app.ui.pages.staff.documentation.DocumentationViewModel;
 import com.example.uctc_app.ui.pages.user.my_program.MyProgramUserFragmentDirections;
 import com.example.uctc_app.ui.pages.user.profile.ProfileUserViewModel;
 import com.example.uctc_app.ui.pages.user.program_list.ProgramUserFragmentDirections;
+import com.example.uctc_app.utils.Constants;
 import com.example.uctc_app.utils.SharedPreferenceHelper;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -35,6 +45,9 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class DetailProgramStaffFragment extends Fragment {
+    @BindView(R.id.lbl_cover_img)
+    ImageView imgProgram;
+
     @BindView(R.id.lbl_title_program_user)
     TextView titleProgram;
 
@@ -50,12 +63,17 @@ public class DetailProgramStaffFragment extends Fragment {
     @BindView(R.id.lbl_date_program)
     TextView dateProgram;
 
+    @BindView(R.id.rv_documentation)
+    RecyclerView rvDocumentation;
+
     @BindView(R.id.btn_detail_program_action_plan_program)
     FloatingActionButton toActionPlan;
 
     private ProgramViewModel viewModel;
+    private DocumentationViewModel viewModelDocumentation;
     private ProfileUserViewModel viewModelProfile;
     private SharedPreferenceHelper helper;
+    private DocumentationAdapter adapterDocumentation;
     List<User> committeeList;
     Program program;
 
@@ -80,8 +98,12 @@ public class DetailProgramStaffFragment extends Fragment {
         viewModel.init(helper.getAccessToken());
         viewModel.getCommittees(program.getProgram_id()).observe(requireActivity(),programObserver);
 
-//        viewModelProfile.getUser().observe(requireActivity(), observer);
+        viewModelDocumentation = ViewModelProviders.of(requireActivity()).get(DocumentationViewModel.class);
+        viewModelDocumentation.init(helper.getAccessToken());
+        viewModelDocumentation.documentation(program.getProgram_id()).observe(requireActivity(), documentationObserver);
 
+        rvDocumentation.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+        adapterDocumentation = new DocumentationAdapter(getActivity());
     }
     private Observer <List<User>> programObserver = new Observer<List<User>>() {
         @Override
@@ -110,6 +132,17 @@ public class DetailProgramStaffFragment extends Fragment {
         }
     };
 
+    private Observer<List<Documentation>> documentationObserver = new Observer<List<Documentation>>() {
+        @Override
+        public void onChanged(List<Documentation> documentations) {
+            if (documentations != null) {
+                adapterDocumentation.setDocumentationData(documentations);
+                adapterDocumentation.notifyDataSetChanged();
+                rvDocumentation.setAdapter(adapterDocumentation);
+            }
+        }
+    };
+
     @OnClick({R.id.btn_detail_program_action_plan_program})
     public void onClick(View view) {
         DetailProgramStaffFragmentDirections.ActionDetailProgramStaffToActionPlan actionDetailProgramStaffToActionPlan =
@@ -126,10 +159,22 @@ public class DetailProgramStaffFragment extends Fragment {
 
     private void initDetailProgram(Program program) {
         Objects.requireNonNull((MainActivity) requireActivity()).getSupportActionBar().setTitle("Detail Program");
+        Glide.with(getActivity()).load(Constants.BASE_IMAGE_PROGRAMS_URL + program.getThumbnail()).into(imgProgram);
         titleProgram.setText(program.getName());
         descriptionProgram.setText(program.getDescription());
         goalProgram.setText(program.getGoal());
-        statusProgram.setText(program.getStatus());
+
+        if (program.getStatus().equalsIgnoreCase("0")){
+            statusProgram.setText("Pending");
+        }else if(program.getStatus().equalsIgnoreCase("1")){
+            statusProgram.setText("On-going");
+        }else if(program.getStatus().equalsIgnoreCase("2")){
+            statusProgram.setText("Finished");
+        }else{
+            statusProgram.setText("Suspended");
+        }
+
+        Log.d("THIS IS STATUS: ", program.getStatus());
         dateProgram.setText(program.getDate());
     }
 

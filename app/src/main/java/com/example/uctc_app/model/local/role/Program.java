@@ -21,7 +21,7 @@ public class Program implements Parcelable {
     @SerializedName("created_by")
     String created_by;
 
-    @SerializedName("prorgram_status")
+    @SerializedName("program_status")
     String status;
 
     @SerializedName("program_date")

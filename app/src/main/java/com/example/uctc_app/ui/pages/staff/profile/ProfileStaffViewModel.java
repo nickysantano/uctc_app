@@ -9,6 +9,8 @@ import androidx.lifecycle.ViewModel;
 import com.example.uctc_app.model.local.role.User;
 import com.example.uctc_app.repository.login.ProfileRepository;
 
+import java.util.List;
+
 public class ProfileStaffViewModel extends ViewModel {
 
     private ProfileRepository repository;
@@ -26,6 +28,10 @@ public class ProfileStaffViewModel extends ViewModel {
     public MutableLiveData<User> getUser() {
         Log.d("Hello","VIewModel");
         return repository.getUser();
+    }
+
+    public MutableLiveData<List<User>> getUsers(){
+        return repository.getUsers();
     }
 
     public LiveData<String> logout() {
