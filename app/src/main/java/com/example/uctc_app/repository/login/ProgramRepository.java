@@ -5,8 +5,10 @@ import android.util.Log;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.uctc_app.model.local.role.Documentation;
 import com.example.uctc_app.model.local.role.Program;
 import com.example.uctc_app.model.local.role.User;
+import com.example.uctc_app.model.response.role.DocumentationResponse;
 import com.example.uctc_app.model.response.role.ProgramResponse;
 import com.example.uctc_app.model.response.role.TokenResponse;
 import com.example.uctc_app.model.response.role.UserResponse;
@@ -192,5 +194,29 @@ public class ProgramRepository {
         });
 
         return listCommittee;
+    }
+
+    public MutableLiveData<List<Documentation>> getDocumentation(int program_id) {
+        MutableLiveData<List<Documentation>> listDocumentation = new MutableLiveData<>();
+
+        apiService.getDocumentation(program_id).enqueue(new Callback<DocumentationResponse>() {
+            @Override
+            public void onResponse(Call<DocumentationResponse> call, Response<DocumentationResponse> response) {
+                Log.d(TAG, "onResponse: " + response.code());
+                if (response.isSuccessful()) {
+                    if (response.body() != null) {
+                        Log.d(TAG, "onResponse: Program " + response.body().getResults().size());
+                        listDocumentation.postValue(response.body().getResults());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<DocumentationResponse> call, Throwable t) {
+                Log.d(TAG, "onFailure: " + t.getMessage());
+            }
+        });
+
+        return listDocumentation;
     }
 }

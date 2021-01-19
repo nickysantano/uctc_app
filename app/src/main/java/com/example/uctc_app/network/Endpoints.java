@@ -4,6 +4,7 @@ import com.example.uctc_app.model.local.role.ActionPlan;
 import com.example.uctc_app.model.local.role.Program;
 import com.example.uctc_app.model.local.role.Task;
 import com.example.uctc_app.model.response.role.ActionPlanResponse;
+import com.example.uctc_app.model.response.role.DocumentationResponse;
 import com.example.uctc_app.model.response.role.ProgramResponse;
 import com.example.uctc_app.model.response.role.TaskResponse;
 import com.example.uctc_app.model.response.role.TasksResponse;
@@ -79,6 +80,9 @@ public interface Endpoints {
 
     @GET("programs")
     Call<ProgramResponse> getPrograms();
+
+    @GET("program/{id}/documentation")
+    Call<DocumentationResponse> getDocumentation(@Path("id") int id);
 
     @POST("programs")
     @FormUrlEncoded
