@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -28,6 +29,7 @@ public class TaskUserAdapter extends RecyclerView.Adapter<TaskUserAdapter.ViewHo
     private List<Task> taskList;
     private int actionPlan_id;
     private String program_id;
+    TaskRepository repository;
 
     public TaskUserAdapter(Context context) {
         this.context = context;
@@ -51,6 +53,8 @@ public class TaskUserAdapter extends RecyclerView.Adapter<TaskUserAdapter.ViewHo
     public void onBindViewHolder(@NonNull TaskUserAdapter.ViewHolder holder, int position) {
         Task task = taskList.get(position);
         Log.d(TAG, "onBindViewHolder: " + task.getName());
+
+        repository = TaskRepository.getInstance(SharedPreferenceHelper.getInstance(context).getAccessToken());
 
         holder.taskTtl.setText(task.getName());
         holder.taskDate.setText(task.getDate());
@@ -79,12 +83,43 @@ public class TaskUserAdapter extends RecyclerView.Adapter<TaskUserAdapter.ViewHo
         });
 //
         holder.delete.setOnClickListener(v -> {
-            TaskRepository repository = TaskRepository.getInstance(SharedPreferenceHelper.getInstance(context).getAccessToken());
             repository.deleteTask(task.getTask_id());
             Log.d("DELETEEEEEEEEEEE", "PLEASEEEEE");
 
             TaskFragmentDirections.ActionTaskUserFragmentSelf actionTaskUserFragmentSelf = TaskFragmentDirections.actionTaskUserFragmentSelf(actionPlan_id, program_id);
             Navigation.findNavController(v).navigate(actionTaskUserFragmentSelf);
+        });
+        if (task.getStatus().equalsIgnoreCase("1")){
+            holder.on.setEnabled(false);
+            holder.on.setVisibility(View.GONE);
+            holder.off.setEnabled(true);
+            holder.off.setVisibility(View.VISIBLE);
+        }
+        else{
+            holder.off.setEnabled(false);
+            holder.off.setVisibility(View.GONE);
+            holder.on.setEnabled(true);
+            holder.on.setVisibility(View.VISIBLE);
+        }
+        holder.off.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                repository.updateTask(task.getTask_id(),new Task(task.getName(),"1",task.getDescription(),task.getDate(),task.getAction_plan(),task.getPic()));
+                holder.off.setEnabled(false);
+                holder.off.setVisibility(View.GONE);
+                holder.on.setEnabled(true);
+                holder.on.setVisibility(View.VISIBLE);
+            }
+        });
+        holder.on.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                repository.updateTask(task.getTask_id(),new Task(task.getName(),"0",task.getDescription(),task.getDate(),task.getAction_plan(),task.getPic()));
+                holder.on.setEnabled(false);
+                holder.on.setVisibility(View.GONE);
+                holder.off.setEnabled(true);
+                holder.off.setVisibility(View.VISIBLE);
+            }
         });
     }
 
@@ -97,6 +132,7 @@ public class TaskUserAdapter extends RecyclerView.Adapter<TaskUserAdapter.ViewHo
 
         private TextView taskTtl, taskDate, taskStatus;
         private FloatingActionButton update, delete;
+        Button on, off;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -105,6 +141,8 @@ public class TaskUserAdapter extends RecyclerView.Adapter<TaskUserAdapter.ViewHo
             taskStatus = itemView.findViewById(R.id.lbl_status_task);
             update = itemView.findViewById(R.id.btn_update_task);
             delete = itemView.findViewById(R.id.btn_delete_task);
+            on = itemView.findViewById(R.id.btn_status_on);
+            off = itemView.findViewById(R.id.btn_status_off);
         }
     }
 }
