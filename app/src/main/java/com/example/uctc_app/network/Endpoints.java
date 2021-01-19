@@ -64,7 +64,7 @@ public interface Endpoints {
 //    @FormUrlEncoded
 //    Call<Void> updateTasks(@Path("id") int id, @Body Task task);
     Call<Void> updateTasks(@Path("id") int id, @Query("name") String name, @Query("status") int status,@Query("description") String description,
-                            @Query("due_date") String due_date,@Query("action_plan") int action_plan, @Query("pic") int pic );
+                            @Query("due_date") String due_date,@Query("action_plan") int action_plan, @Query("PIC") int pic );
     // 3 youtube videos and the 5 availble links show this method
     
     @DELETE("tasks/{id}")
