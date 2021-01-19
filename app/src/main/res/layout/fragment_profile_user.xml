@@ -27,7 +27,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/lbl_imgProfile_user"
+        android:id="@+id/imgProfile_user"
         android:layout_width="129dp"
         android:layout_height="133dp"
         android:layout_marginTop="84dp"
@@ -49,7 +49,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/imageView16"
         app:layout_constraintStart_toStartOf="@+id/imageView16"
-        app:layout_constraintTop_toBottomOf="@+id/lbl_imgProfile_user" />
+        app:layout_constraintTop_toBottomOf="@+id/imgProfile_user" />
 
     <TextView
         android:id="@+id/lbl_name_profile2"

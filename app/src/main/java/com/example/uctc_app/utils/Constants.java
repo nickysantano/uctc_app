@@ -1,12 +1,19 @@
 package com.example.uctc_app.utils;
 
+import androidx.annotation.StringDef;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.uctc_app.ui.pages.user.profile.ProfileUserViewModel;
 
+import java.lang.annotation.Retention;
+
+import static java.lang.annotation.RetentionPolicy.SOURCE;
+
 public class Constants {
 
-    public final static String BASE_IMAGE_URL = "http://192.168.43.246/uctcweb/public/img/userPic/";
+        public final static String BASE_IMAGE_URL = "http://192.168.43.246/img/userPic/";
+        public final static String BASE_IMAGE_DOCUMENTATION_URL = "http://192.168.43.246/img/documentation/";
+        public final static String BASE_IMAGE_PROGRAMS_URL = "http://192.168.43.246/img/program/";
 
     //Nicky//
     public final static String BASE_URL = "http://192.168.43.246/api/";

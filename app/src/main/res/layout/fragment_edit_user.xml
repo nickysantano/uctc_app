@@ -46,7 +46,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <ImageView
-        android:id="@+id/lbl_imgProfile_user"
+        android:id="@+id/imgProfile_user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="112dp"
@@ -66,7 +66,7 @@
         app:boxBackgroundColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lbl_imgProfile_user">
+        app:layout_constraintTop_toBottomOf="@+id/imgProfile_user">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/email_text"
@@ -117,7 +117,7 @@
         android:clickable="true"
         android:src="@drawable/ic_baseline_edit_24"
         app:backgroundTint="#F9C03D"
-        app:layout_constraintStart_toStartOf="@+id/lbl_imgProfile_user"
-        app:layout_constraintTop_toTopOf="@+id/lbl_imgProfile_user" />
+        app:layout_constraintStart_toStartOf="@+id/imgProfile_user"
+        app:layout_constraintTop_toTopOf="@+id/imgProfile_user" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

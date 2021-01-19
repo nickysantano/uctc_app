@@ -81,7 +81,7 @@ public class TaskStaffAdapter extends RecyclerView.Adapter<TaskStaffAdapter.View
 
         holder.itemView.setOnClickListener(v -> {
             ToDoListStaffFragmentDirections.ActionToDoListToDetailToDoListStaff actionToDoListToDetailToDoListStaff =
-                    ToDoListStaffFragmentDirections.actionToDoListToDetailToDoListStaff(task);
+                    ToDoListStaffFragmentDirections.actionToDoListToDetailToDoListStaff(task, program_id);
             Navigation.findNavController(v).navigate(actionToDoListToDetailToDoListStaff);
         });
 

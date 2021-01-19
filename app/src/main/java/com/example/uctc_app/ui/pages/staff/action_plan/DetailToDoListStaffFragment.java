@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.view.LayoutInflater;
@@ -13,10 +14,17 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.uctc_app.R;
+import com.example.uctc_app.model.local.role.Program;
 import com.example.uctc_app.model.local.role.Task;
+import com.example.uctc_app.model.local.role.User;
+import com.example.uctc_app.repository.login.ProgramRepository;
 import com.example.uctc_app.ui.MainActivity;
+import com.example.uctc_app.ui.pages.staff.program_list.DetailProgramStaffFragmentArgs;
+import com.example.uctc_app.ui.pages.staff.program_list.ProgramViewModel;
+import com.example.uctc_app.ui.pages.user.profile.ProfileUserViewModel;
 import com.example.uctc_app.utils.SharedPreferenceHelper;
 
+import java.util.List;
 import java.util.Objects;
 
 import butterknife.BindView;
@@ -37,8 +45,11 @@ public class DetailToDoListStaffFragment extends Fragment {
     TextView dateTask;
 
     private TaskStaffViewModel viewModel;
+    private ProgramViewModel viewModelProgram;
+    private ProgramRepository repository;
     private SharedPreferenceHelper helper;
     Task task;
+    Program program;
 
     public DetailToDoListStaffFragment() {
     }
@@ -53,12 +64,17 @@ public class DetailToDoListStaffFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
+//        program = DetailProgramStaffFragmentArgs.fromBundle(getArguments()).getDetailProgramStaff();
 
         Objects.requireNonNull((MainActivity) requireActivity()).getSupportActionBar().hide();
 
         helper = SharedPreferenceHelper.getInstance(requireActivity());
         viewModel = ViewModelProviders.of(requireActivity()).get(TaskStaffViewModel.class);
         viewModel.init(helper.getAccessToken());
+
+        viewModelProgram = ViewModelProviders.of(requireActivity()).get(ProgramViewModel.class);
+        viewModelProgram.init(helper.getAccessToken());
+        viewModelProgram.getCommittees(program.getProgram_id()).observe(requireActivity(), programObserver);
 
         if (getArguments() != null){
             task = DetailToDoListStaffFragmentArgs.fromBundle(getArguments()).getDetailTask();
@@ -69,9 +85,25 @@ public class DetailToDoListStaffFragment extends Fragment {
     private void initDetailTask(Task task) {
         titleTask.setText(task.getName());
         titleDescription.setText(task.getDescription());
-//        picTask.setText(task.getPic());
+        picTask.setText(task.getPic());
         dateTask.setText(task.getDate());
     }
+
+    private Observer<List<User>> programObserver = new Observer<List<User>>() {
+        @Override
+        public void onChanged(List<User> users) {
+            if (users!=null){
+                for (int i = 0 ; i < users.size();i++){
+//                    if (committeeList.get(i).getUser_id() == user.getUser_id()){
+
+//                        toActionPlan.setVisibility(View.VISIBLE);
+//                        toActionPlan.setEnabled(true);
+//                    }
+
+                }
+            }
+        }
+    };
 
     @Override
     public void onStart() {

@@ -25,6 +25,7 @@ public class TaskHomeStaffAdapter extends RecyclerView.Adapter<TaskHomeStaffAdap
     private static final String TAG = "TaskAdapter";
     private Context context;
     private List<Task> taskList;
+    private String program_id;
 
     public TaskHomeStaffAdapter(Context context) {
         this.context = context;
@@ -32,6 +33,7 @@ public class TaskHomeStaffAdapter extends RecyclerView.Adapter<TaskHomeStaffAdap
 
     public void setTaskList(List<Task> taskList) {
         this.taskList = taskList;
+        this.program_id = program_id;
         notifyDataSetChanged();
     }
 
@@ -50,7 +52,7 @@ public class TaskHomeStaffAdapter extends RecyclerView.Adapter<TaskHomeStaffAdap
         holder.taskTtl.setText(task.getName());
         holder.taskDate.setText(task.getDate());
         holder.itemView.setOnClickListener(v -> {
-            HomeStaffFragmentDirections.ActionHomeStaffToDetailToDoList actionHomeStaffToDetailToDoList = HomeStaffFragmentDirections.actionHomeStaffToDetailToDoList(task);
+            HomeStaffFragmentDirections.ActionHomeStaffToDetailToDoList actionHomeStaffToDetailToDoList = HomeStaffFragmentDirections.actionHomeStaffToDetailToDoList(task, program_id);
             Navigation.findNavController(v).navigate(actionHomeStaffToDetailToDoList);
         });
     }

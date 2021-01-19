@@ -17,12 +17,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.uctc_app.R;
 import com.example.uctc_app.model.local.role.User;
 import com.example.uctc_app.ui.pages.staff.action_plan.ToDoListStaffFragmentDirections;
+import com.example.uctc_app.utils.Constants;
 import com.example.uctc_app.utils.SharedPreferenceHelper;
 
 import java.util.List;
@@ -93,6 +96,9 @@ public class ProfileUserFragment extends Fragment {
         getActivity().getViewModelStore().clear();
     }
 
+    @BindView(R.id.imgProfile_user)
+    ImageView imgProfile;
+
     @BindView(R.id.lbl_name_profile)
     TextView name;
 
@@ -111,6 +117,7 @@ public class ProfileUserFragment extends Fragment {
     private Observer<User> observer = new Observer<User>() {
         @Override
         public void onChanged(User user) {
+            Glide.with(getActivity()).load(Constants.BASE_IMAGE_URL + user.getPicture()).into(imgProfile);
             name.setText(user.getName());
             role.setText(user.getRole_id());
             email.setText(user.getEmail());

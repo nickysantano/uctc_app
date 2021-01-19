@@ -100,27 +100,13 @@ public class UpdateTaskStaffFragment extends Fragment {
         lbl_taskDate.getEditText().setText(task.getDate());
 //        namaTeamId.get(spinner_pic.getSelectedItemPosition());
 
-//        if (getArguments() != null){
-//            task = UpdateTaskStaffFragmentArgs.fromBundle(getArguments()).getDetailTask();
-//            initDetailTask(task);
-//        }
-
-//        private void initDetailTask(Task task) {
-//            Objects.requireNonNull((MainActivity) requireActivity()).getSupportActionBar().setTitle("Edit Program");
-//                lbl_taskName.getEditText().getText().toString(),
-//                        "0",
-//                        lbl_taskDescription.getText().toString(),
-//                        lbl_taskDate.getEditText().getText().toString(),
-//                        actionPlan_id,
-//                        namaTeamId.get(spinner_pic.getSelectedItemPosition());
-//        }
-
         btnUpdateTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d("Spinner PIC: ",spinner_pic.getSelectedItem().toString());
                 taskRepository = TaskRepository.getInstance(helper.getAccessToken());
-                taskRepository.updateTask(task.getTask_id(), task);
+                taskRepository.updateTask(task.getTask_id(), new Task( lbl_taskName.getEditText().getText().toString(), task.getStatus(),
+                        lbl_taskDescription.getText().toString(), lbl_taskDate.getEditText().getText().toString(), actionPlan_id, namaTeamId.get(spinner_pic.getSelectedItemPosition())));
 
                 UpdateTaskStaffFragmentDirections.ActionUpdateTaskStaffToToDoList actionUpdateTaskToTaskStaff =
                         UpdateTaskStaffFragmentDirections.actionUpdateTaskStaffToToDoList(actionPlan_id, program_id);

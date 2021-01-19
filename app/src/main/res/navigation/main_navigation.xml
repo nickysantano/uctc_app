@@ -195,6 +195,9 @@
         <argument
             android:name="DetailTask"
             app:argType="com.example.uctc_app.model.local.role.Task" />
+        <argument
+            android:name="program_id"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/toDoListStaffFragment"

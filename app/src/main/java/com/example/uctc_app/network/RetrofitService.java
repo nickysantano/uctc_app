@@ -138,8 +138,6 @@ public class RetrofitService {
 
     public Call<Void> updateTask(int id,Task task){
         return api.updateTasks(id, task.getName(), Integer.parseInt(task.getStatus()), task.getDescription(), task.getDate(), task.getAction_plan(), task.getPic());
-//        @Path("id") int id, @Query("name") String name, @Query("status") int status,@Query("description") String description,
-//        @Query("due_date") String due_date,@Query("action_plan") int action_plan, @Query("PIC") int pic );
     }
 
 
