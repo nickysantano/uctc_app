@@ -49,7 +49,7 @@ public class DetailToDoListStaffFragment extends Fragment {
     private ProgramRepository repository;
     private SharedPreferenceHelper helper;
     Task task;
-    Program program;
+    String program_id;
 
     public DetailToDoListStaffFragment() {
     }
@@ -64,7 +64,7 @@ public class DetailToDoListStaffFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
-//        program = DetailProgramStaffFragmentArgs.fromBundle(getArguments()).getDetailProgramStaff();
+        program_id = DetailToDoListStaffFragmentArgs.fromBundle(getArguments()).getProgramId();
 
         Objects.requireNonNull((MainActivity) requireActivity()).getSupportActionBar().hide();
 
@@ -74,7 +74,7 @@ public class DetailToDoListStaffFragment extends Fragment {
 
         viewModelProgram = ViewModelProviders.of(requireActivity()).get(ProgramViewModel.class);
         viewModelProgram.init(helper.getAccessToken());
-        viewModelProgram.getCommittees(program.getProgram_id()).observe(requireActivity(), programObserver);
+        viewModelProgram.getCommittees(Integer.parseInt(program_id)).observe(requireActivity(), programObserver);
 
         if (getArguments() != null){
             task = DetailToDoListStaffFragmentArgs.fromBundle(getArguments()).getDetailTask();
@@ -94,11 +94,10 @@ public class DetailToDoListStaffFragment extends Fragment {
         public void onChanged(List<User> users) {
             if (users!=null){
                 for (int i = 0 ; i < users.size();i++){
-//                    if (committeeList.get(i).getUser_id() == user.getUser_id()){
-
-//                        toActionPlan.setVisibility(View.VISIBLE);
-//                        toActionPlan.setEnabled(true);
-//                    }
+                    if(users.get(i).getUser_id()==task.getPic()){
+                        picTask.setText(users.get(i).getName());
+                        break;
+                    }
 
                 }
             }
