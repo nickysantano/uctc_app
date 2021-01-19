@@ -1,4 +1,4 @@
-package com.example.uctc_app.ui.pages.user.profile;
+package com.example.uctc_app.ui.manual;
 
 import android.os.Bundle;
 
@@ -10,16 +10,17 @@ import android.view.ViewGroup;
 
 import com.example.uctc_app.R;
 
-public class EditUserFragment extends Fragment {
+public class ManualFragment extends Fragment {
 
-    public EditUserFragment() {
-        // Required empty public constructor
+    public ManualFragment() {
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_edit_user, container, false);
+        return inflater.inflate(R.layout.fragment_manual, container, false);
     }
+
+
+
 }

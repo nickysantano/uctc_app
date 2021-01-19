@@ -6,13 +6,23 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/send"
+        android:icon="@drawable/icon"
         android:label="UCTC"
         android:roundIcon="@mipmap/ic_launcher_round"
+        android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/Theme.Uctc_app"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.pages.admin.user_list.UserListAdminAdapterActivity"></activity>
+        <activity android:name=".ui.pages.staff.documentation.DocumentationAdapter"></activity>
+        <activity android:name=".ui.pages.staff.home.TaskHomeStaffAdapter" />
+        <activity android:name=".ui.pages.staff.my_program.ActionPlanStaffAdapter" />
+        <activity android:name=".ui.pages.staff.my_program.MyProgramStaffAdapter" />
+        <activity android:name=".ui.pages.staff.program_list.ProgramStaffAdapter" />
+        <activity android:name=".ui.pages.user.home.TaskHomeAdapter" />
+        <activity android:name=".ui.pages.user.home.RecentEventAdapter" />
+        <activity android:name=".ui.pages.user.my_program.MyProgramUserAdapter" />
+        <activity android:name=".ui.pages.staff.action_plan.ActionPlanAdapter" />
+        <activity android:name=".ui.pages.admin.user_list.UserListAdminAdapterActivity" />
         <activity android:name=".ui.pages.admin.proposal.ProposalAdapter" />
         <activity android:name=".ui.pages.staff.StaffMainActivity" />
         <activity android:name=".ui.pages.admin.AdminMainActivity" />

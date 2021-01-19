@@ -17,11 +17,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.uctc_app.R;
 import com.example.uctc_app.model.local.role.User;
+import com.example.uctc_app.ui.pages.staff.action_plan.ToDoListStaffFragmentDirections;
+import com.example.uctc_app.utils.Constants;
 import com.example.uctc_app.utils.SharedPreferenceHelper;
 
 import java.util.List;
@@ -37,9 +41,6 @@ public class ProfileUserFragment extends Fragment {
 
     private ProfileUserViewModel viewModel;
     private SharedPreferenceHelper helper;
-//    private Context context;
-//    private List<User> userData;
-//    private User user;
 
     public ProfileUserFragment() {
     }
@@ -64,7 +65,7 @@ public class ProfileUserFragment extends Fragment {
 
 //        if (getArguments() != null) {
 //            initUser(user);
-//        }else{
+//        }else
 //            Log.d("HAI ERROR = ", "Profile ini null");
 //        }
     }
@@ -72,18 +73,21 @@ public class ProfileUserFragment extends Fragment {
     @OnClick(R.id.btn_logout)
     public void logout(View view) {
         if (view.getId() == R.id.btn_logout) {
-            viewModel.logout().observe(requireActivity(), new Observer<String>() {
-                @Override
-                public void onChanged(String message) {
-                    if (!message.isEmpty()) {
-                        helper.clearPref();
-                        NavDirections action = ProfileUserFragmentDirections.actionNavProfileToLoginFragment();
-                        Navigation.findNavController(view).navigate(action);
-                        Toast.makeText(ProfileUserFragment.this.getActivity(), message, Toast.LENGTH_SHORT).show();
-                    }
+            viewModel.logout().observe(requireActivity(), message -> {
+                if (!message.isEmpty()) {
+                    helper.clearPref();
+                    NavDirections action = ProfileUserFragmentDirections.actionNavProfileToLoginFragment();
+                    Navigation.findNavController(view).navigate(action);
+                    Toast.makeText(ProfileUserFragment.this.getActivity(), message, Toast.LENGTH_SHORT).show();
                 }
             });
         }
+    }
+
+    @OnClick({R.id.btn_faqs})
+    public void onClick(View view) {
+        NavDirections action = ProfileUserFragmentDirections.actionProfileToManual();
+        Navigation.findNavController(view).navigate(action);
     }
 
     @Override
@@ -91,6 +95,9 @@ public class ProfileUserFragment extends Fragment {
         super.onDetach();
         getActivity().getViewModelStore().clear();
     }
+
+    @BindView(R.id.imgProfile_user)
+    ImageView imgProfile;
 
     @BindView(R.id.lbl_name_profile)
     TextView name;
@@ -107,18 +114,28 @@ public class ProfileUserFragment extends Fragment {
     @BindView(R.id.lbl_phone_profile)
     TextView phone;
 
-    private Observer<List<User>> observer = new Observer<List<User>>() {
+    private Observer<User> observer = new Observer<User>() {
         @Override
-        public void onChanged(List<User> users) {
-            if (users != null){
-                User user = users.get(0);
-                name.setText(user.getName());
-                role.setText(user.getRole_id());
-                email.setText(user.getEmail());
-                department.setText(user.getDepartment_id());
-                phone.setText(user.getPhone_number());
+        public void onChanged(User user) {
+            Glide.with(getActivity()).load(Constants.BASE_IMAGE_URL + user.getPicture()).into(imgProfile);
+            name.setText(user.getName());
+            if (user.getRole_id().equalsIgnoreCase("2")){
+                role.setText("LECTURER");
+            }else {
+                role.setText("STUDENT");
             }
+//            role.setText(user.getRole_id());
+            email.setText(user.getEmail());
+
+            if (user.getDepartment_id().equalsIgnoreCase("1")){
+                department.setText("ISB");
+            }else{
+                department.setText("IMT");
+            }
+
+            phone.setText(user.getPhone_number());
         }
+
     };
 
 }

@@ -35,7 +35,7 @@
                 app:layout_constraintGuide_begin="46dp" />
 
             <TextView
-                android:id="@+id/lbl_proposal_title"
+                android:id="@+id/lbl_action_plan_title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -60,7 +60,7 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/button"
-                app:layout_constraintTop_toBottomOf="@+id/lbl_proposal_title" />
+                app:layout_constraintTop_toBottomOf="@+id/lbl_action_plan_title" />
 
             <Button
                 android:id="@+id/button"

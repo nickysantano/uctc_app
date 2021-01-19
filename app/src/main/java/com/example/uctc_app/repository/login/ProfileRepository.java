@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.uctc_app.model.local.role.User;
 import com.example.uctc_app.model.response.role.UserResponse;
+import com.example.uctc_app.model.response.role.UsersResponse;
 import com.example.uctc_app.network.RetrofitService;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -44,16 +45,42 @@ public class ProfileRepository {
         }
     }
 
-    public MutableLiveData<List<User>> getUser() {
+    public MutableLiveData<List<User>> getUsers() {
         MutableLiveData<List<User>> listUser = new MutableLiveData<>();
 
-        apiService.getUsers().enqueue(new Callback<UserResponse>() {
+        apiService.getUsers().enqueue(new Callback<UsersResponse>() {
+            @Override
+            public void onResponse(Call<UsersResponse> call, Response<UsersResponse> response) {
+                Log.d(TAG, "onResponse: " + response.code());
+                if (response.isSuccessful()) {
+                    if (response.body() != null) {
+                        Log.d(TAG, "onResponse: Program " + response.body().getResults().size());
+                        listUser.postValue(response.body().getResults());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UsersResponse> call, Throwable t) {
+                Log.d(TAG, "onFailure: " + t.getMessage());
+            }
+        });
+
+        return listUser;
+    }
+
+
+    public MutableLiveData<User> getUser() {
+        MutableLiveData<User> listUser = new MutableLiveData<>();
+        Log.d(TAG, "InMutable: " + "HAIIII");
+
+        apiService.getUser().enqueue(new Callback<UserResponse>() {
             @Override
             public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
                 Log.d(TAG, "onResponse: " + response.code());
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
-                        Log.d(TAG, "onResponse: Program " + response.body().getResults().size());
+                        Log.d(TAG, "onResponse: User " + response.body().getResults());
                         listUser.postValue(response.body().getResults());
                     }
                 }

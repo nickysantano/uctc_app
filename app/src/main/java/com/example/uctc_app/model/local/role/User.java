@@ -4,6 +4,9 @@ import com.google.gson.annotations.SerializedName;
 
 public class User {
 
+    @SerializedName("user_id")
+    int user_id;
+
     @SerializedName("name")
     String name;
 
@@ -16,9 +19,6 @@ public class User {
     @SerializedName("phone_number")
     String phone_number;
 
-    @SerializedName("created_by")
-    String created_by;
-
     @SerializedName("status")
     String status;
 
@@ -27,6 +27,9 @@ public class User {
 
     @SerializedName("password")
     String password;
+
+    @SerializedName("picture")
+    String picture;
 
     public String getName() {
         return name;
@@ -60,12 +63,12 @@ public class User {
         this.phone_number = phone_number;
     }
 
-    public String getCreated_by() {
-        return created_by;
+    public int getUser_id() {
+        return user_id;
     }
 
-    public void setCreated_by(String created_by) {
-        this.created_by = created_by;
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
     }
 
     public String getStatus() {
@@ -90,5 +93,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 }

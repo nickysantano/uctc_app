@@ -1,4 +1,4 @@
-package com.example.uctc_app.ui.pages.user.my_program;
+package com.example.uctc_app.ui.pages.staff.action_plan;
 
 import android.os.Bundle;
 
@@ -10,15 +10,15 @@ import android.view.ViewGroup;
 
 import com.example.uctc_app.R;
 
-public class ToDoListFragment extends Fragment {
+public class picStaffFragment extends Fragment {
 
-    public ToDoListFragment() {
+    public picStaffFragment() {
         // Required empty public constructor
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_to_do_list, container, false);
+        return inflater.inflate(R.layout.fragment_pic_staff, container, false);
     }
 }

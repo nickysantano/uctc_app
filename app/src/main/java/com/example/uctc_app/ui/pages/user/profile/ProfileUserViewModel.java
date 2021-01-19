@@ -25,9 +25,13 @@ public class ProfileUserViewModel extends ViewModel {
         repository = ProfileRepository.getInstance(token);
     }
 
-    public MutableLiveData<List<User>> getUser() {
+    public MutableLiveData<User> getUser() {
         Log.d("Hello","VIewModel");
         return repository.getUser();
+    }
+
+    public MutableLiveData<List<User>> getUsers(){
+        return repository.getUsers();
     }
 
     public LiveData<String> logout() {

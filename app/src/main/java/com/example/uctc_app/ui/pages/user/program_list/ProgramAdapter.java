@@ -1,6 +1,9 @@
 package com.example.uctc_app.ui.pages.user.program_list;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
@@ -12,6 +15,10 @@ import android.widget.TextView;
 
 import com.example.uctc_app.R;
 import com.example.uctc_app.model.local.role.Program;
+import com.example.uctc_app.repository.login.ProgramRepository;
+import com.example.uctc_app.ui.pages.staff.program_list.ProgramStaffFragmentDirections;
+import com.example.uctc_app.utils.SharedPreferenceHelper;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
@@ -41,12 +48,27 @@ public class ProgramAdapter extends RecyclerView.Adapter<ProgramAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Program program = programList.get(position);
-        Log.d("Hello", ""+program.getName());
+        Log.d("Hello", "" + program.getName());
 
         holder.name.setText(program.getName());
         holder.description.setText(program.getDescription());
-        holder.status.setText(program.getStatus());
+
+        if (program.getStatus().equalsIgnoreCase("0")){
+            holder.status.setText("Pending");
+        }else if(program.getStatus().equalsIgnoreCase("1")){
+            holder.status.setText("On-going");
+        }else if(program.getStatus().equalsIgnoreCase("2")){
+            holder.status.setText("Finished");
+        }else{
+            holder.status.setText("Suspended");
+        }
+
         holder.creator.setText(program.getCreated_by());
+
+        holder.itemView.setOnClickListener(view -> {
+            ProgramUserFragmentDirections.ActionProgramToDetailProgramUser actionProgramToDetailProgramUser = ProgramUserFragmentDirections.actionProgramToDetailProgramUser(program);
+            Navigation.findNavController(view).navigate(actionProgramToDetailProgramUser);
+        });
     }
 
     @Override
@@ -58,12 +80,13 @@ public class ProgramAdapter extends RecyclerView.Adapter<ProgramAdapter.ViewHold
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         private TextView name, description, status,creator;
+        private FloatingActionButton delete;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.lbl_name_user_list_admin);
             description = itemView.findViewById(R.id.lbl_email_user_list_admin);
-            status = itemView.findViewById(R.id.lbl_txt_see_all_contribution);
+            status = itemView.findViewById(R.id.lbl_txt_status_event);
             creator = itemView.findViewById(R.id.lbl_user_name);
         }
     }

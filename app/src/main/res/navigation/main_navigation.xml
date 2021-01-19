@@ -14,22 +14,53 @@
             app:destination="@+id/nav_homeUser"
             app:enterAnim="@anim/fragment_fade_enter"
             app:exitAnim="@anim/fragment_fade_exit" />
+        <action
+            android:id="@+id/action_login_to_home_staff_navigation"
+            app:destination="@id/nav_home_staff" />
+        <action
+            android:id="@+id/action_login_to_home_admin"
+            app:destination="@id/nav_home_admin" />
     </fragment>
     <fragment
         android:id="@+id/nav_homeUser"
         android:name="com.example.uctc_app.ui.pages.user.home.HomeUserFragment"
         android:label="fragment_home_user"
-        tools:layout="@layout/fragment_home_user" />
+        tools:layout="@layout/fragment_home_user" >
+        <action
+            android:id="@+id/action_home_user_to_detail_program_user"
+            app:destination="@id/detailProgramUserFragment" />
+        <action
+            android:id="@+id/action_home_to_detail_task"
+            app:destination="@id/detailToDoListFragment" />
+    </fragment>
     <fragment
         android:id="@+id/nav_programUser"
         android:name="com.example.uctc_app.ui.pages.user.program_list.ProgramUserFragment"
         android:label="fragment_program_user"
-        tools:layout="@layout/fragment_program_user" />
+        tools:layout="@layout/fragment_program_user" >
+        <action
+            android:id="@+id/action_program_to_detail_program_user"
+            app:destination="@id/detailProgramUserFragment" />
+        <action
+            android:id="@+id/action_nav_programUser_to_addProgramStaffFragment"
+            app:destination="@id/addProgramStaffFragment" />
+        <action
+            android:id="@+id/action_program_user_self"
+            app:destination="@id/nav_programUser" />
+        <argument android:name="program"
+            app:argType="com.example.uctc_app.model.local.role.Program"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
     <fragment
         android:id="@+id/nav_myProgramUser"
         android:name="com.example.uctc_app.ui.pages.user.my_program.MyProgramUserFragment"
         android:label="fragment_my_program_user"
-        tools:layout="@layout/fragment_my_program_user" />
+        tools:layout="@layout/fragment_my_program_user" >
+        <action
+            android:id="@+id/action_my_program_user_to_detail_program"
+            app:destination="@id/detailProgramUserFragment" />
+    </fragment>
     <fragment
         android:id="@+id/nav_profile"
         android:name="com.example.uctc_app.ui.pages.user.profile.ProfileUserFragment"
@@ -38,6 +69,9 @@
         <action
             android:id="@+id/action_nav_profile_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_profile_to_manual"
+            app:destination="@id/manualFragment" />
     </fragment>
     <fragment
         android:id="@+id/splashFragment3"
@@ -54,5 +88,309 @@
         <action
             android:id="@+id/action_splash_to_home_user"
             app:destination="@id/nav_homeUser" />
+        <action
+            android:id="@+id/action_splash_to_staff"
+            app:destination="@id/nav_home_staff" />
+        <action
+            android:id="@+id/action_splash_to_admin"
+            app:destination="@id/nav_home_admin" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailProgramUserFragment"
+        android:name="com.example.uctc_app.ui.pages.user.program_list.DetailProgramUserFragment"
+        android:label="fragment_detail_program_user"
+        tools:layout="@layout/fragment_detail_program_user" >
+        <argument android:name="DetailProgramUser"
+            app:argType="com.example.uctc_app.model.local.role.Program" />
+        <action
+            android:id="@+id/action_detail_program_user_to_action_plan_fragment"
+            app:destination="@id/action_plan_fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addProgramStaffFragment"
+        android:name="com.example.uctc_app.ui.pages.user.program_list.AddProgramStaffFragment"
+        android:label="fragment_add_program_staff"
+        tools:layout="@layout/fragment_add_program_staff" >
+        <action
+            android:id="@+id/action_add_program_to_program_user"
+            app:destination="@id/nav_programUser" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_home_staff"
+        android:name="com.example.uctc_app.ui.pages.staff.home.HomeStaffFragment"
+        android:label="fragment_home_staff"
+        tools:layout="@layout/fragment_home_staff" >
+        <action
+            android:id="@+id/action_home_staff_to_detail_to_do_list"
+            app:destination="@id/detailToDoListStaffFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_program_staff"
+        android:name="com.example.uctc_app.ui.pages.staff.program_list.ProgramStaffFragment"
+        android:label="fragment_program_staff"
+        tools:layout="@layout/fragment_program_staff" >
+        <action
+            android:id="@+id/action_program_staff_to_detail_program"
+            app:destination="@id/detailProgramStaffFragment" />
+        <action
+            android:id="@+id/action_nav_program_staff_self"
+            app:destination="@id/nav_program_staff" />
+        <argument
+            android:name="program"
+            app:argType="com.example.uctc_app.model.local.role.Program"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_action_plan_staff"
+        android:name="com.example.uctc_app.ui.pages.staff.action_plan.ActionPlanStaffFragment"
+        android:label="fragment_action_plan_staff"
+        tools:layout="@layout/fragment_action_plan_staff" >
+        <action
+            android:id="@+id/action_action_plan_to_to_do_list_staff"
+            app:destination="@id/toDoListStaffFragment" />
+        <argument
+            android:name="program_id"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_action_plan_staff_to_add_action_plan"
+            app:destination="@id/addActionPlanStaffFragment" />
+        <action
+            android:id="@+id/action_action_plan_staff_to_update_action_plan"
+            app:destination="@id/updateActionPlanStaffFragment" />
+        <action
+            android:id="@+id/action_nav_action_plan_staff_self"
+            app:destination="@id/nav_action_plan_staff" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_home_admin"
+        android:name="com.example.uctc_app.ui.pages.admin.home.HomeAdminFragment"
+        android:label="fragment_home_admin"
+        tools:layout="@layout/fragment_home_admin" />
+    <fragment
+        android:id="@+id/nav_program_list_admin"
+        android:name="com.example.uctc_app.ui.pages.admin.program_list.ProgramAdminFragment"
+        android:label="fragment_program_admin"
+        tools:layout="@layout/fragment_program_admin" />
+    <fragment
+        android:id="@+id/nav_proposal_admin"
+        android:name="com.example.uctc_app.ui.pages.admin.proposal.ProposalAdminFragment"
+        android:label="fragment_proposal_admin"
+        tools:layout="@layout/fragment_proposal_admin" />
+    <fragment
+        android:id="@+id/nav_finance_report_admin"
+        android:name="com.example.uctc_app.ui.pages.admin.finance_report.FinanceReportAdminFragment"
+        android:label="fragment_finance_report_admin"
+        tools:layout="@layout/fragment_finance_report_admin" />
+    <fragment
+        android:id="@+id/nav_user_list_admin"
+        android:name="com.example.uctc_app.ui.pages.admin.user_list.UserListAdminFragment"
+        android:label="fragment_user_list_admin"
+        tools:layout="@layout/fragment_user_list_admin" />
+    <fragment
+        android:id="@+id/detailToDoListStaffFragment"
+        android:name="com.example.uctc_app.ui.pages.staff.action_plan.DetailToDoListStaffFragment"
+        android:label="fragment_detail_to_do_list_staff"
+        tools:layout="@layout/fragment_detail_to_do_list_staff" >
+        <argument
+            android:name="DetailTask"
+            app:argType="com.example.uctc_app.model.local.role.Task" />
+    </fragment>
+    <fragment
+        android:id="@+id/toDoListStaffFragment"
+        android:name="com.example.uctc_app.ui.pages.staff.action_plan.ToDoListStaffFragment"
+        android:label="fragment_to_do_list_staff"
+        tools:layout="@layout/fragment_to_do_list_staff" >
+        <action
+            android:id="@+id/action_to_do_list_to_detail_to_do_list_staff"
+            app:destination="@id/detailToDoListStaffFragment" />
+        <argument android:name="actionPlan_id"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_to_do_list_staff_to_add_task"
+            app:destination="@id/addTaskStaffFragment" />
+        <argument
+            android:name="program_id"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_to_do_list_staff_self"
+            app:destination="@id/toDoListStaffFragment" />
+        <action
+            android:id="@+id/action_to_do_list_staff_to_update_task_staff"
+            app:destination="@id/updateTaskStaffFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/action_plan_fragment"
+        android:name="com.example.uctc_app.ui.pages.user.my_program.ActionPlanFragment"
+        android:label="fragment_action_plan"
+        tools:layout="@layout/fragment_action_plan" >
+        <argument android:name="program_id"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_action_plan_to_task_user"
+            app:destination="@id/taskFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/taskFragment"
+        android:name="com.example.uctc_app.ui.pages.user.my_program.TaskFragment"
+        android:label="fragment_to_do_list"
+        tools:layout="@layout/fragment_to_do_list" >
+        <argument
+            android:name="actionPlan_id"
+            app:argType="integer" />
+        <argument
+            android:name="program_id"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_task_fragment_to_detail_task"
+            app:destination="@id/detailToDoListFragment" />
+        <action
+            android:id="@+id/action_task_to_add_task_user"
+            app:destination="@id/addTaskUserFragment" />
+        <action
+            android:id="@+id/action_task_user_to_update_task_user"
+            app:destination="@id/updateTaskUserFragment" />
+        <action
+            android:id="@+id/action_task_user_fragment_self"
+            app:destination="@id/taskFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileStaffFragment"
+        android:name="com.example.uctc_app.ui.pages.staff.profile.ProfileStaffFragment"
+        android:label="fragment_profile_staff"
+        tools:layout="@layout/fragment_profile_staff" >
+        <action
+            android:id="@+id/action_profile_staff_to_login"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_profile_staff_to_manual"
+            app:destination="@id/manualFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailProgramStaffFragment"
+        android:name="com.example.uctc_app.ui.pages.staff.program_list.DetailProgramStaffFragment"
+        android:label="fragment_detail_program_staff"
+        tools:layout="@layout/fragment_detail_program_staff" >
+        <argument
+            android:name="DetailProgramStaff"
+            app:argType="com.example.uctc_app.model.local.role.Program" />
+        <action
+            android:id="@+id/action_detail_program_staff_to_action_plan"
+            app:destination="@id/nav_action_plan_staff" />
+    </fragment>
+    <fragment
+        android:id="@+id/addTaskStaffFragment"
+        android:name="com.example.uctc_app.ui.pages.staff.action_plan.AddTaskStaffFragment"
+        android:label="fragment_add_task_staff"
+        tools:layout="@layout/fragment_add_task_staff" >
+        <action
+            android:id="@+id/action_add_staff_fragment_to_to_do_list"
+            app:destination="@id/toDoListStaffFragment" />
+        <argument android:name="actionPlan_id"
+            app:argType="integer" />
+        <argument
+            android:name="program_id"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_my_program_staff"
+        android:name="com.example.uctc_app.ui.pages.staff.my_program.MyProgramStaffFragment"
+        android:label="fragment_my_program_staff"
+        tools:layout="@layout/fragment_my_program_staff" >
+        <action
+            android:id="@+id/action_my_program_staff_to_detail_program"
+            app:destination="@id/detailProgramStaffFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailToDoListFragment"
+        android:name="com.example.uctc_app.ui.pages.user.my_program.DetailToDoListFragment"
+        android:label="fragment_detail_to_do_list"
+        tools:layout="@layout/fragment_detail_to_do_list" >
+        <argument
+            android:name="DetailTask"
+            app:argType="com.example.uctc_app.model.local.role.Task" />
+    </fragment>
+    <fragment
+        android:id="@+id/addTaskUserFragment"
+        android:name="com.example.uctc_app.ui.pages.user.my_program.AddTaskUserFragment"
+        android:label="fragment_add_task_user"
+        tools:layout="@layout/fragment_add_task_user" >
+        <argument
+            android:name="actionPlan_id"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_add_task_user_to_task_fragment"
+            app:destination="@id/taskFragment" />
+        <argument
+            android:name="program_id"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateTaskStaffFragment"
+        android:name="com.example.uctc_app.ui.pages.staff.action_plan.UpdateTaskStaffFragment"
+        android:label="fragment_update_task_staff"
+        tools:layout="@layout/fragment_update_task_staff" >
+        <argument
+            android:name="actionPlan_id"
+            app:argType="integer" />
+        <argument
+            android:name="program_id"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_update_task_staff_to_to_do_list"
+            app:destination="@id/toDoListStaffFragment" />
+        <argument
+            android:name="DetailTask"
+            app:argType="com.example.uctc_app.model.local.role.Task" />
+    </fragment>
+    <fragment
+        android:id="@+id/addActionPlanStaffFragment"
+        android:name="com.example.uctc_app.ui.pages.staff.action_plan.AddActionPlanStaffFragment"
+        android:label="fragment_add_action_plan_staff"
+        tools:layout="@layout/fragment_add_action_plan_staff" >
+        <argument
+            android:name="program_id"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_add_action_plan_staff_to_action_plan"
+            app:destination="@id/nav_action_plan_staff" />
+    </fragment>
+    <fragment
+        android:id="@+id/manualFragment"
+        android:name="com.example.uctc_app.ui.manual.ManualFragment"
+        android:label="fragment_manual"
+        tools:layout="@layout/fragment_manual" />
+    <fragment
+        android:id="@+id/updateTaskUserFragment"
+        android:name="com.example.uctc_app.ui.pages.user.my_program.UpdateTaskUserFragment"
+        android:label="fragment_update_task_user"
+        tools:layout="@layout/fragment_update_task_user" >
+        <action
+            android:id="@+id/action_update_task_user_to_task_user"
+            app:destination="@id/taskFragment" />
+        <argument
+            android:name="actionPlan_id"
+            app:argType="integer" />
+        <argument
+            android:name="program_id"
+            app:argType="string" />
+        <argument
+            android:name="DetailTask"
+            app:argType="com.example.uctc_app.model.local.role.Task" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateActionPlanStaffFragment"
+        android:name="com.example.uctc_app.ui.pages.staff.action_plan.UpdateActionPlanStaffFragment"
+        android:label="fragment_update_action_plan_staff"
+        tools:layout="@layout/fragment_update_action_plan_staff" >
+        <action
+            android:id="@+id/action_update_action_plan_to_action_plan_staff"
+            app:destination="@id/nav_action_plan_staff" />
+        <argument
+            android:name="program_id"
+            app:argType="string" />
+        <argument
+            android:name="thisActionPlan"
+            app:argType="com.example.uctc_app.model.local.role.ActionPlan" />
     </fragment>
 </navigation>

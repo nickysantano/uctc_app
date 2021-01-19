@@ -1,6 +1,8 @@
 package com.example.uctc_app.ui.login;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,13 +12,19 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 
+import com.example.uctc_app.model.local.role.User;
+import com.example.uctc_app.repository.login.ProfileRepository;
 import com.example.uctc_app.ui.MainActivity;
 import com.example.uctc_app.R;
+import com.example.uctc_app.ui.pages.staff.action_plan.ToDoListStaffFragmentArgs;
+import com.example.uctc_app.ui.splash.SplashFragmentDirections;
 import com.example.uctc_app.utils.SharedPreferenceHelper;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.Objects;
@@ -36,6 +44,8 @@ public class LoginFragment extends Fragment {
 
     LoginViewModel viewModel;
     SharedPreferenceHelper helper;
+    private ProfileRepository repository;
+    public View currentView;
 
     public LoginFragment() {
         // Required empty public constructor
@@ -68,9 +78,12 @@ public class LoginFragment extends Fragment {
                     viewModel.login(email, password).observe(requireActivity(), tokenResponse -> {
                         if (tokenResponse != null) {
                             helper.saveAccessToken(tokenResponse.getAuthorization());
-                            NavDirections action = LoginFragmentDirections.actionLoginToHomeUser();
-                            Navigation.findNavController(view).navigate(action);
-                            Toast.makeText(requireActivity(), "Login Successfuly", Toast.LENGTH_SHORT).show();
+                            currentView = view;
+                            if (currentView!=null){
+                                repository = ProfileRepository.getInstance(helper.getAccessToken());
+                                repository.getUser().observe(requireActivity(), observer );
+                            }
+
                         }else {
                             Toast.makeText(requireActivity(), "GAGAL", Toast.LENGTH_SHORT).show();
                         }
@@ -81,5 +94,25 @@ public class LoginFragment extends Fragment {
                 break;
         }
     }
+    private Observer<User> observer = new Observer<User>() {
+        @Override
+        public void onChanged(User user) {
+                Log.d("USER ROLE", "hai rayyyyyyyyyyyyyyyyyyyyy");
+            NavDirections action;
+            if (user.getRole_id().equalsIgnoreCase("1")) {
+                Log.d("USER ROLE", "ADMIIIN");
+                action = LoginFragmentDirections.actionLoginToHomeAdmin();
+            } else if (user.getRole_id().equalsIgnoreCase("2")) {
+                Log.d("USER ROLE", "STAFF");
+                action = LoginFragmentDirections.actionLoginToHomeStaffNavigation();
+            } else {
+                Log.d("USER ROLE", "USER");
+                action = LoginFragmentDirections.actionLoginToHomeUser();
+            }
+            Navigation.findNavController(currentView).navigate(action);
+            Toast.makeText(requireActivity(), "Login Successfully", Toast.LENGTH_SHORT).show();
 
+
+        }
+    };
 }

@@ -5,6 +5,8 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+import retrofit2.http.POST;
+
 public class ProgramResponse {
     @SerializedName("data")
     private List<Program> results;
@@ -12,4 +14,7 @@ public class ProgramResponse {
     public List<Program> getResults() {
         return results;
     }
+
+
+
 }

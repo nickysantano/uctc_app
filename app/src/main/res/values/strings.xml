@@ -21,4 +21,18 @@
     <string name="txtStatusProgram">status here</string>
     <string name="txtClientProgram">clients name here</string>
     <string name="txtDateProgram">DD MM YYYY</string>
+    <string name="txtDescProgramUser">hello, desc here</string>
+    <string name="txtActionPlanName" />
+    <string name="btnCreateTask">CREATE TASK</string>
+    <string name="txtToDoLists">[TO DO LIST TITLE]</string>
+    <string name="txtDescToDoList">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</string>
+    <string name="cast_picture">Cast Picture</string>
+    <string name="txtAddToDoListTitle">To Do List Name</string>
+    <string name="txtAddToDoListDescription">Description Here</string>
+    <string name="txtAddToDoListDescriptionStaff">Description Here</string>
+    <string name="btnAddToDoList">CREATE TASK</string>
+    <string name="txtDescProgramStaff">Description Here</string>
+    <string name="txtTaskToDoListUser">[TASK NAME]</string>
+    <string name="txtDate">YYYY-MM-DD</string>
+    <string name="btnCreateActionPlan">ADD ACTION PLAN</string>
 </resources>
