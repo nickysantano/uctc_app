@@ -126,7 +126,13 @@ public class ProfileUserFragment extends Fragment {
             }
 //            role.setText(user.getRole_id());
             email.setText(user.getEmail());
-            department.setText(user.getDepartment_id());
+
+            if (user.getDepartment_id().equalsIgnoreCase("1")){
+                department.setText("ISB");
+            }else{
+                department.setText("IMT");
+            }
+
             phone.setText(user.getPhone_number());
         }
 
