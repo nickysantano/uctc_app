@@ -6,6 +6,7 @@ import com.example.uctc_app.model.local.role.ActionPlan;
 import com.example.uctc_app.model.local.role.Program;
 import com.example.uctc_app.model.local.role.Task;
 import com.example.uctc_app.model.response.role.ActionPlanResponse;
+import com.example.uctc_app.model.response.role.DocumentationResponse;
 import com.example.uctc_app.model.response.role.ProgramResponse;
 import com.example.uctc_app.model.response.role.TaskResponse;
 import com.example.uctc_app.model.response.role.TasksResponse;
@@ -142,7 +143,9 @@ public class RetrofitService {
 //        @Query("due_date") String due_date,@Query("action_plan") int action_plan, @Query("PIC") int pic );
     }
 
-
+    public Call<DocumentationResponse> getDocumentation(int program_id){
+        return api.getDocumentation(program_id);
+    }
 
     public  Call<ProgramResponse> myPrograms(String user_id){
         return api.myPrograms(Integer.parseInt(user_id));
