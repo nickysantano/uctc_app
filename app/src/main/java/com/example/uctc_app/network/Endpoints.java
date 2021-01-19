@@ -100,6 +100,9 @@ public interface Endpoints {
     @GET("programs/{id}/committees")
     Call<UsersResponse> getCommittees(@Path("id") int program_id);
 
+    @GET("users")
+    Call<UsersResponse> getUsers();
+
     @POST("logout")
     Call<JsonObject> logout();
 

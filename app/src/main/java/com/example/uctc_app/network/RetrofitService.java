@@ -86,7 +86,9 @@ public class RetrofitService {
     public Call<UsersResponse> getCommittees(int id) {
         return api.getCommittees(id);
     }
-
+    public Call<UsersResponse> getUsers() {
+        return api.getUsers();
+    }
     public Call<ProgramResponse> getPrograms() {
         return api.getPrograms();
     }
