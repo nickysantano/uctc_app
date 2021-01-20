@@ -92,6 +92,11 @@ public class HomeStaffFragment extends Fragment {
         @Override
         public void onChanged(List<Task> tasks) {
             if (tasks != null) {
+                for(int i =0 ; i<tasks.size();i++){
+                    if (tasks.get(i).getStatus().equalsIgnoreCase("1")){
+                        tasks.remove(i);
+                    }
+                }
                 adapterTask.setTaskList(tasks);
                 adapterTask.notifyDataSetChanged();
                 rvTask.setAdapter(adapterTask);
