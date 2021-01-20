@@ -49,7 +49,6 @@ public class TaskStaffAdapter extends RecyclerView.Adapter<TaskStaffAdapter.View
         this.taskList = taskList;
         this.actionPlan_id = actionPlan_id;
         this.program_id = program_id;
-        this.isStatus = isStatus;
         notifyDataSetChanged();
     }
 
@@ -68,11 +67,11 @@ public class TaskStaffAdapter extends RecyclerView.Adapter<TaskStaffAdapter.View
         holder.taskTtl.setText(task.getName());
         holder.taskDate.setText(task.getDate());
 
-        if (task.getStatus().equalsIgnoreCase("0")){
-            holder.taskStatus.setText("On-going");
-        }else if(task.getStatus().equalsIgnoreCase("1")){
-            holder.taskStatus.setText("Finished");
-        }
+//        if (task.getStatus().equalsIgnoreCase("0")){
+//            holder.taskStatus.setText("On-going");
+//        }else if(task.getStatus().equalsIgnoreCase("1")){
+//            holder.taskStatus.setText("Finished");
+//        }
 
         if(isStatus){
             if (task.getStatus().equals("1")) {
@@ -108,7 +107,7 @@ public class TaskStaffAdapter extends RecyclerView.Adapter<TaskStaffAdapter.View
             ToDoListStaffFragmentDirections.ActionToDoListStaffSelf actionToDoListStaffSelf = ToDoListStaffFragmentDirections.actionToDoListStaffSelf(actionPlan_id, program_id);
             Navigation.findNavController(v).navigate(actionToDoListStaffSelf);
         });
-        if (task.getStatus().equalsIgnoreCase("1")){
+        if (task.getStatus().equalsIgnoreCase("0")){
             holder.on.setEnabled(false);
             holder.on.setVisibility(View.GONE);
             holder.off.setEnabled(true);

@@ -59,12 +59,6 @@ public class TaskUserAdapter extends RecyclerView.Adapter<TaskUserAdapter.ViewHo
         holder.taskTtl.setText(task.getName());
         holder.taskDate.setText(task.getDate());
 
-        if (task.getStatus().equalsIgnoreCase("0")){
-            holder.taskStatus.setText("On-going");
-        }else if(task.getStatus().equalsIgnoreCase("1")){
-            holder.taskStatus.setText("Finished");
-        }
-
         holder.itemView.setOnClickListener(v -> {
             TaskFragmentDirections.ActionTaskFragmentToDetailTask actionTaskFragmentToDetailTask = TaskFragmentDirections.actionTaskFragmentToDetailTask(task);
             Navigation.findNavController(v).navigate(actionTaskFragmentToDetailTask);
@@ -89,7 +83,7 @@ public class TaskUserAdapter extends RecyclerView.Adapter<TaskUserAdapter.ViewHo
             TaskFragmentDirections.ActionTaskUserFragmentSelf actionTaskUserFragmentSelf = TaskFragmentDirections.actionTaskUserFragmentSelf(actionPlan_id, program_id);
             Navigation.findNavController(v).navigate(actionTaskUserFragmentSelf);
         });
-        if (task.getStatus().equalsIgnoreCase("1")){
+        if (task.getStatus().equalsIgnoreCase("0")){
             holder.on.setEnabled(false);
             holder.on.setVisibility(View.GONE);
             holder.off.setEnabled(true);
@@ -130,7 +124,7 @@ public class TaskUserAdapter extends RecyclerView.Adapter<TaskUserAdapter.ViewHo
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView taskTtl, taskDate, taskStatus;
+        private TextView taskTtl, taskDate;
         private FloatingActionButton update, delete;
         Button on, off;
 
@@ -138,7 +132,6 @@ public class TaskUserAdapter extends RecyclerView.Adapter<TaskUserAdapter.ViewHo
             super(itemView);
             taskTtl = itemView.findViewById(R.id.task_title);
             taskDate = itemView.findViewById(R.id.lbl_date_task_user);
-            taskStatus = itemView.findViewById(R.id.lbl_status_task);
             update = itemView.findViewById(R.id.btn_update_task);
             delete = itemView.findViewById(R.id.btn_delete_task);
             on = itemView.findViewById(R.id.btn_status_on);
