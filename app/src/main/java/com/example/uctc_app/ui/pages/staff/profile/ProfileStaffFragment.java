@@ -15,6 +15,7 @@ import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -42,6 +43,7 @@ public class ProfileStaffFragment extends Fragment {
 
     private ProfileUserViewModel viewModel;
     private SharedPreferenceHelper helper;
+    AlphaAnimation klik = new AlphaAnimation(1F, 0.6F);
 //    private Context context;
 //    private List<User> userData;
 //    private User user;
@@ -74,6 +76,8 @@ public class ProfileStaffFragment extends Fragment {
 
     @OnClick(R.id.btn_logout)
     public void logout(View view) {
+
+        
         if (view.getId() == R.id.btn_logout) {
             viewModel.logout().observe(requireActivity(), message -> {
                 if (!message.isEmpty()) {
@@ -83,6 +87,7 @@ public class ProfileStaffFragment extends Fragment {
                     Toast.makeText(ProfileStaffFragment.this.getActivity(), message, Toast.LENGTH_SHORT).show();
                 }
             });
+
         }
     }
 

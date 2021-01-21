@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -17,6 +19,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.example.uctc_app.model.local.role.User;
 import com.example.uctc_app.repository.login.ProfileRepository;
 import com.example.uctc_app.ui.MainActivity;
@@ -39,8 +42,17 @@ public class LoginFragment extends Fragment {
     TextInputEditText email_text;
     @BindView(R.id.password_text)
     TextInputEditText password_text;
+
+    @BindView(R.id.txt_loggingin)
+    TextView txt_loggingin;
     @BindView(R.id.btn_login)
     Button btn_login;
+
+    @BindView(R.id.progressBar_cover)
+    ImageView loading_cover;
+
+    @BindView(R.id.progressBar)
+    LottieAnimationView loading;
 
     LoginViewModel viewModel;
     SharedPreferenceHelper helper;
@@ -75,6 +87,9 @@ public class LoginFragment extends Fragment {
                 if (!email_text.getText().toString().isEmpty() && !password_text.getText().toString().isEmpty()) {
                     String email = email_text.getText().toString().trim();
                     String password = password_text.getText().toString().trim();
+
+                    showLoading(true);
+
                     viewModel.login(email, password).observe(requireActivity(), tokenResponse -> {
                         if (tokenResponse != null) {
                             helper.saveAccessToken(tokenResponse.getAuthorization());
@@ -102,12 +117,15 @@ public class LoginFragment extends Fragment {
             if (user.getRole_id().equalsIgnoreCase("1")) {
                 Log.d("USER ROLE", "ADMIIIN");
                 action = LoginFragmentDirections.actionLoginToHomeAdmin();
+                showLoading(false);
             } else if (user.getRole_id().equalsIgnoreCase("2")) {
                 Log.d("USER ROLE", "STAFF");
                 action = LoginFragmentDirections.actionLoginToHomeStaffNavigation();
+                showLoading(false);
             } else {
                 Log.d("USER ROLE", "USER");
                 action = LoginFragmentDirections.actionLoginToHomeUser();
+                showLoading(false);
             }
             Navigation.findNavController(currentView).navigate(action);
             Toast.makeText(requireActivity(), "Login Successfully", Toast.LENGTH_SHORT).show();
@@ -115,4 +133,17 @@ public class LoginFragment extends Fragment {
 
         }
     };
+
+    private void showLoading(Boolean state) {
+        if (state) {
+            loading.setVisibility(View.VISIBLE);
+            loading_cover.setVisibility(View.VISIBLE);
+            txt_loggingin.setVisibility(View.VISIBLE);
+            btn_login.setVisibility(View.GONE);
+        } else {
+            loading.setVisibility(View.GONE);
+            loading_cover.setVisibility(View.GONE);
+            txt_loggingin.setVisibility(View.GONE);
+        }
+    }
 }
