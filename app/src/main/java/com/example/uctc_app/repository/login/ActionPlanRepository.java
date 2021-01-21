@@ -65,21 +65,6 @@ public class ActionPlanRepository {
         return listAction;
     }
 
-//    public void addTask(Task task){
-//        apiService.addTask(task).enqueue(new Callback<Void>() {
-//            @Override
-//            public void onResponse(Call<Void> call, Response<Void> response) {
-//                Log.d(TAG, "onResponse:" + response.code());
-//                Log.d(TAG, "onResponse:" + response.message());
-//                Log.d("WIFI SUCCESS", "ADDING Task");
-//            }
-//            @Override
-//            public void onFailure(Call<Void> call, Throwable t) {
-//                Log.d(TAG, "onFailure: " + t.getMessage());
-//            }
-//        });
-//    }
-
     public void addActionPlan(ActionPlan actionPlan){
         apiService.addActionPlan(actionPlan).enqueue(new Callback<Void>() {
             @Override
