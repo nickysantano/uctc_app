@@ -20,7 +20,7 @@ public class Constants {
 
 //    //Ray
 // public final static String BASE_URL = "http://192.168.1.71/api/";
-//public final static String BASE_URL = "http://192.168.43.42/api/";
+//public final static String BASE_URL = "http://192.168.1.104/api/";
     
     //Alfredo//
 //    public final static String BASE_URL = "http://192.168.0.21/UAS/uctc/uctcweb/public/api/";

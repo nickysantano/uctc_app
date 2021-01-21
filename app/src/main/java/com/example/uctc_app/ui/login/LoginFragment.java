@@ -85,11 +85,11 @@ public class LoginFragment extends Fragment {
                             }
 
                         }else {
-                            Toast.makeText(requireActivity(), "GAGAL", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(requireActivity(), "Error login. Check your email and password.", Toast.LENGTH_SHORT).show();
                         }
                     });
                 }else {
-                    Toast.makeText(requireActivity(), "fail 1", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(requireActivity(), "Please fill all the fields.", Toast.LENGTH_SHORT).show();
                 }
                 break;
         }

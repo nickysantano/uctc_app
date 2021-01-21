@@ -32,7 +32,6 @@ import butterknife.ButterKnife;
 
 public class SplashFragment extends Fragment {
 
-    private SharedPreferenceHelper helper;
     private ProfileRepository repository;
     public View currentView;
     private BottomNavigationView navigationViewAdmin, navigationViewStaff, navigationViewUser;

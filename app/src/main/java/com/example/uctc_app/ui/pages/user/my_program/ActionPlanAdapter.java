@@ -45,7 +45,7 @@ public class ActionPlanAdapter extends RecyclerView.Adapter<ActionPlanAdapter.Vi
     @NonNull
     @Override
     public ActionPlanAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.activity_action_plan_adapter, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.activity_action_plan_user_adapter, parent, false);
         return new ActionPlanAdapter.ViewHolder(view);    }
 
     @Override

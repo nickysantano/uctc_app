@@ -42,8 +42,6 @@ public interface Endpoints {
                        @Field("program") int program_id );
 
     @PUT("actions/{id}")
-//    @FormUrlEncoded
-//    Call<Void> updateActionPlan(@Path("id") int id, @Body ActionPlan actionPlan);
     Call<Void> updateActionPlan(@Path("id") int id, @Query("name") String name, @Query("description") String description,
                                 @Query("program") int program_id );
 
@@ -62,11 +60,8 @@ public interface Endpoints {
                        @Field("due_date") String due_date,@Field("action_plan") int action_plan, @Field("PIC") int pic );
 
     @PUT("tasks/{id}")
-//    @FormUrlEncoded
-//    Call<Void> updateTasks(@Path("id") int id, @Body Task task);
     Call<Void> updateTasks(@Path("id") int id, @Query("name") String name, @Query("status") int status,@Query("description") String description,
                             @Query("due_date") String due_date,@Query("action_plan") int action_plan, @Query("PIC") int pic );
-    // 3 youtube videos and the 5 availble links show this method
     
     @DELETE("tasks/{id}")
     Call<Void> deleteTask(@Path("id") int id);

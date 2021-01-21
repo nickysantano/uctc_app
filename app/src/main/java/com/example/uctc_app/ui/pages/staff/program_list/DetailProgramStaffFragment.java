@@ -90,6 +90,7 @@ public class DetailProgramStaffFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
+
         program = DetailProgramStaffFragmentArgs.fromBundle(getArguments()).getDetailProgramStaff();
         initDetailProgram(program);
 
